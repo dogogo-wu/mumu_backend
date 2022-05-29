@@ -7,6 +7,6 @@ use Illuminate\Http\Request;
 class MainController extends Controller
 {
     public function login_func() {
-        return view('login');
+        return view('mumu.login');
     }
 }

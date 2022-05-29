@@ -1,0 +1,31 @@
+* {
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+#back_area {
+  background-color: #d1d5db;
+  min-height: 100vh;
+  padding: 48px 8px;
+}
+
+#back_area .my_con {
+  background-color: #f3f4f6;
+  padding: 40px;
+  border-radius: 10px;
+}
+
+@media (min-width: 992px) {
+  #back_area .my_con {
+    width: 992px;
+  }
+}

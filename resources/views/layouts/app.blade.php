@@ -15,6 +15,8 @@
 
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
+
+        @yield('cssLink')
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100">
@@ -30,7 +32,11 @@
             <!-- Page Content -->
             <main>
                 {{ $slot }}
+                @yield('mainSec')
             </main>
         </div>
+        @yield('jsCdn')
+        @yield('js')
+
     </body>
 </html>
