@@ -27,7 +27,7 @@
     <section id="back_area">
         <div class="container my_con">
             <div class="d-flex justify-content-between align-items-center mb-4">
-                <p class="h3 fw-bold mb-0">環境照管理</p>
+                <p class="h3 fw-bold mb-0">環境照-管理</p>
                 <a href="/environment/create" class="btn btn-success">新增環境照</a>
             </div>
             <table id="myDataTable" class="display">

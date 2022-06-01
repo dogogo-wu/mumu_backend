@@ -32,7 +32,7 @@
                     <input type="file" name="banner_img" id="banner_img" class="form-control" accept="image/*" required>
                 </div>
                 <div class="mb-3">
-                    <label for="banner_remark" class="form-label">備註</label>
+                    <label for="banner_remark" class="form-label">備註 (非必填)</label>
                     <input type="text" name="banner_remark" id="banner_remark" class="form-control">
                 </div>
                 <div class="d-flex justify-content-center align-items-center mt-4">

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('pageTittle')
-    Environment-Create
+    Service-Create
 @endsection
 
 @section('cssLink')
@@ -25,19 +25,24 @@
 @section('mainSec')
     <section id="back_area">
         <div class="container my_con">
-            <form class="d-flex flex-column" action="/environment/store" method="post" enctype="multipart/form-data">
+            <form class="d-flex flex-column" action="/service/store" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="mb-3">
-                    <label for="env_img" class="form-label">環境照-圖片上傳</label>
-                    <input type="file" name="env_img" id="env_img" class="form-control" accept="image/*" required>
+                    <label for="service_img" class="form-label">服務項目-圖片上傳</label>
+                    <input type="file" name="service_img" id="service_img" class="form-control" accept="image/*" required>
                 </div>
                 <div class="mb-3">
-                    <label for="env_remark" class="form-label">備註 (非必填)</label>
-                    <input type="text" name="env_remark" id="env_remark" class="form-control">
+                    <label for="service_title" class="form-label">標題</label>
+                    <input type="text" name="service_title" id="service_title" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label for="service_content" class="form-label">內文</label>
+                    <textarea name="service_content" class="form-control" id="service_content" cols="20"
+                            rows="5" required></textarea>
                 </div>
                 <div class="d-flex justify-content-center align-items-center mt-4">
-                    <a class="btn btn-secondary px-4" href="/environment">取消</a>
-                    <input type="submit" value="新增照片" class="btn btn-primary px-4 mx-3">
+                    <a class="btn btn-secondary px-4" href="/service">取消</a>
+                    <input type="submit" value="新增服務項目" class="btn btn-primary px-4 mx-3">
                 </div>
             </form>
         </div>

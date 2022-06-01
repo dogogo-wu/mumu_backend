@@ -12,21 +12,25 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                    {{-- <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
-                    </x-nav-link>
+                    </x-nav-link> --}}
                     <x-nav-link :href="'/banner'" :active="request()->is('banner*')">
-                        {{ __('Banner管理') }}
+                        {{ __('Banner-管理') }}
                     </x-nav-link>
                     <x-nav-link :href="'/environment'" :active="request()->is('environment*')">
-                        {{ __('環境照管理') }}
+                        {{ __('環境照-管理') }}
+                    </x-nav-link>
+                    <x-nav-link :href="'/service'" :active="request()->is('service*')">
+                        {{ __('服務項目-管理') }}
+                    </x-nav-link>
+                    <x-nav-link :href="'/faq'" :active="request()->is('faq*')">
+                        {{ __('FAQ-管理') }}
                     </x-nav-link>
                     <x-nav-link :href="'/photo'" :active="request()->is('photo*')">
                         {{ __('作品集錦管理') }}
                     </x-nav-link>
-                    <x-nav-link :href="'/faq'" :active="request()->is('faq*')">
-                        {{ __('FAQ管理') }}
-                    </x-nav-link>
+
                 </div>
             </div>
 

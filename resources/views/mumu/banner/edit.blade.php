@@ -14,8 +14,9 @@
     <link rel="stylesheet" href="{{ asset('css/back.css') }}">
     <style>
         form img {
-            max-height: 400px;
-            max-width: 400px;
+            max-height: 360px;
+            object-fit: contain;
+            margin-right: auto
         }
 
     </style>
@@ -39,7 +40,7 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="banner_remark" class="form-label">備註</label>
+                    <label for="banner_remark" class="form-label">備註 (非必填)</label>
                     <input type="text" name="banner_remark" id="banner_remark" class="form-control"
                         value="{{ $myedit->remark }}">
                 </div>

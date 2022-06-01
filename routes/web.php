@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\BannerController;
 use App\Http\Controllers\EnvironmentController;
+use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\FaqController;
 use App\Http\Controllers\GalleryController;
 
@@ -27,7 +28,10 @@ use App\Http\Controllers\GalleryController;
 // });
 
 Route::get('/login', [MainController::class, 'login_func']);
-Route::get('/', [MainController::class, 'login_func']);
+
+Route::get('/', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
 
 Route::prefix('/banner')->middleware(['auth'])->group(function(){
     Route::get('/', [BannerController::class, 'index']);
@@ -51,6 +55,18 @@ Route::prefix('/environment')->middleware(['auth'])->group(function(){
 
     Route::post('/upmove/{target}', [EnvironmentController::class, 'upmove']);
     Route::post('/downmove/{target}', [EnvironmentController::class, 'downmove']);
+});
+
+Route::prefix('/service')->middleware(['auth'])->group(function(){
+    Route::get('/', [ServiceController::class, 'index']);
+    Route::get('/create', [ServiceController::class, 'create']);
+    Route::post('/store', [ServiceController::class, 'store']);
+    Route::post('/delete/{target}', [ServiceController::class, 'delete']);
+    Route::get('/edit/{target}', [ServiceController::class, 'edit']);
+    Route::post('/update/{target}', [ServiceController::class, 'update']);
+
+    Route::post('/upmove/{target}', [ServiceController::class, 'upmove']);
+    Route::post('/downmove/{target}', [ServiceController::class, 'downmove']);
 });
 
 Route::prefix('/faq')->middleware(['auth'])->group(function(){

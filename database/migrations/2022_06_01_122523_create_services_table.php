@@ -13,12 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('faqs', function (Blueprint $table) {
+        Schema::create('services', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
 
-            $table->text('question')->nullable()->comment('問題');
-            $table->text('answer')->nullable()->comment('答案');
+            $table->string('img')->nullable()->comment('圖片路徑');
+            $table->string('title')->nullable()->comment('標題');
+            $table->text('content')->nullable()->comment('內文');
             $table->integer('order')->nullable()->comment('順序');
         });
     }
@@ -30,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('faqs');
+        Schema::dropIfExists('services');
     }
 };

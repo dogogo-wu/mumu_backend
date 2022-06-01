@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('pageTittle')
-    FAQ
+    Service
 @endsection
 
 @section('cssLink')
@@ -14,22 +14,30 @@
 
     <!-- ------------------- My CSS Section ------------------- -->
     <link rel="stylesheet" href="{{ asset('css/back.css') }}">
+
+    <style>
+        table img {
+            max-height: 200px;
+            max-width: 400px;
+        }
+    </style>
 @endsection
 
 @section('mainSec')
     <section id="back_area">
         <div class="container my_con">
             <div class="d-flex justify-content-between align-items-center mb-4">
-                <p class="h3 fw-bold mb-0">FAQ-管理</p>
-                <a href="/faq/create" class="btn btn-success">新增FAQ</a>
+                <p class="h3 fw-bold mb-0">服務項目-管理</p>
+                <a href="/service/create" class="btn btn-success">新增服務項目</a>
             </div>
             <table id="myDataTable" class="display">
                 <thead>
                     <tr>
                         <th>順序調整</th>
                         <th>順序</th>
-                        <th>問題</th>
-                        <th>答案</th>
+                        <th>圖片預覽</th>
+                        <th>標題</th>
+                        <th>內文</th>
                         <th>功能</th>
                     </tr>
                 </thead>
@@ -39,27 +47,24 @@
 
                             <td>
                                 <button onclick="upmove({{ $mydata->id }})"
-                                    class="btn btn-outline-primary btn-sm me-2 mb-2" type="button">上移</button>
+                                    class="btn btn-outline-primary btn-sm me-2 mb-2 px-4" type="button">上移</button>
                                     <br>
                                 <button onclick="downmove({{ $mydata->id }})"
-                                    class="btn btn-outline-primary btn-sm me-2" type="button">下移</button>
+                                    class="btn btn-outline-primary btn-sm me-2 mb-2 px-4" type="button">下移</button>
                             </td>
+                            <td>{{ $mydata->order + 1 }}</td>
                             <td>
-                                {{ $mydata->order + 1 }}
+                                <img src="{{ asset($mydata->img) }}" alt="">
                             </td>
+                            <td>{{ $mydata->title }}</td>
+                            <td>{{ $mydata->content }}</td>
                             <td>
-                                {{ $mydata->question}}
-                            </td>
-                            <td>
-                                {{ $mydata->answer}}
-                            </td>
-                            <td>
-                                <a href="/faq/edit/{{ $mydata->id }}" class="btn btn-outline-success btn-sm me-3 mb-2">編輯</a>
+                                <a href="/service/edit/{{ $mydata->id }}" class="btn btn-outline-success btn-sm me-3 mb-2">編輯</a>
 
                                 {{-- 未加Modal --}}
-                                <button class="btn btn-outline-danger btn-sm mb-1"
+                                <button class="btn btn-outline-danger btn-sm mb-2"
                                     onclick="del_obj({{ $mydata->id }})">刪除</button>
-                                <form id="delForm{{ $mydata->id }}" action="/faq/delete/{{ $mydata->id }}"
+                                <form id="delForm{{ $mydata->id }}" action="/service/delete/{{ $mydata->id }}"
                                     method="POST">
                                     @csrf
                                 </form>
@@ -107,7 +112,7 @@
             formData.append('_method', 'POST');
             formData.append('_token', '{{ csrf_token() }}');
 
-            fetch("/faq/upmove/" + myid, {
+            fetch("/service/upmove/" + myid, {
                 method: "POST",
                 body: formData
             }).then(function(response) {
@@ -122,7 +127,7 @@
             formData.append('_method', 'POST');
             formData.append('_token', '{{ csrf_token() }}');
 
-            fetch("/faq/downmove/" + myid, {
+            fetch("/service/downmove/" + myid, {
                 method: "POST",
                 body: formData
             }).then(function(response) {
