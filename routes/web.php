@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\BannerController;
+use App\Http\Controllers\FaqController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,6 +38,20 @@ Route::prefix('/banner')->middleware(['auth'])->group(function(){
     Route::post('/upmove/{target}', [BannerController::class, 'upmove']);
     Route::post('/downmove/{target}', [BannerController::class, 'downmove']);
 });
+
+Route::prefix('/faq')->middleware(['auth'])->group(function(){
+    Route::get('/', [FaqController::class, 'index']);
+    Route::get('/create', [FaqController::class, 'create']);
+    Route::post('/store', [FaqController::class, 'store']);
+    Route::post('/delete/{target}', [FaqController::class, 'delete']);
+    Route::get('/edit/{target}', [FaqController::class, 'edit']);
+    Route::post('/update/{target}', [FaqController::class, 'update']);
+
+    Route::post('/upmove/{target}', [FaqController::class, 'upmove']);
+    Route::post('/downmove/{target}', [FaqController::class, 'downmove']);
+});
+
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');

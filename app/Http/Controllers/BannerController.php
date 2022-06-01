@@ -9,16 +9,16 @@ class BannerController extends Controller
 {
     public function index() {
         // Test
-        $bannerAry = Banner::orderBy('order')->get();
+        $dataAry = Banner::orderBy('order')->get();
 
-        // $bannerAry = Banner::get();
-        $header = 'Banner管理-編輯頁';
+        // $dataAry = Banner::get();
+        $header = 'Banner管理';
         $slot = '';
 
-        return view('mumu.banner.banner', compact('bannerAry', 'header', 'slot'));
+        return view('mumu.banner.banner', compact('dataAry', 'header', 'slot'));
     }
     public function create(){
-        $header = 'Banner管理-編輯頁';
+        $header = 'Banner管理';
         $slot = '';
         return view('mumu.banner.create',compact('header', 'slot'));
     }
@@ -53,10 +53,10 @@ class BannerController extends Controller
         return redirect('/banner');
     }
     public function edit($target) {
-        $edited = Banner::find($target);
-        $header = 'Banner管理-編輯頁';
+        $myedit = Banner::find($target);
+        $header = 'Banner管理';
         $slot = '';
-        return view('mumu.banner.edit', compact('edited', 'header', 'slot'));
+        return view('mumu.banner.edit', compact('myedit', 'header', 'slot'));
     }
 
     public function update($target, Request $req) {

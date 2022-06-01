@@ -18,6 +18,9 @@
                     <x-nav-link :href="'/banner'" :active="request()->is('banner*')">
                         {{ __('Banner管理') }}
                     </x-nav-link>
+                    <x-nav-link :href="'/faq'" :active="request()->is('faq*')">
+                        {{ __('FAQ管理') }}
+                    </x-nav-link>
                 </div>
             </div>
 
