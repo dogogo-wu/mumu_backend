@@ -3,7 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\BannerController;
+use App\Http\Controllers\EnvironmentController;
 use App\Http\Controllers\FaqController;
+use App\Http\Controllers\GalleryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,6 +41,18 @@ Route::prefix('/banner')->middleware(['auth'])->group(function(){
     Route::post('/downmove/{target}', [BannerController::class, 'downmove']);
 });
 
+Route::prefix('/environment')->middleware(['auth'])->group(function(){
+    Route::get('/', [EnvironmentController::class, 'index']);
+    Route::get('/create', [EnvironmentController::class, 'create']);
+    Route::post('/store', [EnvironmentController::class, 'store']);
+    Route::post('/delete/{target}', [EnvironmentController::class, 'delete']);
+    Route::get('/edit/{target}', [EnvironmentController::class, 'edit']);
+    Route::post('/update/{target}', [EnvironmentController::class, 'update']);
+
+    Route::post('/upmove/{target}', [EnvironmentController::class, 'upmove']);
+    Route::post('/downmove/{target}', [EnvironmentController::class, 'downmove']);
+});
+
 Route::prefix('/faq')->middleware(['auth'])->group(function(){
     Route::get('/', [FaqController::class, 'index']);
     Route::get('/create', [FaqController::class, 'create']);
@@ -51,6 +65,17 @@ Route::prefix('/faq')->middleware(['auth'])->group(function(){
     Route::post('/downmove/{target}', [FaqController::class, 'downmove']);
 });
 
+Route::prefix('/photo')->middleware(['auth'])->group(function(){
+    Route::get('/', [GalleryController::class, 'index']);
+    Route::get('/create', [GalleryController::class, 'create']);
+    Route::post('/store', [GalleryController::class, 'store']);
+    Route::post('/delete/{target}', [GalleryController::class, 'delete']);
+    Route::get('/edit/{target}', [GalleryController::class, 'edit']);
+    Route::post('/update/{target}', [GalleryController::class, 'update']);
+    Route::delete('/del_sec_img/{sec_tar}', [GalleryController::class, 'del_secimg_func']);
+
+    Route::post('/mystore/{target}', [GalleryController::class, 'mystore']);
+});
 
 
 Route::get('/dashboard', function () {

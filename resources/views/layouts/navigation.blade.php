@@ -18,6 +18,12 @@
                     <x-nav-link :href="'/banner'" :active="request()->is('banner*')">
                         {{ __('Banner管理') }}
                     </x-nav-link>
+                    <x-nav-link :href="'/environment'" :active="request()->is('environment*')">
+                        {{ __('環境照管理') }}
+                    </x-nav-link>
+                    <x-nav-link :href="'/photo'" :active="request()->is('photo*')">
+                        {{ __('作品集錦管理') }}
+                    </x-nav-link>
                     <x-nav-link :href="'/faq'" :active="request()->is('faq*')">
                         {{ __('FAQ管理') }}
                     </x-nav-link>
