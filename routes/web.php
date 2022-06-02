@@ -6,6 +6,8 @@ use App\Http\Controllers\BannerController;
 use App\Http\Controllers\EnvironmentController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\FaqController;
+use App\Http\Controllers\TeachController;
+
 use App\Http\Controllers\GalleryController;
 
 /*
@@ -27,7 +29,7 @@ use App\Http\Controllers\GalleryController;
 //     return view('dashboard');
 // });
 
-Route::get('/login', [MainController::class, 'login_func']);
+// Route::get('/login', [MainController::class, 'login_func']);
 
 Route::get('/', function () {
     return view('dashboard');
@@ -79,6 +81,18 @@ Route::prefix('/faq')->middleware(['auth'])->group(function(){
 
     Route::post('/upmove/{target}', [FaqController::class, 'upmove']);
     Route::post('/downmove/{target}', [FaqController::class, 'downmove']);
+});
+
+Route::prefix('/teach')->middleware(['auth'])->group(function(){
+    Route::get('/', [TeachController::class, 'index']);
+    Route::get('/create', [TeachController::class, 'create']);
+    Route::post('/store', [TeachController::class, 'store']);
+    Route::post('/delete/{target}', [TeachController::class, 'delete']);
+    Route::get('/edit/{target}', [TeachController::class, 'edit']);
+    Route::post('/update/{target}', [TeachController::class, 'update']);
+
+    Route::post('/upmove/{target}', [TeachController::class, 'upmove']);
+    Route::post('/downmove/{target}', [TeachController::class, 'downmove']);
 });
 
 Route::prefix('/photo')->middleware(['auth'])->group(function(){
