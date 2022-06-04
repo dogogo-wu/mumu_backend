@@ -27,6 +27,9 @@
                     <x-nav-link :href="'/faq'" :active="request()->is('faq*')">
                         {{ __('FAQ-管理') }}
                     </x-nav-link>
+                    <x-nav-link :href="'/teach'" :active="request()->is('teach*')">
+                        {{ __('創業教學項目-管理') }}
+                    </x-nav-link>
                     <x-nav-link :href="'/photo'" :active="request()->is('photo*')">
                         {{ __('作品集錦管理') }}
                     </x-nav-link>

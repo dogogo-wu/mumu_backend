@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('pageTittle')
-    Service
+    Teach
 @endsection
 
 @section('cssLink')
@@ -20,6 +20,10 @@
             max-height: 200px;
             max-width: 400px;
         }
+        ul{
+            list-style: disc outside none;
+            margin: 0 0 0 1.2rem;
+        }
     </style>
 @endsection
 
@@ -27,8 +31,8 @@
     <section id="back_area">
         <div class="container my_con">
             <div class="d-flex justify-content-between align-items-center mb-4">
-                <p class="h3 fw-bold mb-0">創業-管理</p>
-                <a href="/service/create" class="btn btn-success">新增服務項目</a>
+                <p class="h3 fw-bold mb-0">創業教學項目-管理</p>
+                <a href="/teach/create" class="btn btn-success">新增創業教學項目</a>
             </div>
             <table id="myDataTable" class="display">
                 <thead>
@@ -54,17 +58,19 @@
                             </td>
                             <td>{{ $mydata->order + 1 }}</td>
                             <td>
-                                <img src="{{ asset($mydata->img) }}" alt="">
+                                <img src="{{ asset($mydata->img) }}" alt="" style="opacity: {{ $mydata->opacity }}">
                             </td>
                             <td>{{ $mydata->title }}</td>
-                            <td>{{ $mydata->content }}</td>
                             <td>
-                                <a href="/service/edit/{{ $mydata->id }}" class="btn btn-outline-success btn-sm me-3 mb-2">編輯</a>
+                                <ul>{!! $mydata->content !!}</ul>
+                            </td>
+                            <td>
+                                <a href="/teach/edit/{{ $mydata->id }}" class="btn btn-outline-success btn-sm me-3 mb-2">編輯</a>
 
                                 {{-- 未加Modal --}}
                                 <button class="btn btn-outline-danger btn-sm mb-2"
                                     onclick="del_obj({{ $mydata->id }})">刪除</button>
-                                <form id="delForm{{ $mydata->id }}" action="/service/delete/{{ $mydata->id }}"
+                                <form id="delForm{{ $mydata->id }}" action="/teach/delete/{{ $mydata->id }}"
                                     method="POST">
                                     @csrf
                                 </form>
@@ -112,7 +118,7 @@
             formData.append('_method', 'POST');
             formData.append('_token', '{{ csrf_token() }}');
 
-            fetch("/service/upmove/" + myid, {
+            fetch("/teach/upmove/" + myid, {
                 method: "POST",
                 body: formData
             }).then(function(response) {
@@ -127,7 +133,7 @@
             formData.append('_method', 'POST');
             formData.append('_token', '{{ csrf_token() }}');
 
-            fetch("/service/downmove/" + myid, {
+            fetch("/teach/downmove/" + myid, {
                 method: "POST",
                 body: formData
             }).then(function(response) {

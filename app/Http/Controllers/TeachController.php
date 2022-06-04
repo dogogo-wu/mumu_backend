@@ -24,10 +24,14 @@ class TeachController extends Controller
 
         $path = FilesController::imgUpload($req->teach_img, 'teach');
 
+        // 轉換為<li>
+        $new_intro = TeachController::textTransLi($req->teach_content);
+
         Teach::create([
             'img' => $path,
             'title' => $req->teach_title,
-            'content' => $req->teach_content,
+            'content' => $new_intro,
+            'opacity' => $req->teach_opacity,
             'order' => Teach::count(),
         ]);
 
@@ -67,12 +71,23 @@ class TeachController extends Controller
             $targetObj->img = $path;
         }
 
+        // 轉換為<li>
+        $new_intro = TeachController::textTransLi($req->teach_content);
+
         $targetObj->title = $req->teach_title;
-        $targetObj->content = $req->teach_content;
+        $targetObj->content = $new_intro;
+        $targetObj->opacity = $req->teach_opacity;
         $targetObj->save();
 
         return redirect('/teach');
     }
+
+    public function textTransLi($intxt){
+        $outxt = '<li>'. str_replace(array("\r\n","\n"),'</li><li>', $intxt) . '</li>';
+
+        return $outxt;
+    }
+
     public function upmove($target) {
 
         // 取得目標obj

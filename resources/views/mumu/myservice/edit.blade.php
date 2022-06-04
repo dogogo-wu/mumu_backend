@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('pageTittle')
-    Environment-Edit
+    Service-Edit
 @endsection
 
 @section('cssLink')
@@ -70,8 +70,8 @@
 
 @section('js')
     <script>
-        env_img.onchange = evt => {
-            const [file] = env_img.files
+        service_img.onchange = evt => {
+            const [file] = service_img.files
             if (file) {
                 blah.src = URL.createObjectURL(file)
             }
