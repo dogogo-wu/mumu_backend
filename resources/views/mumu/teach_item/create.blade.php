@@ -25,7 +25,7 @@
 @section('mainSec')
     <section id="back_area">
         <div class="container my_con">
-            <form class="d-flex flex-column" action="/teach/store" method="post" enctype="multipart/form-data">
+            <form class="d-flex flex-column" action="/teach_item/store" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="mb-3">
                     <label for="teach_img" class="form-label">創業教學項目-圖片上傳 <small>(建議長寬比為360:260)</small></label>
@@ -45,7 +45,7 @@
                             rows="8" required></textarea>
                 </div>
                 <div class="d-flex justify-content-center align-items-center mt-4">
-                    <a class="btn btn-secondary px-4" href="/teach">取消</a>
+                    <a class="btn btn-secondary px-4" href="/teach_item">取消</a>
                     <input type="submit" value="新增創業教學" class="btn btn-primary px-4 mx-3">
                 </div>
             </form>

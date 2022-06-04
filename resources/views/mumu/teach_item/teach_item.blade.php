@@ -32,7 +32,7 @@
         <div class="container my_con">
             <div class="d-flex justify-content-between align-items-center mb-4">
                 <p class="h3 fw-bold mb-0">創業教學項目-管理</p>
-                <a href="/teach/create" class="btn btn-success">新增創業教學項目</a>
+                <a href="/teach_item/create" class="btn btn-success">新增創業教學項目</a>
             </div>
             <table id="myDataTable" class="display">
                 <thead>
@@ -65,12 +65,12 @@
                                 <ul>{!! $mydata->content !!}</ul>
                             </td>
                             <td>
-                                <a href="/teach/edit/{{ $mydata->id }}" class="btn btn-outline-success btn-sm me-3 mb-2">編輯</a>
+                                <a href="/teach_item/edit/{{ $mydata->id }}" class="btn btn-outline-success btn-sm me-3 mb-2">編輯</a>
 
                                 {{-- 未加Modal --}}
                                 <button class="btn btn-outline-danger btn-sm mb-2"
                                     onclick="del_obj({{ $mydata->id }})">刪除</button>
-                                <form id="delForm{{ $mydata->id }}" action="/teach/delete/{{ $mydata->id }}"
+                                <form id="delForm{{ $mydata->id }}" action="/teach_item/delete/{{ $mydata->id }}"
                                     method="POST">
                                     @csrf
                                 </form>
@@ -118,7 +118,7 @@
             formData.append('_method', 'POST');
             formData.append('_token', '{{ csrf_token() }}');
 
-            fetch("/teach/upmove/" + myid, {
+            fetch("/teach_item/upmove/" + myid, {
                 method: "POST",
                 body: formData
             }).then(function(response) {
@@ -133,7 +133,7 @@
             formData.append('_method', 'POST');
             formData.append('_token', '{{ csrf_token() }}');
 
-            fetch("/teach/downmove/" + myid, {
+            fetch("/teach_item/downmove/" + myid, {
                 method: "POST",
                 body: formData
             }).then(function(response) {

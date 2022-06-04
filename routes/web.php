@@ -7,6 +7,7 @@ use App\Http\Controllers\EnvironmentController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\FaqController;
 use App\Http\Controllers\TeachController;
+use App\Http\Controllers\TeachPicController;
 
 use App\Http\Controllers\GalleryController;
 
@@ -83,7 +84,7 @@ Route::prefix('/faq')->middleware(['auth'])->group(function(){
     Route::post('/downmove/{target}', [FaqController::class, 'downmove']);
 });
 
-Route::prefix('/teach')->middleware(['auth'])->group(function(){
+Route::prefix('/teach_item')->middleware(['auth'])->group(function(){
     Route::get('/', [TeachController::class, 'index']);
     Route::get('/create', [TeachController::class, 'create']);
     Route::post('/store', [TeachController::class, 'store']);
@@ -93,6 +94,18 @@ Route::prefix('/teach')->middleware(['auth'])->group(function(){
 
     Route::post('/upmove/{target}', [TeachController::class, 'upmove']);
     Route::post('/downmove/{target}', [TeachController::class, 'downmove']);
+});
+
+Route::prefix('/teach_pic')->middleware(['auth'])->group(function(){
+    Route::get('/', [TeachPicController::class, 'index']);
+    Route::get('/create', [TeachPicController::class, 'create']);
+    Route::post('/store', [TeachPicController::class, 'store']);
+    Route::post('/delete/{target}', [TeachPicController::class, 'delete']);
+    Route::get('/edit/{target}', [TeachPicController::class, 'edit']);
+    Route::post('/update/{target}', [TeachPicController::class, 'update']);
+
+    Route::post('/upmove/{target}', [TeachPicController::class, 'upmove']);
+    Route::post('/downmove/{target}', [TeachPicController::class, 'downmove']);
 });
 
 Route::prefix('/photo')->middleware(['auth'])->group(function(){

@@ -13,12 +13,12 @@ class TeachController extends Controller
         $header = '創業教學-管理';
         $slot = '';
 
-        return view('mumu.teach.teach', compact('dataAry', 'header', 'slot'));
+        return view('mumu.teach_item.teach_item', compact('dataAry', 'header', 'slot'));
     }
     public function create(){
         $header = '創業教學管理';
         $slot = '';
-        return view('mumu.teach.create',compact('header', 'slot'));
+        return view('mumu.teach_item.create',compact('header', 'slot'));
     }
     public function store(Request $req){
 
@@ -35,7 +35,7 @@ class TeachController extends Controller
             'order' => Teach::count(),
         ]);
 
-        return redirect('/teach');
+        return redirect('/teach_item');
     }
     public function delete($target){
         $targetObj = Teach::find($target);
@@ -53,13 +53,13 @@ class TeachController extends Controller
         FilesController::deleteUpload($targetObj->img);
         $targetObj->delete();
 
-        return redirect('/teach');
+        return redirect('/teach_item');
     }
     public function edit($target) {
         $myedit = Teach::find($target);
         $header = '創業教學管理';
         $slot = '';
-        return view('mumu.teach.edit', compact('myedit', 'header', 'slot'));
+        return view('mumu.teach_item.edit', compact('myedit', 'header', 'slot'));
     }
 
     public function update($target, Request $req) {
@@ -79,7 +79,7 @@ class TeachController extends Controller
         $targetObj->opacity = $req->teach_opacity;
         $targetObj->save();
 
-        return redirect('/teach');
+        return redirect('/teach_item');
     }
 
     public function textTransLi($intxt){
@@ -108,7 +108,7 @@ class TeachController extends Controller
         $tarObj->save();
         $prevObj->save();
 
-        return redirect('/teach');
+        return redirect('/teach_item');
     }
     public function downmove($target) {
 
@@ -132,7 +132,7 @@ class TeachController extends Controller
         $tarObj->save();
         $postObj->save();
 
-        return redirect('/teach');
+        return redirect('/teach_item');
 
     }
 }
