@@ -8,8 +8,8 @@ use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\FaqController;
 use App\Http\Controllers\TeachController;
 use App\Http\Controllers\TeachPicController;
-
 use App\Http\Controllers\GalleryController;
+use App\Http\Controllers\NoticeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -117,9 +117,21 @@ Route::prefix('/photo')->middleware(['auth'])->group(function(){
     Route::post('/update/{target}', [GalleryController::class, 'update']);
     Route::delete('/del_sec_img/{sec_tar}', [GalleryController::class, 'del_secimg_func']);
 
+    Route::post('/upmove/{target}', [GalleryController::class, 'upmove']);
+    Route::post('/downmove/{target}', [GalleryController::class, 'downmove']);
+
+    // 尚未使用
     Route::post('/mystore/{target}', [GalleryController::class, 'mystore']);
 });
 
+Route::prefix('/notice')->middleware(['auth'])->group(function(){
+    Route::get('/', [NoticeController::class, 'index']);
+    Route::get('/create', [NoticeController::class, 'create']);
+    Route::post('/store', [NoticeController::class, 'store']);
+    Route::post('/delete/{target}', [NoticeController::class, 'delete']);
+    Route::get('/edit/{target}', [NoticeController::class, 'edit']);
+    Route::post('/update/{target}', [NoticeController::class, 'update']);
+});
 
 Route::get('/dashboard', function () {
     return view('dashboard');
