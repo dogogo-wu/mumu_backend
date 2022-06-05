@@ -166,9 +166,9 @@
 
             const mytar = button.getAttribute('data-bs-tarid');
             const mydel_btn = document.getElementById('modal_del');
-            mydel_btn.addEventListener('click', event => {
+            mydel_btn.onclick = function(){
                 document.querySelector('#delForm' + mytar).submit();
-            })
+            }
         })
     </script>
 @endsection
