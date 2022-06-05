@@ -17,9 +17,9 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
 
-            $table->string('title')->nullable()->comment('作品副標題');
+            $table->string('subtitle')->nullable()->comment('副標題');
             $table->integer('order')->nullable()->comment('順序');
-            $table->integer('category')->nullable()->comment('所屬的標題類別');
+            $table->integer('category')->nullable()->comment('種類');
         });
     }
 

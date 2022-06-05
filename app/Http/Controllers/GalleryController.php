@@ -9,34 +9,48 @@ use App\Models\GalleryPhoto;
 class GalleryController extends Controller
 {
     public function index() {
-        // Test
+
         $dataAry = GallerySubtitle::orderBy('order')->get();
 
-        // $dataAry = GallerySubtitle::get();
-        $header = 'Banner管理';
+        $header = '作品集錦-管理';
         $slot = '';
 
-        return view('mumu.banner.banner', compact('dataAry', 'header', 'slot'));
+        return view('mumu.photo.photo', compact('dataAry', 'header', 'slot'));
     }
     public function create(){
-        $header = 'Banner管理';
+        $header = '作品集錦-管理';
         $slot = '';
-        return view('mumu.banner.create',compact('header', 'slot'));
+        return view('mumu.photo.create',compact('header', 'slot'));
     }
     public function store(Request $req){
 
-        $path = FilesController::imgUpload($req->banner_img, 'banner');
-
-        GallerySubtitle::create([
-            'img' => $path,
-            'remark' => $req->banner_remark,
+        $get_sub = GallerySubtitle::create([
+            'subtitle' => $req->photo_subtitle,
+            'category' => $req->photo_category,
             'order' => GallerySubtitle::count(),
         ]);
 
-        return redirect('/banner');
+        if($req->hasfile('second_img')){
+            foreach ($req->second_img as $key => $value) {
+                $path = FilesController::imgUpload($value, 'photo');
+                GalleryPhoto::create([
+                    'img' => $path,
+                    'subtitle_id' => $get_sub->id,
+                ]);
+            }
+        }
+
+        return redirect('/photo');
     }
     public function delete($target){
+
         $targetObj = GallerySubtitle::find($target);
+
+        $imgAry = GalleryPhoto::where('subtitle_id', $target)->get();
+        foreach ($imgAry as $key => $value) {
+            FilesController::deleteUpload($value->img);
+            $value->delete();
+        }
 
         // ------ 後面的oreder往前移1 ------
         $tarOrd = $targetObj->order;
@@ -51,29 +65,60 @@ class GalleryController extends Controller
         FilesController::deleteUpload($targetObj->img);
         $targetObj->delete();
 
-        return redirect('/banner');
+        return redirect('/photo');
     }
     public function edit($target) {
         $myedit = GallerySubtitle::find($target);
-        $header = 'Banner管理';
+        $header = '作品集錦-管理';
         $slot = '';
-        return view('mumu.banner.edit', compact('myedit', 'header', 'slot'));
+        return view('mumu.photo.edit', compact('myedit', 'header', 'slot'));
     }
 
     public function update($target, Request $req) {
         $targetObj = GallerySubtitle::find($target);
 
-        if($req->hasfile('banner_img')){
-            $path = FilesController::imgUpload($req->banner_img, 'banner');
-            FilesController::deleteUpload($targetObj->img);
-            $targetObj->img = $path;
-        }
-
-        $targetObj->remark = $req->banner_remark;
+        $targetObj->subtitle = $req->photo_subtitle;
+        $targetObj->category = $req->photo_category;
         $targetObj->save();
 
-        return redirect('/banner');
+        if($req->hasfile('second_img')){
+            foreach ($req->second_img as $key => $value) {
+                $path = FilesController::imgUpload($value, 'photo');
+                GalleryPhoto::create([
+                    'img' => $path,
+                    'subtitle_id' => $target,
+                ]);
+            }
+        }
+
+        return redirect('/photo');
     }
+
+    public function del_secimg_func($sec_tar){
+        $tarimg = GalleryPhoto::find($sec_tar);
+        $subtit_id = $tarimg -> subtitle_id;
+
+        FilesController::deleteUpload($tarimg->img);
+        $tarimg->delete();
+
+        return redirect('/photo/edit/'.$subtit_id);
+    }
+
+    public function mystore($target, Request $req) {
+
+        // // dd($req->all());
+
+        // $targetObj = Product::find($target);
+        // $targetObj->name = $req->mycontent;
+        // $targetObj->save();
+
+        // // Response只能接JSON的格式
+        // $result = [
+        //     'new_name' => $req->mycontent,
+        // ];
+        // return $result;
+    }
+
     public function upmove($target) {
 
         // 取得目標obj
@@ -94,7 +139,7 @@ class GalleryController extends Controller
         $tarObj->save();
         $prevObj->save();
 
-        return redirect('/banner');
+        return redirect('/photo');
     }
     public function downmove($target) {
 
@@ -118,7 +163,7 @@ class GalleryController extends Controller
         $tarObj->save();
         $postObj->save();
 
-        return redirect('/banner');
+        return redirect('/photo');
 
     }
 }

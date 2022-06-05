@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property integer $id
  * @property string $created_at
  * @property string $updated_at
- * @property string $title
+ * @property string $subtitle
  * @property integer $order
  * @property integer $category
  */
@@ -23,7 +23,7 @@ class GallerySubtitle extends Model
     /**
      * @var array
      */
-    protected $fillable = ['created_at', 'updated_at', 'title', 'order', 'category'];
+    protected $fillable = ['created_at', 'updated_at', 'subtitle', 'order', 'category'];
 
     public function imgAry(){
         return $this->hasMany(GalleryPhoto::class, 'subtitle_id', 'id');
