@@ -20,6 +20,7 @@
             max-height: 200px;
             max-width: 400px;
         }
+
     </style>
 @endsection
 
@@ -47,7 +48,7 @@
                             <td>
                                 <button onclick="upmove({{ $mydata->id }})"
                                     class="btn btn-outline-primary btn-sm me-2 mb-2 px-4" type="button">上移</button>
-                                    <br>
+                                <br>
                                 <button onclick="downmove({{ $mydata->id }})"
                                     class="btn btn-outline-primary btn-sm me-2 mb-2 px-4" type="button">下移</button>
                             </td>
@@ -57,14 +58,15 @@
                             </td>
                             <td>{{ $mydata->remark }}</td>
                             <td>
-                                <a href="/banner/edit/{{ $mydata->id }}" class="btn btn-outline-success btn-sm me-3 mb-2">編輯</a>
+                                <a href="/banner/edit/{{ $mydata->id }}"
+                                    class="btn btn-outline-success btn-sm me-3 mb-2">編輯</a>
                                 {{-- 有加Modal --}}
-                                {{-- <button class="btn btn-outline-danger btn-sm mb-1"
-                                    onclick="del_banner({{ $mydata->id }})">刪除</button> --}}
+                                <button class="btn btn-outline-danger btn-sm mb-1" data-bs-toggle="modal"
+                                    data-bs-target="#myModal" data-bs-tarid="{{ $mydata->id }}">刪除</button>
 
                                 {{-- 未加Modal --}}
-                                <button class="btn btn-outline-danger btn-sm mb-2"
-                                    onclick="del_obj({{ $mydata->id }})">刪除</button>
+                                {{-- <button class="btn btn-outline-danger btn-sm mb-2"
+                                    onclick="del_obj({{ $mydata->id }})">刪除</button> --}}
                                 <form id="delForm{{ $mydata->id }}" action="/banner/delete/{{ $mydata->id }}"
                                     method="POST">
                                     @csrf
@@ -77,11 +79,11 @@
         </div>
 
         <!-- Modal -->
-        {{-- <div class="modal fade" id="myModal" tabindex="-1">
+        <div class="modal fade" id="myModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="myModalLabel">Modal title</h5>
+                        <h5 class="modal-title" id="myModalLabel">訊息</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                     </div>
                     <div class="modal-body">
@@ -89,11 +91,11 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
-                        <button type="button" onclick="del_banner({{ $mydata->id }}" class="btn btn-danger">刪除</button>
+                        <button type="button" id="modal_del" class="btn btn-danger">刪除</button>
                     </div>
                 </div>
             </div>
-        </div> --}}
+        </div>
     </section>
 @endsection
 
@@ -122,9 +124,11 @@
         });
 
         // ------------ my Func ------------
-        function del_obj($id) {
-            document.querySelector('#delForm' + $id).submit();
-        }
+
+        // 未加modal時
+        // function del_obj($id) {
+        //     document.querySelector('#delForm' + $id).submit();
+        // }
 
         function upmove(myid) {
 
@@ -155,43 +159,16 @@
             })
 
         }
+        const myModal = document.getElementById('myModal')
+        myModal.addEventListener('show.bs.modal', event => {
+            // Button that triggered the modal
+            const button = event.relatedTarget;
 
-        // function passValue(prod) {
-        //     $('#myModal').modal('show');
-        //     document.querySelector('#mycontent').value = document.querySelector('#prod_name' + prod.id).innerHTML;
-        //     var handler = function() {
-        //         myedit(prod.id);
-        //     };
-        //     document.querySelector('#save_btn').onclick = handler;
-        // }
-
-        // function myedit(myid) {
-
-        //     let formData = new FormData(document.querySelector('#edit_form'));
-
-        //     fetch("/product/mystore/" + myid, {
-        //             method: "POST",
-        //             body: formData
-        //         })
-        //         .then(response => response.json())
-        //         .then(data => {
-        //             let ele = document.querySelector('#prod_name' + myid);
-
-        //             // 更新innerHTML (DB已更新，需自行更新畫面)
-        //             ele.innerHTML = data.new_name;
-
-        //             // 關掉modal
-        //             $('#myModal').modal('hide');
-
-        //         });
-
-        // }
-        // // 防止按Enter送出get請求
-        // $(document).on('keyup keypress', 'input', function(e) {
-        //     if (e.which == 13) {
-        //         e.preventDefault();
-        //         return false;
-        //     }
-        // });
+            const mytar = button.getAttribute('data-bs-tarid');
+            const mydel_btn = document.getElementById('modal_del');
+            mydel_btn.addEventListener('click', event => {
+                document.querySelector('#delForm' + mytar).submit();
+            })
+        })
     </script>
 @endsection
