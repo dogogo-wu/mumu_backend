@@ -41,6 +41,7 @@
                         <a class="btn btn-secondary px-4" href="/notice">取消</a>
                         <input type="submit" value="送出" class="btn btn-primary px-4 mx-2">
                     </div>
+                </div>
             </form>
         </div>
     </section>

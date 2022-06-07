@@ -10,6 +10,7 @@ use App\Http\Controllers\TeachController;
 use App\Http\Controllers\TeachPicController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\NoticeController;
+use App\Http\Controllers\InfoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -131,6 +132,15 @@ Route::prefix('/notice')->middleware(['auth'])->group(function(){
     Route::post('/delete/{target}', [NoticeController::class, 'delete']);
     Route::get('/edit/{target}', [NoticeController::class, 'edit']);
     Route::post('/update/{target}', [NoticeController::class, 'update']);
+});
+
+Route::prefix('/info')->middleware(['auth'])->group(function(){
+    Route::get('/', [InfoController::class, 'index']);
+    Route::get('/create', [InfoController::class, 'create']);
+    Route::post('/store', [InfoController::class, 'store']);
+    Route::post('/delete/{target}', [InfoController::class, 'delete']);
+    Route::get('/edit/{target}', [InfoController::class, 'edit']);
+    Route::post('/update/{target}', [InfoController::class, 'update']);
 });
 
 Route::get('/dashboard', function () {

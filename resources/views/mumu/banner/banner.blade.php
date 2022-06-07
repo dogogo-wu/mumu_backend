@@ -87,7 +87,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                     </div>
                     <div class="modal-body">
-                        是否要刪除1張圖片？
+                        是否要刪除資料？
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
@@ -159,7 +159,7 @@
             })
 
         }
-        const myModal = document.getElementById('myModal')
+        const myModal = document.getElementById('myModal');
         myModal.addEventListener('show.bs.modal', event => {
             // Button that triggered the modal
             const button = event.relatedTarget;

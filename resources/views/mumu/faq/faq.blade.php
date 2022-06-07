@@ -56,9 +56,9 @@
                             <td>
                                 <a href="/faq/edit/{{ $mydata->id }}" class="btn btn-outline-success btn-sm me-3 mb-2">編輯</a>
 
-                                {{-- 未加Modal --}}
-                                <button class="btn btn-outline-danger btn-sm mb-1"
-                                    onclick="del_obj({{ $mydata->id }})">刪除</button>
+                                {{-- 有加Modal --}}
+                                <button class="btn btn-outline-danger btn-sm mb-1" data-bs-toggle="modal"
+                                    data-bs-target="#myModal" data-bs-tarid="{{ $mydata->id }}">刪除</button>
                                 <form id="delForm{{ $mydata->id }}" action="/faq/delete/{{ $mydata->id }}"
                                     method="POST">
                                     @csrf
@@ -68,6 +68,24 @@
                     @endforeach
                 </tbody>
             </table>
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="myModalLabel">訊息</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        是否要刪除資料？
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                        <button type="button" id="modal_del" class="btn btn-danger">刪除</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 @endsection
@@ -97,9 +115,6 @@
         });
 
         // ------------ my Func ------------
-        function del_obj($id) {
-            document.querySelector('#delForm' + $id).submit();
-        }
 
         function upmove(myid) {
 
@@ -130,5 +145,17 @@
             })
 
         }
+
+        const myModal = document.getElementById('myModal');
+        myModal.addEventListener('show.bs.modal', event => {
+            // Button that triggered the modal
+            const button = event.relatedTarget;
+
+            const mytar = button.getAttribute('data-bs-tarid');
+            const mydel_btn = document.getElementById('modal_del');
+            mydel_btn.onclick = function(){
+                document.querySelector('#delForm' + mytar).submit();
+            }
+        })
     </script>
 @endsection

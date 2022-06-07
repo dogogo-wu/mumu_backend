@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('pageTittle')
-    Photo
+    Info
 @endsection
 
 @section('cssLink')
@@ -14,11 +14,10 @@
 
     <!-- ------------------- My CSS Section ------------------- -->
     <link rel="stylesheet" href="{{ asset('css/back.css') }}">
-
     <style>
-        table img {
-            max-height: 200px;
-            max-width: 400px;
+        ul {
+            list-style: disc outside none;
+            margin: 0 0 0 1.2rem;
         }
     </style>
 @endsection
@@ -27,49 +26,49 @@
     <section id="back_area">
         <div class="container my_con">
             <div class="d-flex justify-content-between align-items-center mb-4">
-                <p class="h3 fw-bold mb-0">作品集錦-管理</p>
-                <a href="/photo/create" class="btn btn-success">新增作品集錦</a>
+                <p class="h3 fw-bold mb-0">衛教資訊-管理 <small>(3筆資料)</small></p>
+                <a href="/info/create" class="btn btn-success">新增-衛教資訊</a>
             </div>
             <table id="myDataTable" class="display">
                 <thead>
                     <tr>
-                        <th>順序調整</th>
-                        <th>順序</th>
-                        <th>標題</th>
-                        <th>副標題</th>
-                        <th>圖片預覽</th>
+                        <th>類別</th>
+                        <th>說明</th>
+                        <th>術前準備</th>
+                        <th>術後照護</th>
                         <th>功能</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($dataAry as $mydata)
                         <tr>
-
                             <td>
-                                <button onclick="upmove({{ $mydata->id }})"
-                                    class="btn btn-outline-primary btn-sm me-2 mb-2 px-4" type="button">上移</button>
-                                    <br>
-                                <button onclick="downmove({{ $mydata->id }})"
-                                    class="btn btn-outline-primary btn-sm me-2 mb-2 px-4" type="button">下移</button>
-                            </td>
-                            <td>{{ $mydata->order + 1 }}</td>
-                            <td>
-                                @if ($mydata->category == 1) 紋繡
-                                @elseif ($mydata->category == 2) 皮膚管理
-                                @elseif ($mydata->category == 3) 美睫
+                                @if ($mydata->category == 1)
+                                    紋繡
+                                @elseif ($mydata->category == 2)
+                                    皮膚管理
+                                @elseif ($mydata->category == 3)
+                                    美睫
                                 @endif
                             </td>
-                            <td>{{ $mydata->subtitle }}</td>
                             <td>
-                                {{-- <img src="{{ asset($mydata->img) }}" alt=""> --}}
+                                {!! $mydata->describe !!}
                             </td>
                             <td>
-                                <a href="/photo/edit/{{ $mydata->id }}" class="btn btn-outline-success btn-sm me-3 mb-2">編輯</a>
+                                <ul>{!! $mydata->pre !!}</ul>
+                            </td>
+                            <td>
+                                <ul>{!! $mydata->care !!}</ul>
+                            </td>
+                            <td>
+                                <a href="/info/edit/{{ $mydata->id }}"
+                                    class="btn btn-outline-success btn-sm mb-1">編輯</a>
+                                <br>
 
                                 {{-- 未加Modal --}}
-                                <button class="btn btn-outline-danger btn-sm mb-2"
+                                <button class="btn btn-outline-danger btn-sm mb-1"
                                     onclick="del_obj({{ $mydata->id }})">刪除</button>
-                                <form id="delForm{{ $mydata->id }}" action="/photo/delete/{{ $mydata->id }}"
+                                <form id="delForm{{ $mydata->id }}" action="/info/delete/{{ $mydata->id }}"
                                     method="POST">
                                     @csrf
                                 </form>
@@ -109,36 +108,6 @@
         // ------------ my Func ------------
         function del_obj($id) {
             document.querySelector('#delForm' + $id).submit();
-        }
-
-        function upmove(myid) {
-
-            let formData = new FormData();
-            formData.append('_method', 'POST');
-            formData.append('_token', '{{ csrf_token() }}');
-
-            fetch("/photo/upmove/" + myid, {
-                method: "POST",
-                body: formData
-            }).then(function(response) {
-                location.reload();
-            })
-
-        }
-
-        function downmove(myid) {
-
-            let formData = new FormData();
-            formData.append('_method', 'POST');
-            formData.append('_token', '{{ csrf_token() }}');
-
-            fetch("/photo/downmove/" + myid, {
-                method: "POST",
-                body: formData
-            }).then(function(response) {
-                location.reload();
-            })
-
         }
     </script>
 @endsection

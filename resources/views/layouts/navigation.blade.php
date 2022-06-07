@@ -70,6 +70,9 @@
                     <x-nav-link :href="'/photo'" :active="request()->is('photo*')">
                         {{ __('作品集錦') }}
                     </x-nav-link>
+                    <x-nav-link :href="'/info'" :active="request()->is('info*')">
+                        {{ __('衛教資訊') }}
+                    </x-nav-link>
                     <x-nav-link :href="'/notice'" :active="request()->is('notice*')">
                         {{ __('預約注意事項') }}
                     </x-nav-link>
@@ -145,6 +148,9 @@
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="'/photo'" :active="request()->is('photo*')">
                 {{ __('作品集錦') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="'/info'" :active="request()->is('info*')">
+                {{ __('衛教資訊') }}
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="'/notice'" :active="request()->is('notice*')">
                 {{ __('預約注意事項') }}
