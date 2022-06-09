@@ -27,8 +27,8 @@
     <section id="back_area">
         <div class="container my_con">
             <div class="d-flex justify-content-between align-items-center mb-4">
-                <p class="h3 fw-bold mb-0">最新消息-管理</p>
-                <a href="/environment/create" class="btn btn-success">新增-最新消息</a>
+                <p class="h3 fw-bold mb-0">最新消息-管理 <small>(新增的照片會在第1張)</small></p>
+                <a href="/latest/create" class="btn btn-success">新增-最新消息</a>
             </div>
             <table id="myDataTable" class="display">
                 <thead>
@@ -57,12 +57,12 @@
                             </td>
                             <td>{{ $mydata->remark }}</td>
                             <td>
-                                <a href="/environment/edit/{{ $mydata->id }}" class="btn btn-outline-success btn-sm me-3 mb-2">編輯</a>
+                                <a href="/latest/edit/{{ $mydata->id }}" class="btn btn-outline-success btn-sm me-3 mb-2">編輯</a>
 
                                 {{-- 未加Modal --}}
                                 <button class="btn btn-outline-danger btn-sm mb-2"
                                     onclick="del_obj({{ $mydata->id }})">刪除</button>
-                                <form id="delForm{{ $mydata->id }}" action="/environment/delete/{{ $mydata->id }}"
+                                <form id="delForm{{ $mydata->id }}" action="/latest/delete/{{ $mydata->id }}"
                                     method="POST">
                                     @csrf
                                 </form>
@@ -110,7 +110,7 @@
             formData.append('_method', 'POST');
             formData.append('_token', '{{ csrf_token() }}');
 
-            fetch("/environment/upmove/" + myid, {
+            fetch("/latest/upmove/" + myid, {
                 method: "POST",
                 body: formData
             }).then(function(response) {
@@ -125,7 +125,7 @@
             formData.append('_method', 'POST');
             formData.append('_token', '{{ csrf_token() }}');
 
-            fetch("/environment/downmove/" + myid, {
+            fetch("/latest/downmove/" + myid, {
                 method: "POST",
                 body: formData
             }).then(function(response) {

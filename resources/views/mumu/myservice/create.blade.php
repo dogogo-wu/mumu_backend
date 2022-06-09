@@ -25,10 +25,13 @@
 @section('mainSec')
     <section id="back_area">
         <div class="container my_con">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <p class="h3 fw-bold mb-0">服務項目-新增</p>
+            </div>
             <form class="d-flex flex-column" action="/service/store" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="mb-3">
-                    <label for="service_img" class="form-label">服務項目-圖片上傳</label>
+                    <label for="service_img" class="form-label">圖片上傳</label>
                     <input type="file" name="service_img" id="service_img" class="form-control" accept="image/*" required>
                 </div>
                 <div class="mb-3">

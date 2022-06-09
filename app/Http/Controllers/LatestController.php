@@ -3,43 +3,52 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Environment;
+use App\Models\Latest;
 
-class EnvironmentController extends Controller
+class LatestController extends Controller
 {
     public function index() {
-        $dataAry = Environment::orderBy('order')->get();
+        $dataAry = Latest::orderBy('order')->get();
 
-        $header = '環境照管理';
+        $header = '最新消息-管理';
         $slot = '';
 
-        return view('mumu.myenv.environment', compact('dataAry', 'header', 'slot'));
+        return view('mumu.latest.latest', compact('dataAry', 'header', 'slot'));
     }
     public function create(){
-        $header = '環境照管理';
+        $header = '最新消息-管理';
         $slot = '';
-        return view('mumu.myenv.create',compact('header', 'slot'));
+        return view('mumu.latest.create',compact('header', 'slot'));
     }
     public function store(Request $req){
 
-        $path = FilesController::imgUpload($req->env_img, 'environment');
+        $path = FilesController::imgUpload($req->img, 'latest');
 
-        Environment::create([
+        // ------ 原本ary的oreder往後移1 ------
+        $ordAry = Latest::orderBy('order')->get();
+
+        for ($i = 0; $i < Latest::count(); $i++) {
+            $ordAry[$i]->order += 1;
+            $ordAry[$i]->save();
+        }
+        // ------ End ------
+
+        Latest::create([
             'img' => $path,
-            'remark' => $req->env_remark,
-            'order' => Environment::count(),
+            'remark' => $req->remark,
+            'order' => 0,
         ]);
 
-        return redirect('/environment');
+        return redirect('/latest');
     }
     public function delete($target){
-        $targetObj = Environment::find($target);
+        $targetObj = Latest::find($target);
 
         // ------ 後面的oreder往前移1 ------
         $tarOrd = $targetObj->order;
-        $ordAry = Environment::orderBy('order')->get();
+        $ordAry = Latest::orderBy('order')->get();
 
-        for ($i = $tarOrd + 1; $i < Environment::count(); $i++) {
+        for ($i = $tarOrd + 1; $i < Latest::count(); $i++) {
             $ordAry[$i]->order -= 1;
             $ordAry[$i]->save();
         }
@@ -48,40 +57,40 @@ class EnvironmentController extends Controller
         FilesController::deleteUpload($targetObj->img);
         $targetObj->delete();
 
-        return redirect('/environment');
+        return redirect('/latest');
     }
     public function edit($target) {
-        $myedit = Environment::find($target);
-        $header = '環境照管理';
+        $myedit = Latest::find($target);
+        $header = '最新消息-管理';
         $slot = '';
-        return view('mumu.myenv.edit', compact('myedit', 'header', 'slot'));
+        return view('mumu.latest.edit', compact('myedit', 'header', 'slot'));
     }
 
     public function update($target, Request $req) {
-        $targetObj = Environment::find($target);
+        $targetObj = Latest::find($target);
 
-        if($req->hasfile('env_img')){
-            $path = FilesController::imgUpload($req->env_img, 'environment');
+        if($req->hasfile('img')){
+            $path = FilesController::imgUpload($req->img, 'latest');
             FilesController::deleteUpload($targetObj->img);
             $targetObj->img = $path;
         }
 
-        $targetObj->remark = $req->env_remark;
+        $targetObj->remark = $req->remark;
         $targetObj->save();
 
-        return redirect('/environment');
+        return redirect('/latest');
     }
     public function upmove($target) {
 
         // 取得目標obj
-        $tarObj = Environment::find($target);
+        $tarObj = Latest::find($target);
         // 若已經是最上面，直接return
         $tarOrd = $tarObj->order;
         if ($tarOrd == 0) {
             return;
         }
         // 依order小到大
-        $ordAry = Environment::orderBy('order')->get();
+        $ordAry = Latest::orderBy('order')->get();
         // 找到前一個obj，
         $prevObj = $ordAry[$tarOrd-1];
         // Swap order
@@ -91,21 +100,21 @@ class EnvironmentController extends Controller
         $tarObj->save();
         $prevObj->save();
 
-        return redirect('/environment');
+        return redirect('/latest');
     }
     public function downmove($target) {
 
         // 取得目標obj
-        $tarObj = Environment::find($target);
+        $tarObj = Latest::find($target);
         // 取得max_index
-        $max_index = Environment::count()-1;
+        $max_index = Latest::count()-1;
         // 若已經是最下面，直接return
         $tarOrd = $tarObj->order;
         if ($tarOrd == $max_index) {
             return;
         }
         // 依order小到大
-        $ordAry = Environment::orderBy('order')->get();
+        $ordAry = Latest::orderBy('order')->get();
         // 找到後一個obj，
         $postObj = $ordAry[$tarOrd+1];
         // Swap order
@@ -115,7 +124,11 @@ class EnvironmentController extends Controller
         $tarObj->save();
         $postObj->save();
 
-        return redirect('/environment');
+        return redirect('/latest');
+
+    }
+
+    public function aryShift(){
 
     }
 }

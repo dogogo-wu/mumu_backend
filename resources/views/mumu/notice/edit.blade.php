@@ -18,7 +18,7 @@
     <section id="back_area" class="py-5">
         <div class="container my_con">
             <div class="d-flex justify-content-between align-items-center mb-4">
-                <p class="h2 fw-bold mb-0">預約注意事項-編輯</p>
+                <p class="h3 fw-bold mb-0">預約注意事項-編輯</p>
             </div>
 
             <form class="d-flex flex-column" action="/notice/update/{{ $myedit->id }}" method="post"

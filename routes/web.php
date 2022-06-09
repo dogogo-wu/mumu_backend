@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\BannerController;
-use App\Http\Controllers\EnvironmentController;
+use App\Http\Controllers\LatestController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\FaqController;
 use App\Http\Controllers\TeachController;
@@ -55,16 +55,16 @@ Route::prefix('/banner')->middleware(['auth'])->group(function(){
     Route::post('/downmove/{target}', [BannerController::class, 'downmove']);
 });
 
-Route::prefix('/environment')->middleware(['auth'])->group(function(){
-    Route::get('/', [EnvironmentController::class, 'index']);
-    Route::get('/create', [EnvironmentController::class, 'create']);
-    Route::post('/store', [EnvironmentController::class, 'store']);
-    Route::post('/delete/{target}', [EnvironmentController::class, 'delete']);
-    Route::get('/edit/{target}', [EnvironmentController::class, 'edit']);
-    Route::post('/update/{target}', [EnvironmentController::class, 'update']);
+Route::prefix('/latest')->middleware(['auth'])->group(function(){
+    Route::get('/', [LatestController::class, 'index']);
+    Route::get('/create', [LatestController::class, 'create']);
+    Route::post('/store', [LatestController::class, 'store']);
+    Route::post('/delete/{target}', [LatestController::class, 'delete']);
+    Route::get('/edit/{target}', [LatestController::class, 'edit']);
+    Route::post('/update/{target}', [LatestController::class, 'update']);
 
-    Route::post('/upmove/{target}', [EnvironmentController::class, 'upmove']);
-    Route::post('/downmove/{target}', [EnvironmentController::class, 'downmove']);
+    Route::post('/upmove/{target}', [LatestController::class, 'upmove']);
+    Route::post('/downmove/{target}', [LatestController::class, 'downmove']);
 });
 
 Route::prefix('/service')->middleware(['auth'])->group(function(){

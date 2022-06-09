@@ -25,10 +25,13 @@
 @section('mainSec')
     <section id="back_area">
         <div class="container my_con">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <p class="h3 fw-bold mb-0">創業教學項目-新增</p>
+            </div>
             <form class="d-flex flex-column" action="/teach_item/store" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="mb-3">
-                    <label for="teach_img" class="form-label">創業教學項目-圖片上傳 <small>(建議長寬比為360:260)</small></label>
+                    <label for="teach_img" class="form-label">圖片上傳 <small>(建議長寬比為360:260)</small></label>
                     <input type="file" name="teach_img" id="teach_img" class="form-control" accept="image/*" required>
                 </div>
                 <div class="mb-3">

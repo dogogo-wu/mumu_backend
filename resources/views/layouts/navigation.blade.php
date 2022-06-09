@@ -34,7 +34,7 @@
                                 <x-dropdown-link :href="'/banner'" :active="request()->is('banner*')">
                                     {{ __('Banner-管理') }}
                                 </x-dropdown-link>
-                                <x-dropdown-link :href="'/environment'" :active="request()->is('environment*')">
+                                <x-dropdown-link :href="'/latest'" :active="request()->is('latest*')">
                                     {{ __('最新消息-管理') }}
                                 </x-dropdown-link>
                                 <x-dropdown-link :href="'/service'" :active="request()->is('service*')">
@@ -51,7 +51,7 @@
                     <x-nav-link :href="'/banner'" :active="request()->is('banner*')">
                         {{ __('Banner') }}
                     </x-nav-link>
-                    <x-nav-link :href="'/environment'" :active="request()->is('environment*')">
+                    <x-nav-link :href="'/latest'" :active="request()->is('latest*')">
                         {{ __('最新消息') }}
                     </x-nav-link>
                     <x-nav-link :href="'/service'" :active="request()->is('service*')">
@@ -131,7 +131,7 @@
             <x-responsive-nav-link :href="'/banner'" :active="request()->is('banner*')">
                 {{ __('Banner') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="'/environment'" :active="request()->is('environment*')">
+            <x-responsive-nav-link :href="'/latest'" :active="request()->is('latest*')">
                 {{ __('最新消息') }}
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="'/service'" :active="request()->is('service*')">

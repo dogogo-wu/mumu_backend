@@ -9,7 +9,7 @@ class InfoController extends Controller
 {
     public function index() {
 
-        $dataAry = Info::get();
+        $dataAry = Info::orderBy('category')->get();
 
         $header = '衛教資訊-管理';
         $slot = '';

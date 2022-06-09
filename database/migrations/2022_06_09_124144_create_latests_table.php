@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('environments', function (Blueprint $table) {
+        Schema::create('latests', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
 
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('environments');
+        Schema::dropIfExists('latests');
     }
 };

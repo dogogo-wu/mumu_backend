@@ -28,7 +28,7 @@
     <section id="back_area">
         <div class="container my_con">
             <div class="d-flex justify-content-between align-items-center mb-4">
-                <p class="h3 fw-bold mb-0">教學花絮-管理</p>
+                <p class="h3 fw-bold mb-0">創業教學花絮-管理</p>
                 <a href="/teach_pic/create" class="btn btn-success">新增-教學花絮照片</a>
             </div>
             <table id="myDataTable" class="display">

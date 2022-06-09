@@ -25,7 +25,7 @@
     <section id="back_area" class="py-5">
         <div class="container my_con">
             <div class="d-flex justify-content-between align-items-center mb-4">
-                <p class="h2 fw-bold mb-0">作品照片-編輯</p>
+                <p class="h3 fw-bold mb-0">作品照片-編輯</p>
             </div>
 
             <form class="d-flex flex-column" action="/photo/update/{{ $myedit->id }}" method="post"
@@ -69,7 +69,7 @@
                     @endforeach
                 </div>
                 <div class="mb-3">
-                    <label for="second_img" class="form-label fw-bold">圖片上傳</label>
+                    <label for="second_img" class="form-label fw-bold">圖片上傳 <small>(可一次上傳多張圖)</small></label>
                     <input type="file" class="form-control" id="second_img" name="second_img[]" accept="image/*" multiple>
                 </div>
 

@@ -16,7 +16,7 @@
 @endsection
 
 @section('cssLink')
-    <link rel="stylesheet" href="{{ asset('./css/index.css')}}">
+    <link rel="stylesheet" href="{{ asset('./css/index.css') }}">
 @endsection
 
 @section('mainSec')
@@ -38,13 +38,12 @@
         <section id="pink-top-area"></section>
         <section id="mumu_faith" class="">
             <div class="container">
-                <div id="mumu_faith_slogan" class="d-flex align-items-center justify-content-center"
-                    data-aos="fade-right">
+                <div id="mumu_faith_slogan" class="d-flex align-items-center justify-content-center" data-aos="fade-right">
                     <!-- aos -->
                     <div id="mumu_slogan_frame" class="d-flex flex-column align-items-center">
                         <div id="mumu_slogan_brush" class=" ">
                             <div class="mumu_brush"></div>
-                            <img class="mumu_logo_name" src="{{ asset('./img/index/logo_txt.png')}}" alt="">
+                            <img class="mumu_logo_name" src="{{ asset('./img/index/logo_txt.png') }}" alt="">
                             <div class="slogan_contents d-flex flex-column">
                                 <div>
                                     <p>自信，來自你願意為自已投資多少</p>
@@ -62,19 +61,19 @@
                     <!-- aos -->
                     <div class="mumu_faith_content p-2 d-flex justify-content-start">
                         <div class="img_box d-flex justify-content-center">
-                            <img class="flower_img" src="{{ asset('./img/index/cir_flower.png')}}" alt="">
+                            <img class="flower_img" src="{{ asset('./img/index/cir_flower.png') }}" alt="">
                         </div>
                         <div class="mumu_content_words">衛生．舒適．安心的操作環境</div>
                     </div>
                     <div class="mumu_faith_content p-2 d-flex justify-content-start">
                         <div class="img_box d-flex justify-content-center">
-                            <img class="material_img" src="{{ asset('./img/index/cir_material.png')}}" alt="">
+                            <img class="material_img" src="{{ asset('./img/index/cir_material.png') }}" alt="">
                         </div>
                         <div class="mumu_content_words">嚴選進口材料，品質穩定有保證</div>
                     </div>
                     <div class="mumu_faith_content p-2 d-flex justify-content-start">
                         <div class="img_box d-flex justify-content-center">
-                            <img class="service_img" src="{{ asset('./img/index/cir_service.png')}}" alt="">
+                            <img class="service_img" src="{{ asset('./img/index/cir_service.png') }}" alt="">
                         </div>
                         <div class="mumu_content_words">專業呈現，提供最好的美學體驗</div>
                     </div>
@@ -105,30 +104,12 @@
                 </div>
                 <div class="swiper ad_mySwiper">
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-                            <img src="./img/index/skin_care_img.jpeg" alt="" data-bs-toggle="modal"
-                                data-bs-target="#myModal" data-bs-pic="1">
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="./img/index/ad_2.jpg" alt="" data-bs-toggle="modal" data-bs-target="#myModal"
-                                data-bs-pic="2">
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="./img/index/ad_3.jpg" alt="" data-bs-toggle="modal" data-bs-target="#myModal"
-                                data-bs-pic="3">
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="./img/index/ad_1.jpg" alt="" data-bs-toggle="modal" data-bs-target="#myModal"
-                                data-bs-pic="4">
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="./img/index/ad_2.jpg" alt="" data-bs-toggle="modal" data-bs-target="#myModal"
-                                data-bs-pic="5">
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="./img/index/skin_care_img.jpeg" alt="" data-bs-toggle="modal"
-                                data-bs-target="#myModal" data-bs-pic="6">
-                        </div>
+                        @foreach ($newsAry as $news)
+                            <div class="swiper-slide">
+                                <img src="{{ asset($news->img) }}" alt="" data-bs-toggle="modal" data-bs-target="#myModal"
+                                    data-bs-pic="{{ $loop->index }}">
+                            </div>
+                        @endforeach
                     </div>
                     <div class="swiper-pagination"></div>
                 </div>
@@ -145,12 +126,9 @@
                             <div class="modal_swiper_area">
                                 <div class="swiper modal_swiper">
                                     <div class="swiper-wrapper">
-                                        <div class="swiper-slide"><img src="./img/index/skin_care_img.jpeg" /></div>
-                                        <div class="swiper-slide"><img src="./img/index/ad_2.jpg" /></div>
-                                        <div class="swiper-slide"><img src="./img/index/ad_3.jpg" /></div>
-                                        <div class="swiper-slide"><img src="./img/index/ad_1.jpg" /></div>
-                                        <div class="swiper-slide"><img src="./img/index/ad_2.jpg" /></div>
-                                        <div class="swiper-slide"><img src="./img/index/skin_care_img.jpeg" /></div>
+                                        @foreach ($newsAry as $news)
+                                            <div class="swiper-slide"><img src="{{ asset($news->img) }}" /></div>
+                                        @endforeach
                                     </div>
                                     <div class="myswiper-btn swiper-button-next"></div>
                                     <div class="myswiper-btn swiper-button-prev"></div>
@@ -175,74 +153,23 @@
                 </div>
                 <!-- aos -->
                 <div class="services_card">
-
-                    <div class="sevice_cards_container" data-aos="flip-up" data-aos-easing="linear" data-aos-once = "true" data-bs-toggle="modal" data-bs-target="#myServiceModal" data-bs-pic="1">
-                        <div class="each_service_option d-flex align-items-center justify-content-center">訂製妝感霧眉</div>
-                        <div class="service_img d-flex justify-content-end">
-                            <img src="./img/service_img/serve-img-1訂製妝感霧眉.jpg" alt="">
+                    @foreach ($servAry as $serv)
+                        <div class="sevice_cards_container" data-aos="flip-up" data-aos-easing="linear" data-aos-once="true"
+                            data-bs-toggle="modal" data-bs-target="#myServiceModal" data-bs-pic="{{ $loop->index}}">
+                            <div class="each_service_option d-flex align-items-center justify-content-center">
+                                {{ $serv->title }}</div>
+                            <div class="service_img d-flex justify-content-end">
+                                <img src="{{ asset($serv->img) }}" alt="">
+                            </div>
                         </div>
-                    </div>
-                    <div class="sevice_cards_container" data-aos="flip-up" data-aos-easing="linear" data-aos-once = "true" data-bs-toggle="modal" data-bs-target="#myServiceModal" data-bs-pic="2">
-                        <div class="each_service_option d-flex align-items-center justify-content-center">美瞳線</div>
-                        <div class="service_img d-flex justify-content-end">
-                            <img src="./img/service_img/serve-img-6美瞳線.jpg" alt="">
-                        </div>
-                    </div>
-                    <div class="sevice_cards_container" data-aos="flip-up" data-aos-easing="linear" data-aos-once = "true" data-bs-toggle="modal" data-bs-target="#myServiceModal" data-bs-pic="3">
-                        <div class="each_service_option d-flex align-items-center justify-content-center">蜜糖唇</div>
-                        <div class="service_img d-flex justify-content-end">
-                            <img src="./img/service_img/IMG_9057.jpg" alt="">
-                        </div>
-                    </div>
-                    <div class="sevice_cards_container" data-aos="flip-up" data-aos-easing="linear" data-aos-once = "true" data-bs-toggle="modal" data-bs-target="#myServiceModal" data-bs-pic="4">
-                        <div class="each_service_option d-flex align-items-center justify-content-center">3D美睫</div>
-                        <div class="service_img d-flex justify-content-end">
-                            <img src="./img/service_img/S__73777193.jpg" alt="">
-                        </div>
-                    </div>
-                    <div class="sevice_cards_container" data-aos="flip-up" data-aos-easing="linear" data-aos-once = "true" data-bs-toggle="modal" data-bs-target="#myServiceModal" data-bs-pic="5">
-                        <div class="each_service_option d-flex align-items-center justify-content-center">6D美式奢華</div>
-                        <div class="service_img d-flex justify-content-end">
-                            <img src="./img/service_img/serve-img-5-6D美式奢華.jpg" alt="">
-                        </div>
-                    </div>
-                    <div class="sevice_cards_container" data-aos="flip-up" data-aos-easing="linear" data-aos-once = "true" data-bs-toggle="modal" data-bs-target="#myServiceModal" data-bs-pic="6">
-                        <div class="each_service_option d-flex align-items-center justify-content-center">睫毛捲翹管理</div>
-                        <div class="service_img d-flex justify-content-end">
-                            <img src="./img/service_img/serve-img-4睫毛捲翹管理.jpg" alt="">
-                        </div>
-                    </div>
-                    <div class="sevice_cards_container" data-aos="flip-up" data-aos-easing="linear" data-aos-once = "true" data-bs-toggle="modal" data-bs-target="#myServiceModal" data-bs-pic="7">
-                        <div class="each_service_option d-flex align-items-center justify-content-center">韓式皮膚管理</div>
-                        <div class="service_img d-flex justify-content-end">
-                            <img src="./img/service_img/serve-img-2韓式皮膚管理.jpg" alt="">
-                        </div>
-                    </div>
-                    <div class="sevice_cards_container" data-aos="flip-up" data-aos-easing="linear" data-aos-once = "true" data-bs-toggle="modal" data-bs-target="#myServiceModal" data-bs-pic="8">
-                        <div class="each_service_option d-flex align-items-center justify-content-center">客製化皮膚課程</div>
-                        <div class="service_img d-flex justify-content-end">
-                            <img src="./img/service_img/客製化皮膚課程_1.jpg" alt="">
-                        </div>
-                    </div>
-                    <div class="sevice_cards_container" data-aos="flip-up" data-aos-easing="linear" data-aos-once = "true" data-bs-toggle="modal" data-bs-target="#myServiceModal" data-bs-pic="9">
-                        <div class="each_service_option d-flex align-items-center justify-content-center">乙丙級輔導考證
-                        </div>
-                        <div class="service_img d-flex justify-content-end">
-                            <img src="./img/service_img/乙丙級輔導考證_1.jpg" alt="">
-                        </div>
-                    </div>
-                    <div class="sevice_cards_container" data-aos="flip-up" data-aos-easing="linear" data-aos-once = "true" data-bs-toggle="modal" data-bs-target="#myServiceModal" data-bs-pic="10">
-                        <div class="each_service_option d-flex align-items-center justify-content-center">美容創業教學</div>
-                        <div class="service_img d-flex justify-content-end">
-                            <img src="./img/service_img/美容創業教學.jpg" alt="">
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
 
-                <div class="button" data-aos="flip-down" data-aos-easing="linear" data-aos-once = "true" data-aos-offset="100">
-                    <button onclick="location.href='./gallery.html'">完整作品</button>
-                    <button onclick="location.href='./course.html'">課程項目</button>
-                    <button onclick="location.href='./appointment.html'">立即預約</button>
+                <div class="button" data-aos="flip-down" data-aos-easing="linear" data-aos-once="true"
+                    data-aos-offset="100">
+                    <button onclick="location.href='/gallery'">完整作品</button>
+                    <button onclick="location.href='/course'">課程項目</button>
+                    <button onclick="location.href='/appointment'">立即預約</button>
                 </div>
             </div>
             <!-- Modal Service -->
@@ -255,7 +182,7 @@
                         </div>
                         <div class="modal-body">
                             <div class="myser_img_area">
-                                <!-- <img src="./img/service_img/serve-img-1訂製妝感霧眉.jpg" alt=""> -->
+                                ...
                             </div>
                             <div class="myser_content">
                                 <ul>...</ul>
@@ -276,13 +203,12 @@
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="flush-headingOne">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#flush-collapseOne" aria-expanded="false"
-                                aria-controls="flush-collapseOne">
+                                data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
                                 關於眉毛 – 做完會像蠟筆小新一樣很粗很黑嗎?
                             </button>
                         </h2>
-                        <div id="flush-collapseOne" class="accordion-collapse collapse"
-                            aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                        <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
+                            data-bs-parent="#accordionFlushExample">
                             <div class="accordion-body">不會哦!操作完就像眉筆畫上去一樣自然，脫屑時也只會有薄薄的皮屑脫落
 
                             </div>
@@ -291,14 +217,13 @@
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="flush-headingTwo">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#flush-collapseTwo" aria-expanded="false"
-                                aria-controls="flush-collapseTwo">
+                                data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
                                 關於眉毛 – 做完眉毛可以洗臉碰水嗎?
 
                             </button>
                         </h2>
-                        <div id="flush-collapseTwo" class="accordion-collapse collapse"
-                            aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+                        <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo"
+                            data-bs-parent="#accordionFlushExample">
                             <div class="accordion-body">可以的! 可以碰水但清潔用品不能碰到，清洗完拿面紙壓乾保持乾燥即可
                             </div>
                         </div>
@@ -349,14 +274,13 @@
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="flush-headingSix">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#flush-collapseSix" aria-expanded="false"
-                                aria-controls="flush-collapseSix">
+                                data-bs-target="#flush-collapseSix" aria-expanded="false" aria-controls="flush-collapseSix">
                                 關於皮膚 – 為什麼擦保養品感覺都無法吸收?
 
                             </button>
                         </h2>
-                        <div id="flush-collapseSix" class="accordion-collapse collapse"
-                            aria-labelledby="flush-headingSix" data-bs-parent="#accordionFlushExample">
+                        <div id="flush-collapseSix" class="accordion-collapse collapse" aria-labelledby="flush-headingSix"
+                            data-bs-parent="#accordionFlushExample">
                             <div class="accordion-body">因為肌膚屏障受損(肌膚屏障=角質層)，PH值無法平衡，導致保養品擦再多都吸收不了，建議先修復肌膚再針對問題保養
                             </div>
                         </div>
@@ -382,7 +306,9 @@
     <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
     <!-- AOS -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>AOS.init();</script>
+    <script>
+        AOS.init();
+    </script>
 @endsection
 
 @section('js')
@@ -405,7 +331,6 @@
             },
             keyboard: true,
         });
-
     </script>
     <!-- 首頁暮沐環境卡swiper -->
     <script>
@@ -454,7 +379,7 @@
         myModal.addEventListener('show.bs.modal', event => {
             const button = event.relatedTarget;
             const pic_index = button.getAttribute('data-bs-pic');
-            modal_swiper.slideTo(pic_index);
+            modal_swiper.slideTo(pic_index + 1);
         })
 
         // Service Modal script
@@ -467,67 +392,17 @@
 
 
             const pic_index = button.getAttribute('data-bs-pic');
-            if (pic_index == 1) {
-                modalTitle.innerHTML = `訂製妝感霧眉`;
-                modalImg.innerHTML = `<img src="./img/service_img/serve-img-1訂製妝感霧眉.jpg" alt="">`;
-                modalContent.innerHTML = `  <li>柔霧眉</li>
-                                            <li>男士眉</li>
-                                            <li>改眉（橘紅眉/眉型）</li>`;
-            } else if (pic_index == 2) {
-                modalTitle.innerHTML = `美瞳線`;
-                modalImg.innerHTML = `<img src="./img/service_img/serve-img-6美瞳線.jpg" alt="">`;
-                modalContent.innerHTML = `  <li>隱形美瞳線</li>
-                                            <li>妝感美瞳線</li>`;
-            } else if (pic_index == 3) {
-                modalTitle.innerHTML = `蜜糖唇`;
-                modalImg.innerHTML = `<img src="./img/service_img/IMG_9057.jpg" alt="">`;
-                modalContent.innerHTML = `  <li>漸層唇</li>
-                                            <li>改烏唇</li>
-                                            <li>改唇（唇形調整/顏色不均）</li>`;
-            } else if (pic_index == 4) {
-                modalTitle.innerHTML = `3D美睫`;
-                modalImg.innerHTML = `<img src="./img/service_img/S__73777193.jpg" alt="">`;
-                modalContent.innerHTML = `  <li>150根</li>
-                                            <li>250根</li>
-                                            <li>接滿</li>`;
-            } else if (pic_index == 5) {
-                modalTitle.innerHTML = `6D美式奢華`;
-                modalImg.innerHTML = `<img src="./img/service_img/serve-img-5-6D美式奢華.jpg" alt="">`;
-                modalContent.innerHTML = `  <li>300根</li>
-                                            <li>400根</li>
-                                            <li>500根</li>
-                                            <li>接滿</li>`;
-            } else if (pic_index == 6) {
-                modalTitle.innerHTML = `睫毛捲翹管理`;
-                modalImg.innerHTML = `<img src="./img/service_img/serve-img-4睫毛捲翹管理.jpg" alt="">`;
-                modalContent.innerHTML = `  <li>本身睫毛條件佳</li>
-                                            <li>不喜歡嫁接的異物感</li>`;
-            } else if (pic_index == 7) {
-                modalTitle.innerHTML = `韓式皮膚管理`;
-                modalImg.innerHTML = `<img src="./img/service_img/serve-img-2韓式皮膚管理.jpg" alt="">`;
-                modalContent.innerHTML = `  <li>基礎管理</li>
-                                            <li>再生管理</li>
-                                            <li>美白管理</li>
-                                            <li>抗痘管理</li>`;
-            } else if (pic_index == 8) {
-                modalTitle.innerHTML = `客製化皮膚課程`;
-                modalImg.innerHTML = `<img src="./img/service_img/客製化皮膚課程_1.jpg" alt="">`;
-                modalContent.innerHTML = `<li>依現場皮膚管理師規劃療程</li>`;
 
-            } else if (pic_index == 9) {
-                modalTitle.innerHTML = `乙丙級輔導考證`;
-                modalImg.innerHTML = `<img src="./img/service_img/乙丙級輔導考證_1.jpg" alt="">`;
-                modalContent.innerHTML = `  <li>美容丙級證照</li>
-                                            <li>美容乙級證照</li>`;
-            } else if (pic_index == 10) {
-                modalTitle.innerHTML = `美容創業教學`;
-                modalImg.innerHTML = `<img src="./img/service_img/美容創業教學.jpg" alt="">`;
-                modalContent.innerHTML = `  <li>半永久紋繡教學</li>
-                                            <li>眉毛單科班教學</li>
-                                            <li>3D/6D美睫教學</li>
-                                            <li>睫毛捲翹管理教學</li>
-                                            <li>K-Beauty 韓式皮膚管理教學</li>`;
-            }
+            // 傳資料到JS，使用JSON_HEX_TAG來正常顯示element
+            var servObjAry = {!! json_encode($servAry, JSON_HEX_TAG) !!};
+
+            // 取目標的obj
+            var tarServ = servObjAry[pic_index];
+
+            // 帶資料
+            modalTitle.innerHTML = tarServ.title;
+            modalImg.innerHTML = `<img src="${tarServ.img}">`;
+            modalContent.innerHTML = tarServ.content;
         })
     </script>
 @endsection

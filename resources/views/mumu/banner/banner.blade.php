@@ -29,7 +29,7 @@
         <div class="container my_con">
             <div class="d-flex justify-content-between align-items-center mb-4">
                 <p class="h3 fw-bold mb-0">Banner-管理</p>
-                <a href="/banner/create" class="btn btn-success">新增Banner</a>
+                <a href="/banner/create" class="btn btn-success">新增-Banner</a>
             </div>
             <table id="myDataTable" class="display">
                 <thead>

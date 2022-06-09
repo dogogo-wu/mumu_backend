@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property integer $order
  * @property string $remark
  */
-class Environment extends Model
+class Latest extends Model
 {
     /**
      * The "type" of the auto-incrementing ID.

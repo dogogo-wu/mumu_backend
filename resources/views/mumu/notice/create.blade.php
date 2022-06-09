@@ -18,6 +18,9 @@
 @section('mainSec')
     <section id="back_area">
         <div class="container my_con">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <p class="h3 fw-bold mb-0">預約注意事項-新增</p>
+            </div>
             <form class="d-flex flex-column" action="/notice/store" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="mb-3">
