@@ -1,0 +1,646 @@
+h2 {
+  font-size: 24px;
+}
+
+.title {
+  color: #6A6A6A;
+}
+
+.content {
+  font-size: 16px;
+  color: #5A705C;
+}
+
+#pink-top-area {
+  background-image: url("../img/index/pink-top.png");
+  width: 100%;
+  height: 10vh;
+  background-position: center;
+  background-size: cover;
+}
+
+#pink-bottom-area {
+  background-image: url("../img/index/pink-bottom.png");
+  width: 100%;
+  height: 10vh;
+  background-position: center;
+  background-size: cover;
+}
+
+#mumu_faith {
+  margin-top: -5px;
+  margin-bottom: -5px;
+  background-color: #EADCD9;
+  color: #6A6A6A;
+}
+
+@media (min-width: 992px) {
+  #mumu_faith {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    height: 85vh;
+  }
+}
+
+#mumu_faith .container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+@media (min-width: 992px) {
+  #mumu_faith .container {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+}
+
+#mumu_faith .container #mumu_faith_slogan {
+  width: 50%;
+  height: 360px;
+}
+
+@media (max-width: 992px) {
+  #mumu_faith .container #mumu_faith_slogan {
+    height: 450px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+  }
+}
+
+#mumu_faith .container #mumu_faith_slogan #mumu_slogan_frame {
+  width: 300px;
+  height: 350px;
+  border: 3px solid white;
+  margin-top: -120px;
+}
+
+@media (max-width: 992px) {
+  #mumu_faith .container #mumu_faith_slogan #mumu_slogan_frame {
+    background-color: #7a847c;
+    opacity: 0.8;
+    border: none;
+  }
+}
+
+#mumu_faith .container #mumu_faith_slogan #mumu_slogan_frame #mumu_slogan_brush {
+  width: 300px;
+  height: 350px;
+  position: relative;
+}
+
+#mumu_faith .container #mumu_faith_slogan #mumu_slogan_frame #mumu_slogan_brush .mumu_brush {
+  display: none;
+}
+
+@media (min-width: 992px) {
+  #mumu_faith .container #mumu_faith_slogan #mumu_slogan_frame #mumu_slogan_brush .mumu_brush {
+    display: block;
+    width: 450px;
+    height: 250px;
+    background-color: #7a847c;
+    position: absolute;
+    top: 30px;
+    left: -75px;
+    -webkit-transform: 0;
+            transform: 0;
+    opacity: 0.8;
+  }
+}
+
+#mumu_faith .container #mumu_faith_slogan #mumu_slogan_frame #mumu_slogan_brush .mumu_logo_name {
+  width: 50px;
+  position: absolute;
+  left: 120px;
+  top: 50px;
+}
+
+#mumu_faith .container #mumu_faith_slogan #mumu_slogan_frame #mumu_slogan_brush .slogan_contents {
+  position: absolute;
+  z-index: 0;
+  top: 150px;
+  left: 10px;
+}
+
+#mumu_faith .container #mumu_faith_slogan #mumu_slogan_frame #mumu_slogan_brush .slogan_contents p {
+  color: white;
+}
+
+#mumu_faith .container #mumu_faith_slogan #mumu_slogan_frame .studio {
+  font-size: 12px;
+  margin: 0 auto;
+  color: white;
+}
+
+#mumu_faith .container #mumu_faith_content_and_notice {
+  width: 100%;
+  margin-top: -80px;
+}
+
+@media (min-width: 992px) {
+  #mumu_faith .container #mumu_faith_content_and_notice {
+    width: 50%;
+  }
+}
+
+#mumu_faith .container #mumu_faith_content_and_notice .mumu_faith_content {
+  width: 100%;
+  background-color: #7a847c;
+  border: 2px solid #ffffff;
+  border-radius: 15px;
+  opacity: 0.8;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-bottom: 10px;
+}
+
+@media (min-width: 992px) {
+  #mumu_faith .container #mumu_faith_content_and_notice .mumu_faith_content {
+    width: 80%;
+    height: 100px;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    background-color: #7a847c;
+    border: 2px solid #ffffff;
+    border-radius: 15px;
+  }
+}
+
+@media (min-width: 992px) {
+  #mumu_faith .container #mumu_faith_content_and_notice .mumu_faith_content .img_box {
+    width: 120px;
+  }
+}
+
+@media (min-width: 1200px) {
+  #mumu_faith .container #mumu_faith_content_and_notice .mumu_faith_content .img_box {
+    width: 150px;
+  }
+}
+
+#mumu_faith .container #mumu_faith_content_and_notice .mumu_faith_content .mumu_content_words {
+  color: #ffffff;
+}
+
+#mumu_faith .container #mumu_faith_content_and_notice .flower_img {
+  width: 80px;
+}
+
+#mumu_faith .container #mumu_faith_content_and_notice .material_img {
+  width: 80px;
+}
+
+#mumu_faith .container #mumu_faith_content_and_notice .service_img {
+  width: 80px;
+}
+
+#mumu_faith .container #mumu_faith_content_and_notice .mumu_faith_notice {
+  font-size: 16px;
+  width: 100%;
+  padding-left: 20px;
+}
+
+@media (min-width: 992px) {
+  #mumu_faith .container #mumu_faith_content_and_notice .mumu_faith_notice {
+    width: 80%;
+  }
+}
+
+#mumu_advertisement {
+  width: 100%;
+  height: 80vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: white;
+  color: #6A6A6A;
+}
+
+#mumu_advertisement .services_title {
+  font-size: 20px;
+  margin-bottom: 50px;
+  margin-top: -20px;
+}
+
+#mumu_advertisement .services_title .title_dot_line .dot {
+  width: 8px;
+  height: 8px;
+  background-color: #6a6a6a;
+  border-radius: 50px;
+}
+
+#mumu_advertisement .services_title .title_dot_line .dot_line {
+  width: 200px;
+  height: 1px;
+  background-color: #6a6a6a;
+}
+
+#mumu_advertisement .swiper {
+  width: 80%;
+  height: 100%;
+  border: none;
+}
+
+#mumu_advertisement .swiper .swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+  /* Center slide text vertically */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+#mumu_advertisement .swiper .swiper-slide img {
+  display: block;
+  width: 220px;
+  height: 300px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+#mumu_advertisement .swiper .swiper-pagination-bullet-active {
+  background-color: #95AFD6;
+}
+
+#mumu_advertisement .modal_swiper_area {
+  width: 100%;
+}
+
+#mumu_advertisement .modal_swiper_area .modal_swiper {
+  width: 100%;
+  height: 65vh;
+  margin: 20px auto;
+}
+
+@media (min-width: 992px) {
+  #mumu_advertisement .modal_swiper_area .modal_swiper {
+    width: unset;
+    height: 75vh;
+  }
+}
+
+#mumu_advertisement .modal_swiper_area .modal_swiper .swiper-slide {
+  /* Center slide text vertically */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: 100%;
+}
+
+#mumu_advertisement .modal_swiper_area .modal_swiper .swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 65vh;
+  -o-object-fit: contain;
+     object-fit: contain;
+  -o-object-position: center;
+     object-position: center;
+  border-radius: 5px;
+}
+
+@media (min-width: 992px) {
+  #mumu_advertisement .modal_swiper_area .modal_swiper .swiper-slide img {
+    width: unset;
+    height: 75vh;
+  }
+}
+
+#mumu_advertisement .modal_swiper_area .swiper-pagination-bullet-active {
+  background-color: #95AFD6;
+}
+
+#mumu_advertisement #myModal {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+#mumu_services {
+  margin-top: -5px;
+  margin-bottom: -5px;
+  background-color: #EADCD9;
+  color: #6A6A6A;
+  width: 100%;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+#mumu_services .swiper {
+  margin-top: 20px;
+  display: none;
+}
+
+#mumu_services .swiper img {
+  opacity: 0.7;
+}
+
+#mumu_services .content {
+  display: none;
+}
+
+#mumu_services .services_title {
+  font-size: 20px;
+}
+
+#mumu_services .services_title .title_dot_line .dot {
+  width: 8px;
+  height: 8px;
+  background-color: #6a6a6a;
+  border-radius: 50px;
+}
+
+#mumu_services .services_title .title_dot_line .dot_line {
+  width: 200px;
+  height: 1px;
+  background-color: #6a6a6a;
+}
+
+#mumu_services .services_card {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  width: 100%;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+#mumu_services .services_card .sevice_cards_container {
+  width: 200px;
+  height: 200px;
+  margin: 10px;
+  background-color: white;
+  border-radius: 15px;
+}
+
+#mumu_services .services_card .sevice_cards_container:hover {
+  cursor: pointer;
+}
+
+@media (max-width: 576px) {
+  #mumu_services .services_card .sevice_cards_container {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+#mumu_services .services_card .sevice_cards_container .each_service_option {
+  font-size: 20px;
+  height: 30%;
+}
+
+#mumu_services .services_card .sevice_cards_container .service_img {
+  width: 100%;
+  height: 70%;
+}
+
+#mumu_services .services_card .sevice_cards_container .service_img img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+#mumu_services .button {
+  margin-top: 50px;
+}
+
+#mumu_services .button button {
+  color: #6A6A6A;
+  width: 126px;
+  height: 52px;
+  font-size: 16px;
+  background-color: white;
+  border-style: none;
+  border-radius: 10px;
+  -webkit-box-shadow: 2px 4px 3px #6a6a6a;
+          box-shadow: 2px 4px 3px #6a6a6a;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+@media (max-width: 768px) {
+  #mumu_services .button button {
+    width: 100px;
+    margin: auto 10px;
+  }
+}
+
+#mumu_services .button button:hover {
+  color: white;
+  background-color: #6A6A6A;
+}
+
+@media (max-width: 768px) {
+  #mumu_services .button :nth-child(2) {
+    display: none;
+  }
+  #mumu_services button {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+  #mumu_services .swiper-slide img {
+    -o-object-fit: contain;
+       object-fit: contain;
+  }
+}
+
+#mumu_services #myServiceModal {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+#mumu_services #myServiceModal .modal-dialog {
+  max-width: 576px;
+}
+
+#mumu_services #myServiceModal .modal-body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+@media (min-width: 576px) {
+  #mumu_services #myServiceModal .modal-body {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+}
+
+#mumu_services #myServiceModal .modal-body .myser_img_area {
+  width: 250px;
+  height: 175px;
+  margin-right: 0px;
+}
+
+@media (min-width: 576px) {
+  #mumu_services #myServiceModal .modal-body .myser_img_area {
+    margin-right: 36px;
+  }
+}
+
+#mumu_services #myServiceModal .modal-body .myser_img_area img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 8px;
+}
+
+#mumu_services #myServiceModal .modal-body .myser_content ul {
+  margin-left: 0px;
+  margin-bottom: 0px;
+  padding-top: 16px;
+}
+
+@media (min-width: 576px) {
+  #mumu_services #myServiceModal .modal-body .myser_content ul {
+    margin-left: 16px;
+    padding-top: 0px;
+  }
+}
+
+#mumu_services #myServiceModal .modal-body .myser_content ul li {
+  margin: 8px 0px;
+}
+
+#faq {
+  height: 100vh;
+  position: relative;
+  color: #6A6A6A;
+}
+
+#faq .faq {
+  width: 50%;
+  background-color: #EADCD9;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  border-radius: 20px;
+}
+
+#faq .faq .title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-item-align: center;
+      align-self: center;
+}
+
+#faq .faq .title h2 {
+  margin: 16px;
+  font-weight: 400;
+}
+
+#faq .faq .accordion {
+  margin: 40px;
+}
+
+#faq .faq .accordion .accordion-item .accordion-header .accordion-button {
+  color: #6A6A6A;
+  font-size: 16px;
+  background-color: #EADCD9;
+}
+
+#faq .faq .accordion .accordion-item .accordion-header .accordion-button:not(.collapsed) {
+  color: #6A6A6A;
+}
+
+#faq .faq .accordion .accordion-item .accordion-header .accordion-button:hover {
+  background-color: #E7E7E7;
+  padding: 20px;
+}
+
+#faq .faq .accordion .accordion-item .accordion-collapse .accordion-body {
+  background-color: white;
+  color: #6A6A6A;
+}
+
+@media (max-width: 768px) {
+  #faq .faq {
+    width: 100%;
+  }
+  #faq .faq .accordion {
+    margin: 0;
+  }
+}
+
+@media (max-width: 992px) {
+  #faq .faq {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  #faq .faq {
+    padding-bottom: 20px;
+  }
+}
+/*# sourceMappingURL=index.css.map */

@@ -27,16 +27,22 @@ use App\Http\Controllers\InfoController;
 //     return view('welcome');
 // });
 
-// Route::get('/', function () {
-//     return view('dashboard');
-// });
 
-// Route::get('/login', [MainController::class, 'login_func']);
-
-Route::get('/', function () {
+// -------------- 登入 -------------- //
+Route::get('/admin', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
+
+// -------------- 前台路由 -------------- //
+Route::get('/', [MainController::class, 'index']);
+Route::get('/course', [MainController::class, 'course']);
+Route::get('/gallery', [MainController::class, 'gallery']);
+Route::get('/health', [MainController::class, 'health']);
+Route::get('/appointment', [MainController::class, 'appointment']);
+
+
+// -------------- 後台路由 -------------- //
 Route::prefix('/banner')->middleware(['auth'])->group(function(){
     Route::get('/', [BannerController::class, 'index']);
     Route::get('/create', [BannerController::class, 'create']);
