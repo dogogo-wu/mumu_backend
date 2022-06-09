@@ -16,9 +16,16 @@
     <link rel="stylesheet" href="{{ asset('css/back.css') }}">
 
     <style>
-        table img {
+        /* table img {
             max-height: 200px;
             max-width: 400px;
+        } */
+        .gallery_img img{
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 6px;
+            margin-top: 6px;
         }
     </style>
 @endsection
@@ -27,16 +34,16 @@
     <section id="back_area">
         <div class="container my_con">
             <div class="d-flex justify-content-between align-items-center mb-4">
-                <p class="h3 fw-bold mb-0">作品集錦-管理</p>
-                <a href="/photo/create" class="btn btn-success">新增作品集錦</a>
+                <p class="h3 fw-bold mb-0">作品照片-管理</p>
+                <a href="/photo/create" class="btn btn-success">新增作品照片</a>
             </div>
             <table id="myDataTable" class="display">
                 <thead>
                     <tr>
-                        <th>順序調整</th>
-                        <th>順序</th>
                         <th>標題</th>
                         <th>副標題</th>
+                        <th>順序調整</th>
+                        <th>順序</th>
                         <th>圖片預覽</th>
                         <th>功能</th>
                     </tr>
@@ -44,6 +51,13 @@
                 <tbody>
                     @foreach ($dataAry as $mydata)
                         <tr>
+                            <td>
+                                @if ($mydata->category == 1) 紋繡
+                                @elseif ($mydata->category == 2) 皮膚管理
+                                @elseif ($mydata->category == 3) 美睫
+                                @endif
+                            </td>
+                            <td>{{ $mydata->subtitle }}</td>
 
                             <td>
                                 <button onclick="upmove({{ $mydata->id }})"
@@ -52,16 +66,13 @@
                                 <button onclick="downmove({{ $mydata->id }})"
                                     class="btn btn-outline-primary btn-sm me-2 mb-2 px-4" type="button">下移</button>
                             </td>
-                            <td>{{ $mydata->order + 1 }}</td>
+                            <td>{{$mydata->category}} - {{ $mydata->order + 1 }}</td>
                             <td>
-                                @if ($mydata->category == 1) 紋繡
-                                @elseif ($mydata->category == 2) 皮膚管理
-                                @elseif ($mydata->category == 3) 美睫
-                                @endif
-                            </td>
-                            <td>{{ $mydata->subtitle }}</td>
-                            <td>
-                                {{-- <img src="{{ asset($mydata->img) }}" alt=""> --}}
+                                @foreach ($mydata->imgAry as $myimg)
+                                    <div class="gallery_img">
+                                        <img src="{{ asset($myimg->img) }}" alt="">
+                                    </div>
+                                @endforeach
                             </td>
                             <td>
                                 <a href="/photo/edit/{{ $mydata->id }}" class="btn btn-outline-success btn-sm me-3 mb-2">編輯</a>
@@ -123,7 +134,6 @@
             }).then(function(response) {
                 location.reload();
             })
-
         }
 
         function downmove(myid) {
@@ -138,7 +148,6 @@
             }).then(function(response) {
                 location.reload();
             })
-
         }
     </script>
 @endsection

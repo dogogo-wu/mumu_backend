@@ -68,7 +68,7 @@
                         {{ __('創業教學花絮') }}
                     </x-nav-link>
                     <x-nav-link :href="'/photo'" :active="request()->is('photo*')">
-                        {{ __('作品集錦') }}
+                        {{ __('作品照片') }}
                     </x-nav-link>
                     <x-nav-link :href="'/info'" :active="request()->is('info*')">
                         {{ __('衛教資訊') }}
@@ -147,7 +147,7 @@
                 {{ __('創業教學花絮') }}
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="'/photo'" :active="request()->is('photo*')">
-                {{ __('作品集錦') }}
+                {{ __('作品照片') }}
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="'/info'" :active="request()->is('info*')">
                 {{ __('衛教資訊') }}

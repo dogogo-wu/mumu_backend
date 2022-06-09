@@ -118,8 +118,13 @@ Route::prefix('/photo')->middleware(['auth'])->group(function(){
     Route::post('/update/{target}', [GalleryController::class, 'update']);
     Route::delete('/del_sec_img/{sec_tar}', [GalleryController::class, 'del_secimg_func']);
 
+    // For datatable
     Route::post('/upmove/{target}', [GalleryController::class, 'upmove']);
     Route::post('/downmove/{target}', [GalleryController::class, 'downmove']);
+
+    // For Image
+    Route::post('/frontmove/{target}', [GalleryController::class, 'frontmove']);
+    Route::post('/backmove/{target}', [GalleryController::class, 'backmove']);
 
     // 尚未使用
     Route::post('/mystore/{target}', [GalleryController::class, 'mystore']);

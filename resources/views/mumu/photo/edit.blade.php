@@ -14,11 +14,10 @@
     <link rel="stylesheet" href="{{ asset('css/back.css') }}">
     <style>
         form img {
-            max-height: 360px;
+            height: 240px;
             object-fit: contain;
             margin-right: auto
         }
-
     </style>
 @endsection
 
@@ -26,7 +25,7 @@
     <section id="back_area" class="py-5">
         <div class="container my_con">
             <div class="d-flex justify-content-between align-items-center mb-4">
-                <p class="h2 fw-bold mb-0">作品集錦-編輯</p>
+                <p class="h2 fw-bold mb-0">作品照片-編輯</p>
             </div>
 
             <form class="d-flex flex-column" action="/photo/update/{{ $myedit->id }}" method="post"
@@ -55,16 +54,22 @@
                 </div>
                 <p class="mb-0 fw-bold">現在圖片</p>
                 <div class="d-flex flex-wrap">
-                    @foreach ($myedit->imgAry as $item)
+                    @foreach ($myimg as $item)
                         <div class="d-flex flex-column align-items-center" id="sec_img_div{{ $item->id }}">
-                            <img src="{{ $item->img }}" alt="" class="me-3 mb-2 sec_img">
-                            <button onclick="del_sec_prod({{ $item->id }})"
-                                class="btn btn-outline-danger btn-sm me-2 mb-2 w-50" type="button">刪除</button>
+                            <img src="{{ $item->img }}" alt="" class="me-3 mb-2 sec_img mt-3">
+                            <div class="btn_area d-flex mb-3">
+                                <button onclick="frontmove({{ $item->id }})"
+                                    class="btn btn-outline-primary btn-sm me-2 mb-2 px-3" type="button">前移</button>
+                                <button onclick="del_sec_prod({{ $item->id }})"
+                                    class="btn btn-outline-danger btn-sm me-2 mb-2 px-3 px-4" type="button">刪除</button>
+                                <button onclick="backmove({{ $item->id }})"
+                                    class="btn btn-outline-primary btn-sm me-2 mb-2 px-3" type="button">後移</button>
+                            </div>
                         </div>
                     @endforeach
                 </div>
                 <div class="mb-3">
-                    <label for="second_img" class="form-label">圖片上傳</label>
+                    <label for="second_img" class="form-label fw-bold">圖片上傳</label>
                     <input type="file" class="form-control" id="second_img" name="second_img[]" accept="image/*" multiple>
                 </div>
 
@@ -88,12 +93,12 @@
 
 @section('js')
     <script>
-        photo_img.onchange = evt => {
-            const [file] = photo_img.files
-            if (file) {
-                blah.src = URL.createObjectURL(file)
-            }
-        }
+        // photo_img.onchange = evt => {
+        //     const [file] = photo_img.files
+        //     if (file) {
+        //         blah.src = URL.createObjectURL(file)
+        //     }
+        // }
 
         function del_sec_prod(myid) {
 
@@ -110,6 +115,37 @@
                 //------ 子方法2，使用javescript刪除元件 ------//
                 let ele = document.querySelector('#sec_img_div' + myid);
                 ele.remove();
+            })
+
+        }
+
+        //---------- 圖片順序移動 ----------//
+        function frontmove(myid) {
+
+            let formData = new FormData();
+            formData.append('_method', 'POST');
+            formData.append('_token', '{{ csrf_token() }}');
+
+            fetch("/photo/frontmove/" + myid, {
+                method: "POST",
+                body: formData
+            }).then(function(response) {
+                location.reload();
+            })
+
+        }
+
+        function backmove(myid) {
+
+            let formData = new FormData();
+            formData.append('_method', 'POST');
+            formData.append('_token', '{{ csrf_token() }}');
+
+            fetch("/photo/backmove/" + myid, {
+                method: "POST",
+                body: formData
+            }).then(function(response) {
+                location.reload();
             })
 
         }

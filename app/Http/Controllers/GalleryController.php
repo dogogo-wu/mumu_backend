@@ -10,7 +10,7 @@ class GalleryController extends Controller
 {
     public function index() {
 
-        $dataAry = GallerySubtitle::orderBy('order')->get();
+        $dataAry = GallerySubtitle::orderBy('category')->orderBy('order')->get();
 
         $header = '作品集錦-管理';
         $slot = '';
@@ -27,7 +27,7 @@ class GalleryController extends Controller
         $get_sub = GallerySubtitle::create([
             'subtitle' => $req->photo_subtitle,
             'category' => $req->photo_category,
-            'order' => GallerySubtitle::count(),
+            'order' => GallerySubtitle::where('category', $req->photo_category)->count(),
         ]);
 
         if($req->hasfile('second_img')){
@@ -36,6 +36,7 @@ class GalleryController extends Controller
                 GalleryPhoto::create([
                     'img' => $path,
                     'subtitle_id' => $get_sub->id,
+                    'order' => GalleryPhoto::where('subtitle_id', $get_sub->id)->count(),
                 ]);
             }
         }
@@ -54,9 +55,9 @@ class GalleryController extends Controller
 
         // ------ 後面的oreder往前移1 ------
         $tarOrd = $targetObj->order;
-        $ordAry = GallerySubtitle::orderBy('order')->get();
+        $ordAry = GallerySubtitle::where('category', $targetObj->category)->orderBy('order')->get();
 
-        for ($i = $tarOrd + 1; $i < GallerySubtitle::count(); $i++) {
+        for ($i = $tarOrd + 1; $i < GallerySubtitle::where('category', $targetObj->category)->count(); $i++) {
             $ordAry[$i]->order -= 1;
             $ordAry[$i]->save();
         }
@@ -69,9 +70,10 @@ class GalleryController extends Controller
     }
     public function edit($target) {
         $myedit = GallerySubtitle::find($target);
+        $myimg = GalleryPhoto::where('subtitle_id', $target)->orderBy('order')->get();
         $header = '作品集錦-管理';
         $slot = '';
-        return view('mumu.photo.edit', compact('myedit', 'header', 'slot'));
+        return view('mumu.photo.edit', compact('myedit', 'myimg', 'header', 'slot'));
     }
 
     public function update($target, Request $req) {
@@ -97,6 +99,16 @@ class GalleryController extends Controller
     public function del_secimg_func($sec_tar){
         $tarimg = GalleryPhoto::find($sec_tar);
         $subtit_id = $tarimg -> subtitle_id;
+
+        // ------ 後面的oreder往前移1 ------
+        $tarOrd = $tarimg->order;
+        $ordAry = GalleryPhoto::where('subtitle_id', $subtit_id)->orderBy('order')->get();
+
+        for ($i = $tarOrd + 1; $i < GalleryPhoto::where('subtitle_id', $subtit_id)->count(); $i++) {
+            $ordAry[$i]->order -= 1;
+            $ordAry[$i]->save();
+        }
+        // ------ End ------
 
         FilesController::deleteUpload($tarimg->img);
         $tarimg->delete();
@@ -129,7 +141,7 @@ class GalleryController extends Controller
             return;
         }
         // 依order小到大
-        $ordAry = GallerySubtitle::orderBy('order')->get();
+        $ordAry = GallerySubtitle::where('category', $tarObj->category)->orderBy('order')->get();
         // 找到前一個obj，
         $prevObj = $ordAry[$tarOrd-1];
         // Swap order
@@ -146,14 +158,14 @@ class GalleryController extends Controller
         // 取得目標obj
         $tarObj = GallerySubtitle::find($target);
         // 取得max_index
-        $max_index = GallerySubtitle::count()-1;
+        $max_index = GallerySubtitle::where('category', $tarObj->category)->count()-1;
         // 若已經是最下面，直接return
         $tarOrd = $tarObj->order;
         if ($tarOrd == $max_index) {
             return;
         }
         // 依order小到大
-        $ordAry = GallerySubtitle::orderBy('order')->get();
+        $ordAry = GallerySubtitle::where('category', $tarObj->category)->orderBy('order')->get();
         // 找到後一個obj，
         $postObj = $ordAry[$tarOrd+1];
         // Swap order
@@ -164,6 +176,55 @@ class GalleryController extends Controller
         $postObj->save();
 
         return redirect('/photo');
+
+    }
+    public function frontmove($target) {
+
+        // 取得目標obj
+        $tarObj = GalleryPhoto::find($target);
+        $subtit_id = $tarObj->subtitle_id;
+        // 若已經是最上面，直接return
+        $tarOrd = $tarObj->order;
+        if ($tarOrd == 0) {
+            return;
+        }
+        // 依order小到大
+        $ordAry = GalleryPhoto::where('subtitle_id', $subtit_id)->orderBy('order')->get();
+        // 找到前一個obj，
+        $prevObj = $ordAry[$tarOrd-1];
+        // Swap order
+        $tarObj -> order -= 1;
+        $prevObj -> order += 1;
+        // Save
+        $tarObj->save();
+        $prevObj->save();
+
+        return redirect('/photo/edit/' .$subtit_id);
+    }
+    public function backmove($target) {
+
+        // 取得目標obj
+        $tarObj = GalleryPhoto::find($target);
+        $subtit_id = $tarObj->subtitle_id;
+        // 取得max_index
+        $max_index = GalleryPhoto::where('subtitle_id', $subtit_id)->count()-1;
+        // 若已經是最下面，直接return
+        $tarOrd = $tarObj->order;
+        if ($tarOrd == $max_index) {
+            return;
+        }
+        // 依order小到大
+        $ordAry = GalleryPhoto::where('subtitle_id', $subtit_id)->orderBy('order')->get();
+        // 找到後一個obj，
+        $postObj = $ordAry[$tarOrd+1];
+        // Swap order
+        $tarObj -> order += 1;
+        $postObj -> order -= 1;
+        // Save
+        $tarObj->save();
+        $postObj->save();
+
+        return redirect('/photo/edit/' .$subtit_id);
 
     }
 }
