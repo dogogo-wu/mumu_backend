@@ -24,10 +24,13 @@ class ServiceController extends Controller
 
         $path = FilesController::imgUpload($req->service_img, 'service');
 
+        // 轉換為<li>
+        $new_intro = ServiceController::textTransLi($req->service_content);
+
         Service::create([
             'img' => $path,
             'title' => $req->service_title,
-            'content' => $req->service_content,
+            'content' => $new_intro,
             'order' => Service::count(),
         ]);
 
@@ -67,11 +70,20 @@ class ServiceController extends Controller
             $targetObj->img = $path;
         }
 
+        // 轉換為<li>
+        $new_intro = ServiceController::textTransLi($req->service_content);
+
         $targetObj->title = $req->service_title;
-        $targetObj->content = $req->service_content;
+        $targetObj->content = $new_intro;
         $targetObj->save();
 
         return redirect('/service');
+    }
+
+    public function textTransLi($intxt){
+        $outxt = '<li>'. str_replace(array("\r\n","\n"),'</li><li>', $intxt) . '</li>';
+
+        return $outxt;
     }
     public function upmove($target) {
 

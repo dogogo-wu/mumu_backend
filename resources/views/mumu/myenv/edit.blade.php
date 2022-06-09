@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('pageTittle')
-    Environment-Edit
+    News-Edit
 @endsection
 
 @section('cssLink')
@@ -26,7 +26,7 @@
     <section id="back_area" class="py-5">
         <div class="container my_con">
             <div class="d-flex justify-content-between align-items-center mb-4">
-                <p class="h2 fw-bold mb-0">環境照編輯</p>
+                <p class="h2 fw-bold mb-0">最新消息-編輯</p>
             </div>
 
             <form class="d-flex flex-column" action="/environment/update/{{ $myedit->id }}" method="post"
@@ -35,7 +35,7 @@
                 <div class="mb-3 d-flex flex-column">
                     <p class="mb-0">現在的圖片</p>
                     <img id="blah" src="{{ asset($myedit->img) }}" alt="your image" />
-                    <label for="env_img" class="form-label mt-3">環境照圖片上傳</label>
+                    <label for="env_img" class="form-label mt-3">最新消息-圖片上傳</label>
                     <input class="form-control" type="file" name="env_img" id="env_img">
                 </div>
 

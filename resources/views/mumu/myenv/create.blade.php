@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('pageTittle')
-    Environment-Create
+    News-Create
 @endsection
 
 @section('cssLink')
@@ -28,7 +28,7 @@
             <form class="d-flex flex-column" action="/environment/store" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="mb-3">
-                    <label for="env_img" class="form-label">環境照-圖片上傳</label>
+                    <label for="env_img" class="form-label">最新消息-圖片上傳</label>
                     <input type="file" name="env_img" id="env_img" class="form-control" accept="image/*" required>
                 </div>
                 <div class="mb-3">

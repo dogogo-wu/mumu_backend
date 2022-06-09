@@ -20,6 +20,10 @@
             max-height: 200px;
             max-width: 400px;
         }
+        ul{
+            list-style: disc outside none;
+            margin: 0 0 0 1.2rem;
+        }
     </style>
 @endsection
 
@@ -57,7 +61,9 @@
                                 <img src="{{ asset($mydata->img) }}" alt="">
                             </td>
                             <td>{{ $mydata->title }}</td>
-                            <td>{{ $mydata->content }}</td>
+                            <td>
+                                <ul>{!! $mydata->content !!}</ul>
+                            </td>
                             <td>
                                 <a href="/service/edit/{{ $mydata->id }}" class="btn btn-outline-success btn-sm me-3 mb-2">編輯</a>
 

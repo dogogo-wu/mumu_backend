@@ -48,7 +48,7 @@
                 <div class="mb-3">
                     <label for="service_content" class="form-label">內文</label>
                     <textarea name="service_content" class="form-control" id="service_content" cols="20"
-                            rows="5" required>{{ $myedit->content }}</textarea>
+                            rows="5" required>{{ rtrim(ltrim(str_replace('</li><li>', "\r\n", $myedit->content), '<li>'), '</li>') }}</textarea>
                 </div>
 
                 <div class="d-flex justify-content-center align-items-center mt-4">
