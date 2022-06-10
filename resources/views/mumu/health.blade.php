@@ -31,15 +31,16 @@
                             type="button" role="tab">皮膚管理</button>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="eyelash-tab" data-bs-toggle="pill"
-                            data-bs-target="#tab-pane-3" type="button" role="tab">美睫</button>
+                        <button class="nav-link" id="eyelash-tab" data-bs-toggle="pill" data-bs-target="#tab-pane-3"
+                            type="button" role="tab">美睫</button>
                     </li>
                 </ul>
                 <div class="tab_divider"></div>
 
                 <div class="tab-content outer_tab_content" id="myTabContent">
                     @foreach ($healthAry as $item)
-                        <div class="tab-pane fade @if($item->category == 1)show active @endif" id="tab-pane-{{$item->category}}" role="tabpanel" tabindex="0">
+                        <div class="tab-pane fade @if ($item->category == 1) show active @endif"
+                            id="tab-pane-{{ $item->category }}" role="tabpanel" tabindex="0">
                             <div class="add_info">
                                 {!! $item->describe !!}
                             </div>
@@ -76,5 +77,13 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init();
+    </script>
+@endsection
+
+@section('js')
+    <script>
+        // 加navbar底線
+        var myli = document.querySelector('#navbarNav li:nth-child(4)');
+        myli.classList.add('myactive');
     </script>
 @endsection

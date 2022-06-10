@@ -54,8 +54,9 @@
                 <div class="swiper-wrapper">
                     @foreach ($picAry as $pic)
                         <div class="swiper-slide">
-                            <img src="{{ asset($pic->img) }}" data-bs-toggle="modal"
-                                data-bs-target="#myModal" data-bs-pic="{{ $loop->index }}"/></div>
+                            <img src="{{ asset($pic->img) }}" data-bs-toggle="modal" data-bs-target="#myModal"
+                                data-bs-pic="{{ $loop->index }}" />
+                        </div>
                     @endforeach
                 </div>
 
@@ -78,7 +79,7 @@
                             <div class="swiper modal_swiper">
                                 <div class="swiper-wrapper">
                                     @foreach ($picAry as $pic)
-                                        <div class="swiper-slide"><img src="{{ asset($pic->img) }}"/></div>
+                                        <div class="swiper-slide"><img src="{{ asset($pic->img) }}" /></div>
                                     @endforeach
                                 </div>
                                 <div class="myswiper-btn swiper-button-next"></div>
@@ -104,6 +105,11 @@
 @endsection
 
 @section('js')
+    <script>
+        // 加navbar底線
+        var myli = document.querySelector('#navbarNav li:nth-child(2)');
+        myli.classList.add('myactive');
+    </script>
     <!-- Initialize Swiper -->
     <script>
         // course swiper

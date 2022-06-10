@@ -33,7 +33,8 @@
                             {!! $appoAry[0]->content !!}
                         </div>
                         <div class="d-flex justify-content-center">
-                            <button id="button" data-clipboard-text="{{ rtrim(ltrim(str_replace('</p><p>', "\r\n", $appoAry[0]->content), '<p>'), '</p>') }}">點擊複製預約資料</button>
+                            <button id="button"
+                                data-clipboard-text="{{ rtrim(ltrim(str_replace('</p><p>', "\r\n", $appoAry[0]->content), '<p>'), '</p>') }}">點擊複製預約資料</button>
                         </div>
                         <hr>
                         <p>{{ $appoAry[1]->subtitle }}</p>
@@ -46,7 +47,8 @@
                     data-aos-easing="linear">
                     <div class="line_info d-flex flex-column align-items-center justify-content-between mb-3">
                         <div class="line_title">加Line好友進行預約或諮詢</div>
-                        <img class="mt-3 mb-3" src="{{asset('./img/line_qrcode.png')}}" alt="" style="width: 170px; height: 170px;">
+                        <img class="mt-3 mb-3" src="{{ asset('./img/line_qrcode.png') }}" alt=""
+                            style="width: 170px; height: 170px;">
                         <div class="line_id">Line ID: &nbsp; @669akkyc</div>
                     </div>
                     <div class="mumu_info">
@@ -73,7 +75,8 @@
 
                             {!! $appoAry[0]->content !!}
                             <div class="d-flex justify-content-center">
-                                <button id="button" data-clipboard-text="{{ rtrim(ltrim(str_replace('</p><p>', "\r\n", $appoAry[0]->content), '<p>'), '</p>') }}">點擊複製預約資料</button>
+                                <button id="button"
+                                    data-clipboard-text="{{ rtrim(ltrim(str_replace('</p><p>', "\r\n", $appoAry[0]->content), '<p>'), '</p>') }}">點擊複製預約資料</button>
                             </div>
                             <hr>
                             <p>{{ $appoAry[1]->subtitle }}</p>
@@ -105,5 +108,13 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init();
+    </script>
+@endsection
+
+@section('js')
+    <script>
+        // 加navbar底線
+        var myli = document.querySelector('#navbarNav li:nth-child(5)');
+        myli.classList.add('myactive');
     </script>
 @endsection

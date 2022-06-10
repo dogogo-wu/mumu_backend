@@ -244,6 +244,13 @@
 
 @section('js')
     <script>
+        // 加navbar底線
+        var myli = document.querySelector('#navbarNav li:nth-child(1)');
+        myli.classList.add('myactive');
+    </script>
+
+
+    <script>
         var swiper = new Swiper(".mySwiper", {
             // cssMode: true,
             speed: 1200,

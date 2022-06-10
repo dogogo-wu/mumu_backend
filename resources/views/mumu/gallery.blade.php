@@ -216,7 +216,12 @@
 @endsection
 
 @section('js')
-    <!-- ------------------- JS Section ------------------- -->
+    <script>
+        // 加navbar底線
+        var myli = document.querySelector('#navbarNav li:nth-child(3)');
+        myli.classList.add('myactive');
+    </script>
+
     <script>
         // modal swiper
         var modal_swiper = new Swiper(".modal_swiper", {
