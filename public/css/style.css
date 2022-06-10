@@ -168,10 +168,15 @@ ul {
           transform: translate(-50%, -50%);
   left: 50%;
   top: 50%;
-  -webkit-transition: top 0.25s 0s ease-in-out, -webkit-transform 0.25s 0.25s ease-in-out;
-  transition: top 0.25s 0s ease-in-out, -webkit-transform 0.25s 0.25s ease-in-out;
-  transition: top 0.25s 0s ease-in-out, transform 0.25s 0.25s ease-in-out;
-  transition: top 0.25s 0s ease-in-out, transform 0.25s 0.25s ease-in-out, -webkit-transform 0.25s 0.25s ease-in-out;
+  -webkit-transition: top 0.25s 0s ease-in-out,
+ -webkit-transform 0.25s 0.25s ease-in-out;
+  transition: top 0.25s 0s ease-in-out,
+ -webkit-transform 0.25s 0.25s ease-in-out;
+  transition: top 0.25s 0s ease-in-out,
+ transform 0.25s 0.25s ease-in-out;
+  transition: top 0.25s 0s ease-in-out,
+ transform 0.25s 0.25s ease-in-out,
+ -webkit-transform 0.25s 0.25s ease-in-out;
 }
 
 #mynav .navbar-toggler .stick1 {
@@ -187,10 +192,15 @@ ul {
 #mynav .navbar-toggler.collapsed .mystick {
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
-  -webkit-transition: top 0.25s 0.25s ease-in-out, -webkit-transform 0.25s 0s ease-in-out;
-  transition: top 0.25s 0.25s ease-in-out, -webkit-transform 0.25s 0s ease-in-out;
-  transition: top 0.25s 0.25s ease-in-out, transform 0.25s 0s ease-in-out;
-  transition: top 0.25s 0.25s ease-in-out, transform 0.25s 0s ease-in-out, -webkit-transform 0.25s 0s ease-in-out;
+  -webkit-transition: top 0.25s 0.25s ease-in-out,
+ -webkit-transform 0.25s 0s ease-in-out;
+  transition: top 0.25s 0.25s ease-in-out,
+ -webkit-transform 0.25s 0s ease-in-out;
+  transition: top 0.25s 0.25s ease-in-out,
+ transform 0.25s 0s ease-in-out;
+  transition: top 0.25s 0.25s ease-in-out,
+ transform 0.25s 0s ease-in-out,
+ -webkit-transform 0.25s 0s ease-in-out;
 }
 
 #mynav .navbar-toggler.collapsed .stick1 {
@@ -528,4 +538,3 @@ ul {
     margin-top: 0px;
   }
 }
-/*# sourceMappingURL=style.css.map */

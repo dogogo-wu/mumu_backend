@@ -43,8 +43,8 @@
                     <label for="eyelash" class="form-label me-3">美睫</label>
                 </div>
                 <div class="mb-3">
-                    <label for="photo_subtitle" class="form-label fw-bold">副標題</label>
-                    <input type="text" name="photo_subtitle" id="photo_subtitle" class="form-control" required>
+                    <label for="photo_subtitle" class="form-label fw-bold">小標題 <small>(非必填)</small></label>
+                    <input type="text" name="photo_subtitle" id="photo_subtitle" class="form-control">
                 </div>
                 <div class="mb-3">
                     <label for="second_img" class="form-label fw-bold">圖片上傳 <small>(可一次上傳多張圖)</small></label>

@@ -9,6 +9,8 @@ use App\Models\Service;
 use App\Models\Faq;
 use App\Models\Teach;
 use App\Models\TeachPic;
+use App\Models\GallerySubtitle;
+use App\Models\GalleryPhoto;
 
 class MainController extends Controller
 {
@@ -39,4 +41,12 @@ class MainController extends Controller
         return view('mumu.course', compact('itemAry', 'picAry'));
     }
 
+    public function gallery() {
+
+        $galAry_1 = GallerySubtitle::where('category', 1)->orderBy('order')->get();
+        $galAry_2 = GallerySubtitle::where('category', 2)->orderBy('order')->get();
+        $galAry_3 = GallerySubtitle::where('category', 3)->orderBy('order')->get();
+
+        return view('mumu.gallery', compact('galAry_1', 'galAry_2', 'galAry_3'));
+    }
 }

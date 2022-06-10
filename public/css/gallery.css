@@ -1,0 +1,244 @@
+#gallery {
+  color: #6A6A6A;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  min-height: 80vh;
+}
+
+#gallery p {
+  margin: 0px;
+}
+
+#gallery .mytitle {
+  font-size: 20px;
+  font-weight: 500;
+  height: 100px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#gallery .divider {
+  width: 100%;
+  height: 5px;
+  border-radius: 5px;
+  background-color: #EADCD9;
+}
+
+@media (min-width: 768px) {
+  #gallery .divider {
+    width: 90%;
+  }
+}
+
+#gallery .mytab_area {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-top: 36px;
+  width: 100%;
+}
+
+#gallery .mytab_area li {
+  margin: 0px 6px;
+}
+
+@media (min-width: 768px) {
+  #gallery .mytab_area li {
+    margin: 0px 20px;
+  }
+}
+
+#gallery .mytab_area li button {
+  color: #6A6A6A;
+  font-weight: 500;
+  background-color: #EADCD9;
+  border-radius: 10px 10px 0px 0px;
+  -webkit-box-shadow: 2px 2px 4px 1px rgba(0, 0, 0, 0.2);
+          box-shadow: 2px 2px 4px 1px rgba(0, 0, 0, 0.2);
+  width: 90px;
+  padding: 8px;
+}
+
+#gallery .mytab_area li button:hover {
+  background-color: #ecc7bf;
+}
+
+@media (min-width: 768px) {
+  #gallery .mytab_area li button {
+    width: 115px;
+    padding: 8px 16px;
+  }
+}
+
+#gallery .mytab_area li .nav-link.active {
+  background-color: #838383;
+  color: white;
+}
+
+#gallery .mytab_area .tab_divider {
+  margin-top: 2px;
+  width: 300px;
+  height: 2px;
+  border-radius: 2px;
+  background-color: #6A6A6A;
+}
+
+@media (min-width: 768px) {
+  #gallery .mytab_area .tab_divider {
+    width: 460px;
+  }
+}
+
+#gallery .mytab_area .outer_tab_content {
+  padding-top: 32px;
+  padding-bottom: 64px;
+  width: 100%;
+}
+
+#gallery .mytab_area .outer_tab_content .add_info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-weight: 500;
+  padding-bottom: 16px;
+}
+
+#gallery .mytab_area .outer_tab_content .tab_content_area {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+#gallery .mytab_area .outer_tab_content .tab_content_area .tab_subtitle {
+  text-align: center;
+  font-size: 20px;
+  font-weight: 500;
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+
+#gallery .mytab_area .outer_tab_content .tab_content_area .tab_pic {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#gallery .mytab_area .outer_tab_content .tab_content_area .tab_pic .img_div {
+  padding: 6px;
+}
+
+@media (min-width: 768px) {
+  #gallery .mytab_area .outer_tab_content .tab_content_area .tab_pic .img_div {
+    padding: 16px;
+  }
+}
+
+#gallery .mytab_area .outer_tab_content .tab_content_area .tab_pic .img_div img {
+  width: 150px;
+  height: 150px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+  border-radius: 16px;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+}
+
+#gallery .mytab_area .outer_tab_content .tab_content_area .tab_pic .img_div img:hover {
+  -webkit-box-shadow: 2px 2px 4px 1px gray;
+          box-shadow: 2px 2px 4px 1px gray;
+  cursor: pointer;
+}
+
+@media (min-width: 768px) {
+  #gallery .mytab_area .outer_tab_content .tab_content_area .tab_pic .img_div img {
+    width: 215px;
+    height: 215px;
+  }
+}
+
+#gallery .modal_swiper_area {
+  width: 100%;
+}
+
+#gallery .modal_swiper_area .modal_swiper {
+  width: 100%;
+  max-height: 75vh;
+  margin: 20px auto;
+}
+
+#gallery .modal_swiper_area .modal_swiper .swiper-slide {
+  /* Center slide text vertically */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: 100%;
+}
+
+#gallery .modal_swiper_area .modal_swiper .swiper-slide img {
+  display: block;
+  width: 100%;
+  max-height: 75vh;
+  -o-object-fit: contain;
+     object-fit: contain;
+  border-radius: 5px;
+}
+
+#gallery .modal_swiper_area .swiper-pagination-bullet-active {
+  background-color: #95AFD6;
+}
+
+#gallery .mymodal_all {
+  background-color: rgba(0, 0, 0, 0.5);
+}
