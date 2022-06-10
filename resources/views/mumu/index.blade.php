@@ -310,7 +310,7 @@
         myModal.addEventListener('show.bs.modal', event => {
             const button = event.relatedTarget;
             const pic_index = button.getAttribute('data-bs-pic');
-            modal_swiper.slideTo(pic_index + 1);
+            modal_swiper.slideTo(parseInt(pic_index) + 1);
         })
 
         // Service Modal script
