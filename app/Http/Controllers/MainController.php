@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Banner;
 use App\Models\Latest;
 use App\Models\Service;
+use App\Models\Faq;
 
 class MainController extends Controller
 {
@@ -18,8 +19,9 @@ class MainController extends Controller
         $banAry = Banner::orderBy('order')->get();
         $newsAry = Latest::orderBy('order')->get();
         $servAry = Service::orderBy('order')->get();
+        $faqAry = Faq::orderBy('order')->get();
 
-        return view('mumu.index', compact('banAry', 'newsAry', 'servAry'));
+        return view('mumu.index', compact('banAry', 'newsAry', 'servAry', 'faqAry'));
     }
 
 }

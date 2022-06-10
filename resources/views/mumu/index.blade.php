@@ -155,7 +155,7 @@
                 <div class="services_card">
                     @foreach ($servAry as $serv)
                         <div class="sevice_cards_container" data-aos="flip-up" data-aos-easing="linear" data-aos-once="true"
-                            data-bs-toggle="modal" data-bs-target="#myServiceModal" data-bs-pic="{{ $loop->index}}">
+                            data-bs-toggle="modal" data-bs-target="#myServiceModal" data-bs-pic="{{ $loop->index }}">
                             <div class="each_service_option d-flex align-items-center justify-content-center">
                                 {{ $serv->title }}</div>
                             <div class="service_img d-flex justify-content-end">
@@ -200,91 +200,22 @@
                     <h2>常見問題FAQ</h2>
                 </div>
                 <div class="accordion accordion-flush" id="accordionFlushExample">
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="flush-headingOne">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                                關於眉毛 – 做完會像蠟筆小新一樣很粗很黑嗎?
-                            </button>
-                        </h2>
-                        <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
-                            data-bs-parent="#accordionFlushExample">
-                            <div class="accordion-body">不會哦!操作完就像眉筆畫上去一樣自然，脫屑時也只會有薄薄的皮屑脫落
-
+                    @foreach ($faqAry as $faq)
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="flush-headingOne">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#flush-{{$loop->index}}">
+                                    {{ $faq->question }}
+                                </button>
+                            </h2>
+                            <div id="flush-{{$loop->index}}" class="accordion-collapse collapse"
+                                data-bs-parent="#accordionFlushExample">
+                                <div class="accordion-body">
+                                    {{ $faq->answer }}
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="flush-headingTwo">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-                                關於眉毛 – 做完眉毛可以洗臉碰水嗎?
-
-                            </button>
-                        </h2>
-                        <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo"
-                            data-bs-parent="#accordionFlushExample">
-                            <div class="accordion-body">可以的! 可以碰水但清潔用品不能碰到，清洗完拿面紙壓乾保持乾燥即可
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="flush-headingThree">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#flush-collapseThree" aria-expanded="false"
-                                aria-controls="flush-collapseThree">
-                                關於睫毛 – 嫁接睫毛會使真睫毛越來越少嗎?
-                            </button>
-                        </h2>
-                        <div id="flush-collapseThree" class="accordion-collapse collapse"
-                            aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
-                            <div class="accordion-body">
-                                不會!因為本身毛髮都有生長週期，嫁接睫毛是接在距離睫毛根部0.1–0.2MM處，而不是接在眼瞼上，所以假睫毛正常會跟著真睫毛週期脫落
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="flush-headingFour">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#flush-collapseFour" aria-expanded="false"
-                                aria-controls="flush-collapseFour">
-                                關於睫毛 – 為什麼接完睫毛眼皮容易紅腫癢?
-                            </button>
-                        </h2>
-                        <div id="flush-collapseFour" class="accordion-collapse collapse"
-                            aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample">
-                            <div class="accordion-body">因為嫁接時距離根部太接近或嫁接服貼度不夠，容易導致假睫毛根部搓到眼皮
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="flush-headingFive">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#flush-collapseFive" aria-expanded="false"
-                                aria-controls="flush-collapseFive">
-                                關於皮膚 – 任何膚質都適合操作藻針嗎?
-                            </button>
-                        </h2>
-                        <div id="flush-collapseFive" class="accordion-collapse collapse"
-                            aria-labelledby="flush-headingFive" data-bs-parent="#accordionFlushExample">
-                            <div class="accordion-body">不是哦!蟹足腫、孕婦、糖尿病以及極度敏感膚質不建議使用此課程
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="flush-headingSix">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#flush-collapseSix" aria-expanded="false" aria-controls="flush-collapseSix">
-                                關於皮膚 – 為什麼擦保養品感覺都無法吸收?
-
-                            </button>
-                        </h2>
-                        <div id="flush-collapseSix" class="accordion-collapse collapse" aria-labelledby="flush-headingSix"
-                            data-bs-parent="#accordionFlushExample">
-                            <div class="accordion-body">因為肌膚屏障受損(肌膚屏障=角質層)，PH值無法平衡，導致保養品擦再多都吸收不了，建議先修復肌膚再針對問題保養
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
 

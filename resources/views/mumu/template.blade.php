@@ -38,7 +38,7 @@
 <body>
     <nav id="mynav" class="navbar navbar-expand-md navbar-light container-fluid">
         <div class="mylogo-area">
-            <a class="d-flex" href="index.html">
+            <a class="d-flex" href="/">
                 <img src="{{ asset('./img/logo.png')}}" class="logo" alt="LOGO">
                 <p class="m-0 ch logo-txt">暮沐美學</p>
                 <p class="m-0 en logo-txt"><em>MUMU Beauty Studio &ensp;</em></p>
