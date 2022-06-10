@@ -38,8 +38,7 @@
         <section id="pink-top-area"></section>
         <section id="mumu_faith" class="">
             <div class="container">
-                <div id="mumu_faith_slogan" class="d-flex align-items-center justify-content-center" data-aos="fade-right">
-                    <!-- aos -->
+                <div id="mumu_faith_slogan" class="d-flex align-items-center justify-content-center">
                     <div id="mumu_slogan_frame" class="d-flex flex-column align-items-center">
                         <div id="mumu_slogan_brush" class=" ">
                             <div class="mumu_brush"></div>
@@ -56,9 +55,7 @@
                     </div>
                 </div>
 
-                <div id="mumu_faith_content_and_notice" class="d-flex flex-column justify-content-around"
-                    data-aos="fade-left" data-aos-easing="linear" data-aos-offset="300">
-                    <!-- aos -->
+                <div id="mumu_faith_content_and_notice" class="d-flex flex-column justify-content-around">
                     <div class="mumu_faith_content p-2 d-flex justify-content-start">
                         <div class="img_box d-flex justify-content-center">
                             <img class="flower_img" src="{{ asset('./img/index/cir_flower.png') }}" alt="">
@@ -204,11 +201,11 @@
                         <div class="accordion-item">
                             <h2 class="accordion-header" id="flush-headingOne">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#flush-{{$loop->index}}">
+                                    data-bs-target="#flush-{{ $loop->index }}">
                                     {{ $faq->question }}
                                 </button>
                             </h2>
-                            <div id="flush-{{$loop->index}}" class="accordion-collapse collapse"
+                            <div id="flush-{{ $loop->index }}" class="accordion-collapse collapse"
                                 data-bs-parent="#accordionFlushExample">
                                 <div class="accordion-body">
                                     {{ $faq->answer }}
