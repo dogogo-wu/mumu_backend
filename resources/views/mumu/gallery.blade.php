@@ -40,18 +40,25 @@
                 <div class="tab_divider"></div>
 
                 <div class="tab-content outer_tab_content" id="myTabContent">
+                    <!-- 紋繡照片 -->
                     <div class="tab-pane fade show active" id="microblading-tab-pane" role="tabpanel" tabindex="0">
                         <div class="tab_content_area">
+                            @php
+                                $i = 0;
+                            @endphp
                             @foreach ($galAry_1 as $gal_1)
                                 <div class="tab_subtitle">
-                                    {{$gal_1->subtitle}}
+                                    {{ $gal_1->subtitle }}
                                 </div>
                                 <div class="tab_pic" data-aos="zoom-in" data-aos-once="true">
                                     @foreach ($gal_1->imgAry as $img_1)
                                         <div class="img_div">
-                                            <img src="{{asset($img_1->img)}}" alt="" data-bs-toggle="modal"
-                                                data-bs-target="#myModal_1" data-bs-outer="{{$loop->parent->index}}" data-bs-pic="{{$loop->index}}">
+                                            <img src="{{ asset($img_1->img) }}" alt="" data-bs-toggle="modal"
+                                                data-bs-target="#myModal_1" data-bs-cnt="{{ $i }}">
                                         </div>
+                                        @php
+                                            $i += 1;
+                                        @endphp
                                     @endforeach
                                 </div>
                             @endforeach
@@ -69,18 +76,13 @@
                                     <div class="modal_swiper_area">
                                         <div class="swiper modal_swiper">
                                             <div class="swiper-wrapper">
-                                                <div class="swiper-slide"><img src="./img/gallery/eyebrow-1.jpg" /></div>
-                                                <div class="swiper-slide"><img src="./img/gallery/eyebrow-2.jpg" /></div>
-                                                <div class="swiper-slide"><img src="./img/gallery/eyebrow-3.jpg" /></div>
-                                                <div class="swiper-slide"><img src="./img/gallery/lip-1.jpg" /></div>
-                                                <div class="swiper-slide"><img src="./img/gallery/lip-2.jpg" /></div>
-                                                <div class="swiper-slide"><img src="./img/gallery/lip-3.jpg" /></div>
-                                                <div class="swiper-slide"><img src="./img/gallery/eyes-line-1.jpg" />
-                                                </div>
-                                                <div class="swiper-slide"><img src="./img/gallery/eyes-line-2.jpg" />
-                                                </div>
-                                                <div class="swiper-slide"><img src="./img/gallery/eyes-line-3.jpg" />
-                                                </div>
+                                                @foreach ($galAry_1 as $gal_1)
+                                                    @foreach ($gal_1->imgAry as $img_1)
+                                                        <div class="swiper-slide">
+                                                            <img src="{{ asset($img_1->img) }}" />
+                                                        </div>
+                                                    @endforeach
+                                                @endforeach
                                             </div>
                                             <div class="myswiper-btn swiper-button-next"></div>
                                             <div class="myswiper-btn swiper-button-prev"></div>
@@ -92,25 +94,27 @@
                         </div>
                     </div>
                     <div class="tab-pane fade" id="skin-tab-pane" role="tabpanel" tabindex="0">
+                        <!-- 皮膚管理照片 -->
                         <div class="tab_content_area">
-                            <div class="tab_subtitle">
-
-                            </div>
-                            <!-- 皮膚管理照片 -->
-                            <div class="tab_pic">
-                                <div class="img_div">
-                                    <img src="./img/gallery/skin-1.jpg" alt="" data-bs-toggle="modal"
-                                        data-bs-target="#myModal_2" data-bs-pic="1">
+                            @php
+                                $i = 0;
+                            @endphp
+                            @foreach ($galAry_2 as $gal_2)
+                                <div class="tab_subtitle">
+                                    {{ $gal_2->subtitle }}
                                 </div>
-                                <div class="img_div">
-                                    <img src="./img/gallery/skin-2.jpg" alt="" data-bs-toggle="modal"
-                                        data-bs-target="#myModal_2" data-bs-pic="2">
+                                <div class="tab_pic" data-aos="zoom-in" data-aos-once="true">
+                                    @foreach ($gal_2->imgAry as $img_2)
+                                        <div class="img_div">
+                                            <img src="{{ asset($img_2->img) }}" alt="" data-bs-toggle="modal"
+                                                data-bs-target="#myModal_2" data-bs-cnt="{{ $i }}">
+                                        </div>
+                                        @php
+                                            $i += 1;
+                                        @endphp
+                                    @endforeach
                                 </div>
-                                <div class="img_div">
-                                    <img src="./img/gallery/skin-3.jpg" alt="" data-bs-toggle="modal"
-                                        data-bs-target="#myModal_2" data-bs-pic="3">
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
                     <!-- 皮膚管理 Modal -->
@@ -125,9 +129,13 @@
                                     <div class="modal_swiper_area">
                                         <div class="swiper modal_swiper">
                                             <div class="swiper-wrapper">
-                                                <div class="swiper-slide"><img src="./img/gallery/skin-1.jpg" /></div>
-                                                <div class="swiper-slide"><img src="./img/gallery/skin-2.jpg" /></div>
-                                                <div class="swiper-slide"><img src="./img/gallery/skin-3.jpg" /></div>
+                                                @foreach ($galAry_2 as $gal_2)
+                                                    @foreach ($gal_2->imgAry as $img_2)
+                                                        <div class="swiper-slide">
+                                                            <img src="{{ asset($img_2->img) }}" />
+                                                        </div>
+                                                    @endforeach
+                                                @endforeach
                                             </div>
                                             <div class="myswiper-btn swiper-button-next"></div>
                                             <div class="myswiper-btn swiper-button-prev"></div>
@@ -140,26 +148,26 @@
                     </div>
                     <div class="tab-pane fade" id="eyelash-tab-pane" role="tabpanel" tabindex="0">
                         <div class="tab_content_area">
-                            <div class="tab_subtitle">
-
-                            </div>
                             <!-- 美睫照片 -->
-                            <div class="tab_pic" data-aos="zoom-in">
-                                <div class="img_div">
-                                    <img src="./img/gallery/eyelash-1.jpg" alt="" data-bs-toggle="modal"
-                                        data-bs-target="#myModal_3" data-bs-pic="1">
+                            @php
+                                $i = 0;
+                            @endphp
+                            @foreach ($galAry_3 as $gal_3)
+                                <div class="tab_subtitle">
+                                    {{ $gal_3->subtitle }}
                                 </div>
-                                <div class="img_div">
-                                    <img src="./img/gallery/eyelash-2.jpg" alt="" data-bs-toggle="modal"
-                                        data-bs-target="#myModal_3" data-bs-pic="2">
+                                <div class="tab_pic" data-aos="zoom-in" data-aos-once="true">
+                                    @foreach ($gal_3->imgAry as $img_3)
+                                        <div class="img_div">
+                                            <img src="{{ asset($img_3->img) }}" alt="" data-bs-toggle="modal"
+                                                data-bs-target="#myModal_3" data-bs-cnt="{{ $i }}">
+                                        </div>
+                                        @php
+                                            $i += 1;
+                                        @endphp
+                                    @endforeach
                                 </div>
-                                <div class="img_div">
-                                    <img src="./img/gallery/eyelash-3.jpg" alt="" data-bs-toggle="modal"
-                                        data-bs-target="#myModal_3" data-bs-pic="3">
-                                </div>
-
-
-                            </div>
+                            @endforeach
                         </div>
                     </div>
                     <!-- 美睫 Modal -->
@@ -174,9 +182,13 @@
                                     <div class="modal_swiper_area">
                                         <div class="swiper modal_swiper">
                                             <div class="swiper-wrapper">
-                                                <div class="swiper-slide"><img src="./img/gallery/eyelash-1.jpg" /></div>
-                                                <div class="swiper-slide"><img src="./img/gallery/eyelash-2.jpg" /></div>
-                                                <div class="swiper-slide"><img src="./img/gallery/eyelash-3.jpg" /></div>
+                                                @foreach ($galAry_3 as $gal_3)
+                                                    @foreach ($gal_3->imgAry as $img_3)
+                                                        <div class="swiper-slide">
+                                                            <img src="{{ asset($img_3->img) }}" />
+                                                        </div>
+                                                    @endforeach
+                                                @endforeach
                                             </div>
                                             <div class="myswiper-btn swiper-button-next"></div>
                                             <div class="myswiper-btn swiper-button-prev"></div>
@@ -228,21 +240,20 @@
         const myModal_1 = document.getElementById('myModal_1');
         myModal_1.addEventListener('show.bs.modal', event => {
             const button = event.relatedTarget;
-            const pic_outer = button.getAttribute('data-bs-outer');
-            const pic_index = button.getAttribute('data-bs-pic');
-            modal_swiper[0].slideTo(parseInt(pic_index)* + parseInt(pic_index) + 1);
+            const pic_cnt = button.getAttribute('data-bs-cnt');
+            modal_swiper[0].slideTo(parseInt(pic_cnt) + 1);
         })
         const myModal_2 = document.getElementById('myModal_2');
         myModal_2.addEventListener('show.bs.modal', event => {
             const button = event.relatedTarget;
-            const pic_index = button.getAttribute('data-bs-pic');
-            modal_swiper[1].slideTo(pic_index);
+            const pic_cnt = button.getAttribute('data-bs-cnt');
+            modal_swiper[1].slideTo(parseInt(pic_cnt) + 1);
         })
         const myModal_3 = document.getElementById('myModal_3');
         myModal_3.addEventListener('show.bs.modal', event => {
             const button = event.relatedTarget;
-            const pic_index = button.getAttribute('data-bs-pic');
-            modal_swiper[2].slideTo(pic_index);
+            const pic_cnt = button.getAttribute('data-bs-cnt');
+            modal_swiper[2].slideTo(parseInt(pic_cnt) + 1);
         })
     </script>
 @endsection
