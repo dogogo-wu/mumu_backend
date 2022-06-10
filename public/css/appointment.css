@@ -1,0 +1,159 @@
+* {
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  color: #6A6A6A;
+  font-family: 'Noto Sans TC', sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+#appointment #title {
+  height: 100px;
+  font-weight: 500;
+  font-size: 20px;
+  color: #6A6A6A;
+}
+
+#appointment .divider {
+  width: 100%;
+  height: 5px;
+  background-color: #EADCD9;
+  border-radius: 5px;
+}
+
+@media (min-width: 768px) {
+  #appointment .divider {
+    width: 90%;
+  }
+}
+
+#appointment #book .appointment_notice {
+  background-color: #E7E7E7;
+  padding: 30px;
+  border-radius: 10px;
+  width: 45%;
+  display: none;
+}
+
+@media (min-width: 992px) {
+  #appointment #book .appointment_notice {
+    display: block;
+  }
+}
+
+#appointment #book .appointment_notice .appointment_notice_title {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+#appointment #book .appointment_notice_content button {
+  color: #6A6A6A;
+  width: 200px;
+  height: 52px;
+  font-size: 16px;
+  background-color: #EADCD9;
+  border-style: none;
+  border-radius: 10px;
+  padding: 0;
+  -webkit-box-shadow: 2px 4px 3px #6a6a6a;
+          box-shadow: 2px 4px 3px #6a6a6a;
+}
+
+#appointment #book .appointment_notice_content button:hover {
+  background-color: #6A6A6A;
+  color: white;
+  -webkit-box-shadow: 2px 4px 3px #6a6a6a;
+          box-shadow: 2px 4px 3px #6a6a6a;
+}
+
+#appointment #book .appointment_notice_content button:hover:active {
+  -webkit-transform: scale(0.8);
+          transform: scale(0.8);
+}
+
+#appointment .divider2 {
+  width: 2px;
+  height: unset;
+  background-color: #A9A9A9;
+  border-radius: 5px;
+  display: none;
+}
+
+@media (min-width: 992px) {
+  #appointment .divider2 {
+    display: block;
+  }
+}
+
+#appointment .appointment_info {
+  width: 100%;
+  background-color: #ffffff;
+}
+
+@media (min-width: 992px) {
+  #appointment .appointment_info {
+    width: 45%;
+  }
+}
+
+#appointment .appointment_info .line_info .line_title {
+  font-size: 16px;
+}
+
+#appointment .appointment_info .appointment_notice2 {
+  background-color: #E7E7E7;
+  padding: 30px;
+  border-radius: 10px;
+}
+
+@media (min-width: 576px) {
+  #appointment .appointment_info .appointment_notice2 {
+    width: 80%;
+    display: block;
+  }
+}
+
+@media (min-width: 768px) {
+  #appointment .appointment_info .appointment_notice2 {
+    width: 80%;
+    display: block;
+  }
+}
+
+@media (min-width: 992px) {
+  #appointment .appointment_info .appointment_notice2 {
+    display: none;
+  }
+}
+
+#appointment .appointment_info .appointment_notice2 .appointment_notice_title {
+  font-size: 20px;
+}
+
+#appointment .appointment_info .mumu_info {
+  margin: 0 auto;
+}
+
+@media (min-width: 992px) {
+  #appointment .appointment_info .mumu_info {
+    width: 100%;
+  }
+}
+
+#appointment .appointment_info .map_info {
+  width: 100%;
+  height: 200px;
+}
+
+@media (min-width: 576px) {
+  #appointment .appointment_info .map_info {
+    height: 300px;
+  }
+}

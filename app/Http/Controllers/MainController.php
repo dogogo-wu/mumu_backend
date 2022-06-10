@@ -11,6 +11,8 @@ use App\Models\Teach;
 use App\Models\TeachPic;
 use App\Models\GallerySubtitle;
 use App\Models\GalleryPhoto;
+use App\Models\Info;
+use App\Models\Notice;
 
 class MainController extends Controller
 {
@@ -48,5 +50,19 @@ class MainController extends Controller
         $galAry_3 = GallerySubtitle::where('category', 3)->orderBy('order')->get();
 
         return view('mumu.gallery', compact('galAry_1', 'galAry_2', 'galAry_3'));
+    }
+
+    public function health() {
+
+        $healthAry = Info::orderBy('category')->take(3)->get();
+
+        return view('mumu.health', compact('healthAry'));
+    }
+
+    public function appointment() {
+
+        $appoAry = Notice::take(2)->get();
+
+        return view('mumu.appointment', compact('appoAry'));
     }
 }
