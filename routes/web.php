@@ -154,8 +154,4 @@ Route::prefix('/info')->middleware(['auth'])->group(function(){
     Route::post('/update/{target}', [InfoController::class, 'update']);
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
-
 require __DIR__.'/auth.php';

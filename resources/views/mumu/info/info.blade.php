@@ -27,7 +27,10 @@
         <div class="container my_con">
             <div class="d-flex justify-content-between align-items-center mb-4">
                 <p class="h3 fw-bold mb-0">衛教資訊-管理 <small>(固定3筆資料)</small></p>
-                <a href="/info/create" class="btn btn-success">新增-衛教資訊</a>
+                <div>
+                    <a href="/health" target="_blank" class="btn btn-outline-secondary me-4">前台頁面</a>
+                    <a href="/info/create" class="btn btn-success">新增-衛教資訊</a>
+                </div>
             </div>
             <table id="myDataTable" class="display">
                 <thead>

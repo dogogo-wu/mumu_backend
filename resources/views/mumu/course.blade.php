@@ -46,7 +46,7 @@
         <div class="btn_sec" data-aos="flip-down">
             <button onclick="location.href='/appointment'">立即預約</button>
         </div>
-        <div class="mytitle">
+        <div id="course_pic" class="mytitle">
             課程花絮
         </div>
         <div class="swiper_area">

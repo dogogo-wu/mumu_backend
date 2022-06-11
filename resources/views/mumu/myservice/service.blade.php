@@ -33,7 +33,10 @@
         <div class="container my_con">
             <div class="d-flex justify-content-between align-items-center mb-4">
                 <p class="h3 fw-bold mb-0">服務項目-管理</p>
-                <a href="/service/create" class="btn btn-success">新增服務項目</a>
+                <div>
+                    <a href="/#mumu_services" target="_blank" class="btn btn-outline-secondary me-4">前台頁面</a>
+                    <a href="/service/create" class="btn btn-success">新增服務項目</a>
+                </div>
             </div>
             <table id="myDataTable" class="display">
                 <thead>

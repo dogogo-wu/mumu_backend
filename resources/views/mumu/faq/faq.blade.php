@@ -21,7 +21,10 @@
         <div class="container my_con">
             <div class="d-flex justify-content-between align-items-center mb-4">
                 <p class="h3 fw-bold mb-0">FAQ-管理</p>
-                <a href="/faq/create" class="btn btn-success">新增-FAQ</a>
+                <div>
+                    <a href="/#faq" target="_blank" class="btn btn-outline-secondary me-4">前台頁面</a>
+                    <a href="/faq/create" class="btn btn-success">新增-FAQ</a>
+                </div>
             </div>
             <table id="myDataTable" class="display">
                 <thead>

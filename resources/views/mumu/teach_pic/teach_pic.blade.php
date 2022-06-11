@@ -28,7 +28,10 @@
         <div class="container my_con">
             <div class="d-flex justify-content-between align-items-center mb-4">
                 <p class="h3 fw-bold mb-0">創業教學花絮-管理</p>
-                <a href="/teach_pic/create" class="btn btn-success">新增-教學花絮照片</a>
+                <div>
+                    <a href="/course#course_pic" target="_blank" class="btn btn-outline-secondary me-4">前台頁面</a>
+                    <a href="/teach_pic/create" class="btn btn-success">新增-教學花絮照片</a>
+                </div>
             </div>
             <table id="myDataTable" class="display">
                 <thead>
@@ -63,7 +66,7 @@
                                 {{-- 有加Modal --}}
                                 <button class="btn btn-outline-danger btn-sm mb-1" data-bs-toggle="modal"
                                     data-bs-target="#myModal" data-bs-tarid="{{ $mydata->id }}">刪除</button>
-                                    
+
                                 <form id="delForm{{ $mydata->id }}" action="/teach_pic/delete/{{ $mydata->id }}"
                                     method="POST">
                                     @csrf

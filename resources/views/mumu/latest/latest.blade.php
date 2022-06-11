@@ -28,7 +28,11 @@
         <div class="container my_con">
             <div class="d-flex justify-content-between align-items-center mb-4">
                 <p class="h3 fw-bold mb-0">最新消息-管理 <small>(新增的照片會在第1張)</small></p>
-                <a href="/latest/create" class="btn btn-success">新增-最新消息</a>
+                <div>
+                    <a href="/#mumu_advertisement" target="_blank" class="btn btn-outline-secondary me-4">前台頁面</a>
+                    <a href="/latest/create" class="btn btn-success">新增-最新消息</a>
+                </div>
+
             </div>
             <table id="myDataTable" class="display">
                 <thead>

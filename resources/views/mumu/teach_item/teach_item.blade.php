@@ -33,7 +33,10 @@
         <div class="container my_con">
             <div class="d-flex justify-content-between align-items-center mb-4">
                 <p class="h3 fw-bold mb-0">創業教學項目-管理</p>
-                <a href="/teach_item/create" class="btn btn-success">新增-創業教學項目</a>
+                <div>
+                    <a href="/course" target="_blank" class="btn btn-outline-secondary me-4">前台頁面</a>
+                    <a href="/teach_item/create" class="btn btn-success">新增-創業教學項目</a>
+                </div>
             </div>
             <table id="myDataTable" class="display">
                 <thead>

@@ -21,7 +21,10 @@
         <div class="container my_con">
             <div class="d-flex justify-content-between align-items-center mb-4">
                 <p class="h3 fw-bold mb-0">預約注意事項-管理 <small>(固定2筆資料)</small></p>
-                <a href="/notice/create" class="btn btn-success">新增-預約注意事項</a>
+                <div>
+                    <a href="/appointment" target="_blank" class="btn btn-outline-secondary me-4">前台頁面</a>
+                    <a href="/notice/create" class="btn btn-success">新增-預約注意事項</a>
+                </div>
             </div>
             <table id="myDataTable" class="display">
                 <thead>
