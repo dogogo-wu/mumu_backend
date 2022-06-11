@@ -17,8 +17,14 @@
 
     <style>
         table img {
-            max-height: 200px;
-            max-width: 400px;
+            max-height: 100px;
+            max-width: 250px;
+        }
+        @media (min-width: 992px) {
+            table img {
+                max-height: 200px;
+                max-width: 400px;
+            }
         }
 
     </style>
@@ -143,8 +149,15 @@
             fetch("/banner/upmove/" + myid, {
                 method: "POST",
                 body: formData
-            }).then(function(response) {
+            })
+            .then(response=>{
                 location.reload();
+                return response.json();
+            })
+            .then(data=>{
+                if(data.pos == 'upmax'){
+                    alert('已經是最上面囉！')
+                }
             })
 
         }
@@ -158,8 +171,15 @@
             fetch("/banner/downmove/" + myid, {
                 method: "POST",
                 body: formData
-            }).then(function(response) {
+            })
+            .then(response=>{
                 location.reload();
+                return response.json();
+            })
+            .then(data=>{
+                if(data.pos == 'downmax'){
+                    alert('已經是最下面囉！')
+                }
             })
 
         }

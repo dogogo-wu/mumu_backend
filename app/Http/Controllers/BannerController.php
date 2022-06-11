@@ -80,7 +80,10 @@ class BannerController extends Controller
         // 若已經是最上面，直接return
         $tarOrd = $tarObj->order;
         if ($tarOrd == 0) {
-            return;
+            $result = [
+                'pos' => 'upmax',
+            ];
+            return $result;
         }
         // 依order小到大
         $ordAry = Banner::orderBy('order')->get();
@@ -104,7 +107,10 @@ class BannerController extends Controller
         // 若已經是最下面，直接return
         $tarOrd = $tarObj->order;
         if ($tarOrd == $max_index) {
-            return;
+            $result = [
+                'pos' => 'downmax',
+            ];
+            return $result;
         }
         // 依order小到大
         $ordAry = Banner::orderBy('order')->get();

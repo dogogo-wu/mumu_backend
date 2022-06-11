@@ -134,8 +134,15 @@
             fetch("/teach_pic/upmove/" + myid, {
                 method: "POST",
                 body: formData
-            }).then(function(response) {
+            })
+            .then(response=>{
                 location.reload();
+                return response.json();
+            })
+            .then(data=>{
+                if(data.pos == 'upmax'){
+                    alert('已經是最上面囉！')
+                }
             })
 
         }
@@ -149,8 +156,15 @@
             fetch("/teach_pic/downmove/" + myid, {
                 method: "POST",
                 body: formData
-            }).then(function(response) {
+            })
+            .then(response=>{
                 location.reload();
+                return response.json();
+            })
+            .then(data=>{
+                if(data.pos == 'downmax'){
+                    alert('已經是最下面囉！')
+                }
             })
 
         }
