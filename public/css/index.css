@@ -424,11 +424,17 @@ h2 {
   height: 200px;
   margin: 10px;
   background-color: white;
-  border-radius: 15px;
+  border-radius: 15px 15px 0px 0px;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
 }
 
 #mumu_services .services_card .sevice_cards_container:hover {
   cursor: pointer;
+  -webkit-box-shadow: 2px 2px 4px 1px gray;
+          box-shadow: 2px 2px 4px 1px gray;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
 }
 
 @media (max-width: 576px) {
@@ -505,6 +511,11 @@ h2 {
 
 #mumu_services #myServiceModal .modal-dialog {
   max-width: 576px;
+}
+
+#mumu_services #myServiceModal .modal-header button {
+  padding: .5rem .5rem;
+  margin: -.5rem -.5rem -.5rem auto;
 }
 
 #mumu_services #myServiceModal .modal-body {

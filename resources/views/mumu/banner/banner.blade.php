@@ -87,11 +87,11 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                     </div>
                     <div class="modal-body">
-                        是否要刪除資料？
+                        是否要刪除一筆資料？
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
-                        <button type="button" id="modal_del" class="btn btn-danger">刪除</button>
+                        <button type="button" class="btn btn-secondary px-3 me-3" data-bs-dismiss="modal">取消</button>
+                        <button type="button" id="modal_del" class="btn btn-danger px-3">刪除</button>
                     </div>
                 </div>
             </div>
@@ -121,6 +121,7 @@
             "ordering": false,
             "searching": false,
             "lengthChange": false,
+            paging: false,
         });
 
         // ------------ my Func ------------

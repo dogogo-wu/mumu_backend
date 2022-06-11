@@ -26,7 +26,7 @@
     <section id="back_area">
         <div class="container my_con">
             <div class="d-flex justify-content-between align-items-center mb-4">
-                <p class="h3 fw-bold mb-0">衛教資訊-管理 <small>(3筆資料)</small></p>
+                <p class="h3 fw-bold mb-0">衛教資訊-管理 <small>(固定3筆資料)</small></p>
                 <a href="/info/create" class="btn btn-success">新增-衛教資訊</a>
             </div>
             <table id="myDataTable" class="display">
@@ -61,13 +61,13 @@
                                 <ul>{!! $mydata->care !!}</ul>
                             </td>
                             <td>
-                                <a href="/info/edit/{{ $mydata->id }}"
-                                    class="btn btn-outline-success btn-sm mb-1">編輯</a>
+                                <a href="/info/edit/{{ $mydata->id }}" class="btn btn-outline-success btn-sm mb-1">編輯</a>
                                 <br>
 
-                                {{-- 未加Modal --}}
-                                <button class="btn btn-outline-danger btn-sm mb-1"
-                                    onclick="del_obj({{ $mydata->id }})">刪除</button>
+                                {{-- 有加Modal --}}
+                                <button class="btn btn-outline-danger btn-sm mb-1" data-bs-toggle="modal"
+                                    data-bs-target="#myModal" data-bs-tarid="{{ $mydata->id }}">刪除</button>
+
                                 <form id="delForm{{ $mydata->id }}" action="/info/delete/{{ $mydata->id }}"
                                     method="POST">
                                     @csrf
@@ -77,6 +77,24 @@
                     @endforeach
                 </tbody>
             </table>
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="myModalLabel">訊息</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        是否要刪除一筆資料？
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary px-3 me-3" data-bs-dismiss="modal">取消</button>
+                        <button type="button" id="modal_del" class="btn btn-danger px-3">刪除</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 @endsection
@@ -103,11 +121,21 @@
             "ordering": false,
             "searching": false,
             "lengthChange": false,
+            paging: false,
         });
 
         // ------------ my Func ------------
-        function del_obj($id) {
-            document.querySelector('#delForm' + $id).submit();
-        }
+
+        const myModal = document.getElementById('myModal');
+        myModal.addEventListener('show.bs.modal', event => {
+            // Button that triggered the modal
+            const button = event.relatedTarget;
+
+            const mytar = button.getAttribute('data-bs-tarid');
+            const mydel_btn = document.getElementById('modal_del');
+            mydel_btn.onclick = function() {
+                document.querySelector('#delForm' + mytar).submit();
+            }
+        })
     </script>
 @endsection

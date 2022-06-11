@@ -31,7 +31,7 @@
                         value="{{ $myedit->subtitle }}" required>
                 </div>
                 <div class="mb-3">
-                    <label for="content" class="form-label">內文</label>
+                    <label for="content" class="form-label">內文<small>(可換行)</small></label>
                     <textarea name="content" class="form-control" id="content" cols="20"
                             rows="10" required>{{ rtrim(ltrim(str_replace('</p><p>', "\r\n", $myedit->content), '<p>'), '</p>') }}</textarea>
                 </div>
