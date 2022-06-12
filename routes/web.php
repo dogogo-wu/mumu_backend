@@ -137,7 +137,7 @@ Route::prefix('/photo')->middleware(['auth'])->group(function(){
     Route::post('/frontmove/{target}', [GalleryController::class, 'frontmove']);
     Route::post('/backmove/{target}', [GalleryController::class, 'backmove']);
 
-    // 尚未使用
+    // 編輯類別用
     Route::post('/mystore/{target}', [GalleryController::class, 'mystore']);
 });
 

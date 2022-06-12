@@ -23,10 +23,12 @@
             border-radius: 6px;
             margin-top: 6px;
         }
-        .border_top{
+
+        .border_top {
             border-top: 5px solid #6A6A6A !important;
         }
-        .myfunc_area{
+
+        .myfunc_area {
             width: 150px
         }
     </style>
@@ -46,7 +48,7 @@
                 <thead>
                     <tr>
                         <th>類別</th>
-                        <th>小標題</th>
+                        <th>次類別</th>
                         <th>順序調整</th>
                         <th>順序</th>
                         <th>圖片預覽</th>
@@ -60,9 +62,9 @@
                     @endphp
                     @foreach ($dataAry as $mydata)
                         @php
-                            if($cate != $mydata->category){
+                            if ($cate != $mydata->category) {
                                 $flag = 1;
-                            }else{
+                            } else {
                                 $flag = 0;
                             }
                             $cate = $mydata->category;
@@ -105,8 +107,13 @@
                             <td @if ($flag == 1) class="border_top" @endif>
 
                                 <div class="d-flex flex-column myfunc_area">
-                                    <a href="/photo/edit/{{ $mydata->id }}"
-                                        class="btn btn-outline-success btn-sm mb-2">編輯-類別、次類別</a>
+                                    {{-- <button onclick="passValue({{ $mydata }})"
+                                        class="btn btn-outline-success btn-sm mb-2" type="button">編輯-類別、次類別</button> --}}
+
+                                    <button class="btn btn-outline-success btn-sm mb-2" data-bs-toggle="modal"
+                                        data-bs-target="#editModal" data-bs-tarid="{{ $mydata->id }}"
+                                        data-bs-tarcate="{{ $mydata->category }}"
+                                        data-bs-tarsub="{{ $mydata->subtitle }}">編輯-類別、次類別</button>
 
                                     <a href="/photo/edit/{{ $mydata->id }}"
                                         class="btn btn-outline-success btn-sm mb-2">編輯-圖片</a>
@@ -126,7 +133,7 @@
                 </tbody>
             </table>
         </div>
-        <!-- Modal -->
+        <!-- Del Modal -->
         <div class="modal fade" id="myModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -140,6 +147,47 @@
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary px-3 me-3" data-bs-dismiss="modal">取消</button>
                         <button type="button" id="modal_del" class="btn btn-danger px-3">刪除</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Edit Modal -->
+        <div class="modal fade" id="editModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="editModalLabel">編輯-類別、次類別</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="edit_form" method="post">
+                            @csrf
+                            <div class="mb-3">
+                                <p class="fw-bold">類別</p>
+
+                                <div class="sel_area">
+                                    <input type="radio" name="photo_category" id="microblade" class="" value=1
+                                        required>
+                                    <label for="microblade" class="form-label me-3">紋繡</label>
+
+                                    <input type="radio" name="photo_category" id="skin" class="" value=2>
+                                    <label for="skin" class="form-label me-3">皮膚管理</label>
+
+                                    <input type="radio" name="photo_category" id="eyelash" class="" value=3>
+                                    <label for="eyelash" class="form-label me-3">美睫</label>
+                                </div>
+
+                            </div>
+                            <div class="mb-3 subtit_area">
+                                <label for="photo_subtitle" class="form-label fw-bold">次類別 <small>(非必填)</small></label>
+                                <input type="text" name="photo_subtitle" id="photo_subtitle" class="form-control"
+                                    value="">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary px-4 me-3" data-bs-dismiss="modal">取消</button>
+                        <button id="save_btn" type="button" class="btn btn-primary px-4">送出</button>
                     </div>
                 </div>
             </div>
@@ -173,6 +221,48 @@
         });
 
         // ------------ my Func ------------
+
+        function cateName(cate) {
+            if (cate == 1) {
+                return '紋繡';
+            } else if (cate == 2) {
+                return '皮膚管理';
+            } else if (cate == 3) {
+                return '美睫';
+            }
+        }
+
+        const editModal = document.getElementById('editModal');
+        editModal.addEventListener('show.bs.modal', event => {
+            // Button that triggered the modal
+            const button = event.relatedTarget;
+
+            const edit_tar = button.getAttribute('data-bs-tarid');
+            const edit_cate = button.getAttribute('data-bs-tarcate');
+            const edit_sub = button.getAttribute('data-bs-tarsub');
+            const mysave_btn = document.getElementById('save_btn');
+
+            const sel_input = document.querySelector(`.sel_area input:nth-child(${2*(edit_cate-1)+1})`);
+            const subtit_area = document.querySelector('.subtit_area input');
+
+            sel_input.checked = true;
+            subtit_area.value = edit_sub;
+
+            console.log('hello');
+
+            mysave_btn.onclick = function() {
+
+                let formData = new FormData(document.querySelector('#edit_form'));
+
+                fetch("/photo/mystore/" + edit_tar, {
+                        method: "POST",
+                        body: formData
+                    })
+                    .then(response => {
+                        location.reload();
+                    })
+            }
+        })
 
         function upmove(myid) {
 

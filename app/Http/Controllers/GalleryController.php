@@ -118,19 +118,27 @@ class GalleryController extends Controller
 
     public function mystore($target, Request $req) {
 
-        // dd($req->all());
-
         $targetObj = GallerySubtitle::find($target);
+
+        // 若類別變動，需調整順序
+        if ($targetObj->category != $req->photo_category) {
+            // ------ 後面的oreder往前移1 ------
+            $tarOrd = $targetObj->order;
+            $ordAry = GallerySubtitle::where('category', $targetObj->category)->orderBy('order')->get();
+
+            for ($i = $tarOrd + 1; $i < GallerySubtitle::where('category', $targetObj->category)->count(); $i++) {
+                $ordAry[$i]->order -= 1;
+                $ordAry[$i]->save();
+            }
+            // ------ End ------
+            $targetObj->order = GallerySubtitle::where('category', $req->photo_category)->count();
+        }
+
         $targetObj->subtitle = $req->photo_subtitle;
         $targetObj->category = $req->photo_category;
         $targetObj->save();
 
-        // JSON格式，丟給js更新畫面
-        $result = [
-            'new_subtit' => $req->photo_subtitle,
-            'new_cate' => $req->photo_category,
-        ];
-        return $result;
+        return;
     }
 
     public function upmove($target) {
