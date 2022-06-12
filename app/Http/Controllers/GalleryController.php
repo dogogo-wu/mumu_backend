@@ -118,17 +118,19 @@ class GalleryController extends Controller
 
     public function mystore($target, Request $req) {
 
-        // // dd($req->all());
+        // dd($req->all());
 
-        // $targetObj = Product::find($target);
-        // $targetObj->name = $req->mycontent;
-        // $targetObj->save();
+        $targetObj = GallerySubtitle::find($target);
+        $targetObj->subtitle = $req->photo_subtitle;
+        $targetObj->category = $req->photo_category;
+        $targetObj->save();
 
-        // // Response只能接JSON的格式
-        // $result = [
-        //     'new_name' => $req->mycontent,
-        // ];
-        // return $result;
+        // JSON格式，丟給js更新畫面
+        $result = [
+            'new_subtit' => $req->photo_subtitle,
+            'new_cate' => $req->photo_category,
+        ];
+        return $result;
     }
 
     public function upmove($target) {
@@ -138,7 +140,10 @@ class GalleryController extends Controller
         // 若已經是最上面，直接return
         $tarOrd = $tarObj->order;
         if ($tarOrd == 0) {
-            return;
+            $result = [
+                'pos' => 'upmax',
+            ];
+            return $result;
         }
         // 依order小到大
         $ordAry = GallerySubtitle::where('category', $tarObj->category)->orderBy('order')->get();
@@ -162,7 +167,10 @@ class GalleryController extends Controller
         // 若已經是最下面，直接return
         $tarOrd = $tarObj->order;
         if ($tarOrd == $max_index) {
-            return;
+            $result = [
+                'pos' => 'downmax',
+            ];
+            return $result;
         }
         // 依order小到大
         $ordAry = GallerySubtitle::where('category', $tarObj->category)->orderBy('order')->get();
@@ -186,7 +194,10 @@ class GalleryController extends Controller
         // 若已經是最上面，直接return
         $tarOrd = $tarObj->order;
         if ($tarOrd == 0) {
-            return;
+            $result = [
+                'pos' => 'frontmax',
+            ];
+            return $result;
         }
         // 依order小到大
         $ordAry = GalleryPhoto::where('subtitle_id', $subtit_id)->orderBy('order')->get();
@@ -211,7 +222,10 @@ class GalleryController extends Controller
         // 若已經是最下面，直接return
         $tarOrd = $tarObj->order;
         if ($tarOrd == $max_index) {
-            return;
+            $result = [
+                'pos' => 'backmax',
+            ];
+            return $result;
         }
         // 依order小到大
         $ordAry = GalleryPhoto::where('subtitle_id', $subtit_id)->orderBy('order')->get();
@@ -227,4 +241,5 @@ class GalleryController extends Controller
         return redirect('/photo/edit/' .$subtit_id);
 
     }
+
 }

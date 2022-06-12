@@ -33,6 +33,11 @@ Route::get('/admin', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
+// Route::get('/dashboard', function () {
+//     // dd(session()->all());
+//     return view('dashboard');
+// })->middleware(['auth'])->name('dashboard');
+
 
 // -------------- 前台路由 -------------- //
 Route::get('/', [MainController::class, 'index']);

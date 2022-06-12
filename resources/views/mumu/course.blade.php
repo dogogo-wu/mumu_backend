@@ -120,12 +120,12 @@
             speed: 1200,
             loop: true,
             pagination: {
-                el: ".swiper-pagination",
+                el: ".swiper_area .swiper-pagination",
                 clickable: true,
             },
             navigation: {
-                nextEl: ".swiper-button-next",
-                prevEl: ".swiper-button-prev",
+                nextEl: ".swiper_area .swiper-button-next",
+                prevEl: ".swiper_area .swiper-button-prev",
             },
             autoplay: {
                 delay: 3000,
@@ -153,12 +153,12 @@
             speed: 1200,
             loop: true,
             pagination: {
-                el: ".swiper-pagination",
+                el: ".modal_swiper_area .swiper-pagination",
                 clickable: true,
             },
             navigation: {
-                nextEl: ".swiper-button-next",
-                prevEl: ".swiper-button-prev",
+                nextEl: ".modal_swiper_area .swiper-button-next",
+                prevEl: ".modal_swiper_area .swiper-button-prev",
             },
             keyboard: true,
         });

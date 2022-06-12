@@ -31,7 +31,7 @@
             <form class="d-flex flex-column" action="/photo/store" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="mb-3">
-                    <p class="fw-bold">種類</p>
+                    <p class="fw-bold">類別</p>
 
                     <input type="radio" name="photo_category" id="microblade" class="" value=1 required>
                     <label for="microblade" class="form-label me-3">紋繡</label>
@@ -43,7 +43,7 @@
                     <label for="eyelash" class="form-label me-3">美睫</label>
                 </div>
                 <div class="mb-3">
-                    <label for="photo_subtitle" class="form-label fw-bold">小標題 <small>(非必填)</small></label>
+                    <label for="photo_subtitle" class="form-label fw-bold">次類別 <small>(非必填)</small></label>
                     <input type="text" name="photo_subtitle" id="photo_subtitle" class="form-control">
                 </div>
                 <div class="mb-3">

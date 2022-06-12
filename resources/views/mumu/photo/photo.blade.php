@@ -16,16 +16,18 @@
     <link rel="stylesheet" href="{{ asset('css/back.css') }}">
 
     <style>
-        /* table img {
-                    max-height: 200px;
-                    max-width: 400px;
-                } */
         .gallery_img img {
             width: 100px;
             height: 100px;
             object-fit: cover;
             border-radius: 6px;
             margin-top: 6px;
+        }
+        .border_top{
+            border-top: 5px solid #6A6A6A !important;
+        }
+        .myfunc_area{
+            width: 150px
         }
     </style>
 @endsection
@@ -43,8 +45,8 @@
             <table id="myDataTable" class="display">
                 <thead>
                     <tr>
-                        <th>標題</th>
-                        <th>副標題</th>
+                        <th>類別</th>
+                        <th>小標題</th>
                         <th>順序調整</th>
                         <th>順序</th>
                         <th>圖片預覽</th>
@@ -52,41 +54,67 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @php
+                        $cate = 1;
+                        $flag = 0;
+                    @endphp
                     @foreach ($dataAry as $mydata)
+                        @php
+                            if($cate != $mydata->category){
+                                $flag = 1;
+                            }else{
+                                $flag = 0;
+                            }
+                            $cate = $mydata->category;
+                        @endphp
+
                         <tr>
-                            <td>
-                                @if ($mydata->category == 1)
+                            <td @if ($flag == 1) class="border_top" @endif>
+                                @if ($cate == 1)
                                     紋繡
-                                @elseif ($mydata->category == 2)
+                                @elseif ($cate == 2)
                                     皮膚管理
-                                @elseif ($mydata->category == 3)
+                                @elseif ($cate == 3)
                                     美睫
                                 @endif
                             </td>
-                            <td>{{ $mydata->subtitle }}</td>
 
-                            <td>
+                            <td @if ($flag == 1) class="border_top" @endif>
+                                {{ $mydata->subtitle }}
+                            </td>
+
+                            <td @if ($flag == 1) class="border_top" @endif>
                                 <button onclick="upmove({{ $mydata->id }})"
                                     class="btn btn-outline-primary btn-sm me-2 mb-2 px-4" type="button">上移</button>
                                 <br>
                                 <button onclick="downmove({{ $mydata->id }})"
                                     class="btn btn-outline-primary btn-sm me-2 mb-2 px-4" type="button">下移</button>
                             </td>
-                            <td>{{ $mydata->category }} - {{ $mydata->order + 1 }}</td>
-                            <td>
+
+                            <td @if ($flag == 1) class="border_top" @endif>
+                                {{ $mydata->category }} - {{ $mydata->order + 1 }}
+                            </td>
+
+                            <td @if ($flag == 1) class="border_top" @endif>
                                 @foreach ($mydata->imgAry as $myimg)
                                     <div class="gallery_img">
                                         <img src="{{ asset($myimg->img) }}" alt="">
                                     </div>
                                 @endforeach
                             </td>
-                            <td>
-                                <a href="/photo/edit/{{ $mydata->id }}"
-                                    class="btn btn-outline-success btn-sm me-3 mb-2">編輯</a>
+                            <td @if ($flag == 1) class="border_top" @endif>
 
-                                {{-- 有加Modal --}}
-                                <button class="btn btn-outline-danger btn-sm mb-1" data-bs-toggle="modal"
-                                    data-bs-target="#myModal" data-bs-tarid="{{ $mydata->id }}">刪除</button>
+                                <div class="d-flex flex-column myfunc_area">
+                                    <a href="/photo/edit/{{ $mydata->id }}"
+                                        class="btn btn-outline-success btn-sm mb-2">編輯-類別、次類別</a>
+
+                                    <a href="/photo/edit/{{ $mydata->id }}"
+                                        class="btn btn-outline-success btn-sm mb-2">編輯-圖片</a>
+
+                                    {{-- 有加Modal --}}
+                                    <button class="btn btn-outline-danger btn-sm mb-2" data-bs-toggle="modal"
+                                        data-bs-target="#myModal" data-bs-tarid="{{ $mydata->id }}">刪除</button>
+                                </div>
 
                                 <form id="delForm{{ $mydata->id }}" action="/photo/delete/{{ $mydata->id }}"
                                     method="POST">
@@ -153,11 +181,18 @@
             formData.append('_token', '{{ csrf_token() }}');
 
             fetch("/photo/upmove/" + myid, {
-                method: "POST",
-                body: formData
-            }).then(function(response) {
-                location.reload();
-            })
+                    method: "POST",
+                    body: formData
+                })
+                .then(response => {
+                    location.reload();
+                    return response.json();
+                })
+                .then(data => {
+                    if (data.pos == 'upmax') {
+                        alert('已經是該類別最上面囉！')
+                    }
+                })
         }
 
         function downmove(myid) {
@@ -167,11 +202,18 @@
             formData.append('_token', '{{ csrf_token() }}');
 
             fetch("/photo/downmove/" + myid, {
-                method: "POST",
-                body: formData
-            }).then(function(response) {
-                location.reload();
-            })
+                    method: "POST",
+                    body: formData
+                })
+                .then(response => {
+                    location.reload();
+                    return response.json();
+                })
+                .then(data => {
+                    if (data.pos == 'downmax') {
+                        alert('已經是該類別最下面囉！')
+                    }
+                })
         }
 
         const myModal = document.getElementById('myModal');

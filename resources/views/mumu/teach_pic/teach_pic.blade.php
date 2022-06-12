@@ -17,8 +17,10 @@
 
     <style>
         table img {
-            max-height: 200px;
-            max-width: 400px;
+            height: 180px;
+            width: 130px;
+            object-fit: cover;
+            object-position: center;
         }
     </style>
 @endsection

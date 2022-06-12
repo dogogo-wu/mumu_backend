@@ -33,7 +33,7 @@
                 @csrf
 
                 <div class="mb-3">
-                    <p class="fw-bold">種類</p>
+                    <p class="fw-bold">類別</p>
 
                     <input type="radio" name="photo_category" id="microblade" class="" value=1 required
                         @if ($myedit->category == 1) checked @endif>
@@ -48,7 +48,7 @@
                     <label for="eyelash" class="form-label me-3">美睫</label>
                 </div>
                 <div class="mb-3">
-                    <label for="photo_subtitle" class="form-label fw-bold">副標題</label>
+                    <label for="photo_subtitle" class="form-label fw-bold">次類別 <small>(非必填)</small></label>
                     <input type="text" name="photo_subtitle" id="photo_subtitle" class="form-control"
                         value="{{ $myedit->subtitle }}">
                 </div>
@@ -129,8 +129,15 @@
             fetch("/photo/frontmove/" + myid, {
                 method: "POST",
                 body: formData
-            }).then(function(response) {
+            })
+            .then(response=>{
                 location.reload();
+                return response.json();
+            })
+            .then(data=>{
+                if(data.pos == 'frontmax'){
+                    alert('已經是最前面囉！')
+                }
             })
 
         }
@@ -144,8 +151,15 @@
             fetch("/photo/backmove/" + myid, {
                 method: "POST",
                 body: formData
-            }).then(function(response) {
+            })
+            .then(response=>{
                 location.reload();
+                return response.json();
+            })
+            .then(data=>{
+                if(data.pos == 'backmax'){
+                    alert('已經是最後面囉！')
+                }
             })
 
         }

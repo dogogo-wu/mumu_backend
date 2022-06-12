@@ -26,6 +26,6 @@ class GallerySubtitle extends Model
     protected $fillable = ['created_at', 'updated_at', 'subtitle', 'order', 'category'];
 
     public function imgAry(){
-        return $this->hasMany(GalleryPhoto::class, 'subtitle_id', 'id');
+        return $this->hasMany(GalleryPhoto::class, 'subtitle_id', 'id')->orderBy('order');
     }
 }
