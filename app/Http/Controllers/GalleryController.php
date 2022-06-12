@@ -77,11 +77,11 @@ class GalleryController extends Controller
     }
 
     public function update($target, Request $req) {
-        $targetObj = GallerySubtitle::find($target);
+        // $targetObj = GallerySubtitle::find($target);
 
-        $targetObj->subtitle = $req->photo_subtitle;
-        $targetObj->category = $req->photo_category;
-        $targetObj->save();
+        // $targetObj->subtitle = $req->photo_subtitle;
+        // $targetObj->category = $req->photo_category;
+        // $targetObj->save();
 
         if($req->hasfile('second_img')){
             foreach ($req->second_img as $key => $value) {
@@ -89,6 +89,7 @@ class GalleryController extends Controller
                 GalleryPhoto::create([
                     'img' => $path,
                     'subtitle_id' => $target,
+                    'order' => GalleryPhoto::where('subtitle_id', $target)->count(),
                 ]);
             }
         }

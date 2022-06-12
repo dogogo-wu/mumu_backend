@@ -35,7 +35,18 @@
                 <div class="mb-3">
                     <p class="fw-bold">類別</p>
 
-                    <input type="radio" name="photo_category" id="microblade" class="" value=1 required
+                    <p>
+                        <input type="radio" checked>
+                        @if ($myedit->category == 1)
+                            紋繡
+                        @elseif ($myedit->category == 2)
+                            皮膚管理
+                        @elseif ($myedit->category == 3)
+                            美睫
+                        @endif
+                    </p>
+
+                    {{-- <input type="radio" name="photo_category" id="microblade" class="" value=1 required
                         @if ($myedit->category == 1) checked @endif>
                     <label for="microblade" class="form-label me-3">紋繡</label>
 
@@ -45,12 +56,12 @@
 
                     <input type="radio" name="photo_category" id="eyelash" class="" value=3
                         @if ($myedit->category == 3) checked @endif>
-                    <label for="eyelash" class="form-label me-3">美睫</label>
+                    <label for="eyelash" class="form-label me-3">美睫</label> --}}
                 </div>
                 <div class="mb-3">
                     <label for="photo_subtitle" class="form-label fw-bold">次類別 <small>(非必填)</small></label>
                     <input type="text" name="photo_subtitle" id="photo_subtitle" class="form-control"
-                        value="{{ $myedit->subtitle }}">
+                        value="{{ $myedit->subtitle }}" disabled>
                 </div>
                 <p class="mb-0 fw-bold">現在圖片</p>
                 <div class="d-flex flex-wrap">
@@ -75,8 +86,8 @@
 
                 <div class="d-flex justify-content-center align-items-center mt-4">
                     <div class="d-flex justify-content-center align-items-center mt-4">
-                        <a class="btn btn-secondary px-4" href="/photo">取消</a>
-                        <input type="submit" value="送出" class="btn btn-primary px-4 mx-2">
+                        <a class="btn btn-secondary px-4" href="/photo">返回</a>
+                        <input type="submit" value="送出上傳的圖片" class="btn btn-primary px-4 mx-2">
                     </div>
                 </div>
             </form>
@@ -127,18 +138,18 @@
             formData.append('_token', '{{ csrf_token() }}');
 
             fetch("/photo/frontmove/" + myid, {
-                method: "POST",
-                body: formData
-            })
-            .then(response=>{
-                location.reload();
-                return response.json();
-            })
-            .then(data=>{
-                if(data.pos == 'frontmax'){
-                    alert('已經是最前面囉！')
-                }
-            })
+                    method: "POST",
+                    body: formData
+                })
+                .then(response => {
+                    location.reload();
+                    return response.json();
+                })
+                .then(data => {
+                    if (data.pos == 'frontmax') {
+                        alert('已經是最前面囉！')
+                    }
+                })
 
         }
 
@@ -149,19 +160,18 @@
             formData.append('_token', '{{ csrf_token() }}');
 
             fetch("/photo/backmove/" + myid, {
-                method: "POST",
-                body: formData
-            })
-            .then(response=>{
-                location.reload();
-                return response.json();
-            })
-            .then(data=>{
-                if(data.pos == 'backmax'){
-                    alert('已經是最後面囉！')
-                }
-            })
-
+                    method: "POST",
+                    body: formData
+                })
+                .then(response => {
+                    location.reload();
+                    return response.json();
+                })
+                .then(data => {
+                    if (data.pos == 'backmax') {
+                        alert('已經是最後面囉！')
+                    }
+                })
         }
     </script>
 @endsection
