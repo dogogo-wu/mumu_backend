@@ -1,7 +1,7 @@
 @extends('mumu.template')
 
 @section('pageTittle')
-    暮沐美學-創業教學
+    美容丙級｜美容乙級｜美睫課程｜學科術科教學－暮沐美學
 @endsection
 
 @section('cssCdn')
@@ -166,10 +166,12 @@
 
         // Modal script
         const myModal = document.getElementById('myModal');
+
         myModal.addEventListener('show.bs.modal', event => {
             const button = event.relatedTarget;
             const pic_index = button.getAttribute('data-bs-pic');
             modal_swiper.slideTo(parseInt(pic_index) + 1);
+
         })
     </script>
 @endsection

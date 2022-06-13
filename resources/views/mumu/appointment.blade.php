@@ -1,7 +1,7 @@
 @extends('mumu.template')
 
 @section('pageTittle')
-    暮沐美學-預約諮詢
+    預約諮詢｜聯絡我們｜台中霧眉｜紋唇｜美睫｜護膚｜美容丙級－暮沐美學
 @endsection
 
 @section('cssCdn')
