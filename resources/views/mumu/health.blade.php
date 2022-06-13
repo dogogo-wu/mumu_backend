@@ -1,7 +1,7 @@
 @extends('mumu.template')
 
 @section('pageTittle')
-    衛教資訊｜台中霧眉｜紋唇｜美睫－暮沐美學
+    衛教資訊｜台中霧眉｜紋唇｜美睫｜護膚－暮沐美學
 @endsection
 
 @section('cssCdn')
