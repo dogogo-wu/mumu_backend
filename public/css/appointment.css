@@ -35,7 +35,7 @@ ul {
 }
 
 #appointment #book .appointment_notice {
-  background-color: #E7E7E7;
+  background-color: #f5eeee;
   padding: 30px;
   border-radius: 10px;
   width: 45%;
@@ -108,7 +108,7 @@ ul {
 }
 
 #appointment .appointment_info .appointment_notice2 {
-  background-color: #E7E7E7;
+  background-color: #f5eeee;
   padding: 30px;
   border-radius: 10px;
 }
