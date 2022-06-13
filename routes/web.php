@@ -39,6 +39,11 @@ Route::get('/admin', function () {
 // })->middleware(['auth'])->name('dashboard');
 
 
+// -------------- 變更密碼 -------------- //
+Route::get('/change_pwd',[MainController::class, 'changePassword'])->middleware(['auth'])->name('change_pwd');
+Route::post('/change_pwd',[MainController::class, 'updatePassword'])->middleware(['auth'])->name('update_pwd');
+
+
 // -------------- 前台路由 -------------- //
 Route::get('/', [MainController::class, 'index']);
 Route::get('/course', [MainController::class, 'course']);

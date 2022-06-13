@@ -82,8 +82,8 @@
                                         <div class="swiper-slide"><img src="{{ asset($pic->img) }}" /></div>
                                     @endforeach
                                 </div>
-                                <div class="myswiper-btn swiper-button-next"></div>
-                                <div class="myswiper-btn swiper-button-prev"></div>
+                                {{-- <div class="myswiper-btn swiper-button-next"></div>
+                                <div class="myswiper-btn swiper-button-prev"></div> --}}
                                 <div class="swiper-pagination"></div>
                             </div>
                         </div>
