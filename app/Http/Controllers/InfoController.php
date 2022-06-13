@@ -30,8 +30,12 @@ class InfoController extends Controller
         $new_pre = InfoController::textTransLi($req->pre);
         $new_care = InfoController::textTransLi($req->care);
 
+        // 轉換為文字標題
+        $new_tit = InfoController::cateToTitle($req->category);
+
         Info::create([
             'category' => $req->category,
+            'title' => $new_tit,
             'describe' => $new_describe,
             'pre' => $new_pre,
             'care' => $new_care,
@@ -65,6 +69,7 @@ class InfoController extends Controller
         $new_care = InfoController::textTransLi($req->care);
 
         $targetObj->category = $req->category;
+        $targetObj->title = InfoController::cateToTitle($req->category);
         $targetObj->describe = $new_describe;
         $targetObj->pre = $new_pre;
         $targetObj->care = $new_care;
@@ -82,5 +87,15 @@ class InfoController extends Controller
         $outxt = '<li>'. str_replace(array("\r\n","\n"),'</li><li>', $intxt) . '</li>';
 
         return $outxt;
+    }
+
+    public function cateToTitle($cate){
+        if ($cate == 1) {
+            return '紋繡';
+        }elseif ($cate == 2) {
+            return '美睫';
+        }elseif ($cate == 3) {
+            return '皮膚管理';
+        }
     }
 }

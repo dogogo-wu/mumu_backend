@@ -22,18 +22,13 @@
             <div class="divider"></div>
             <div class="mytab_area">
                 <ul class="nav nav-pills" id="myTab" role="tablist">
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link active" id="microblading-tab" data-bs-toggle="pill"
-                            data-bs-target="#tab-pane-1" type="button" role="tab">紋繡</button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="skin-tab" data-bs-toggle="pill" data-bs-target="#tab-pane-2"
-                            type="button" role="tab">皮膚管理</button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="eyelash-tab" data-bs-toggle="pill" data-bs-target="#tab-pane-3"
-                            type="button" role="tab">美睫</button>
-                    </li>
+
+                    @foreach ($healthAry as $item)
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link @if($item->category == 1) active @endif" data-bs-toggle="pill"
+                                data-bs-target="#tab-pane-{{$item->category}}" type="button" role="tab">{{$item->title}}</button>
+                        </li>
+                    @endforeach
                 </ul>
                 <div class="tab_divider"></div>
 

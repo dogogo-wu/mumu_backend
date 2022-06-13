@@ -169,7 +169,7 @@
 }
 
 #health .mytab_area .outer_tab_content .tab_content_area .left_area, #health .mytab_area .outer_tab_content .tab_content_area .right_area {
-  background-color: #E7E7E7;
+  border: 3.6px #ecc7bf solid;
   border-radius: 20px;
   margin: 10px;
   padding: 10px;
@@ -180,20 +180,7 @@
 
 #health .mytab_area .outer_tab_content .tab_content_area .left_area .my_subtitle, #health .mytab_area .outer_tab_content .tab_content_area .right_area .my_subtitle {
   font-size: 20px;
-  padding-bottom: 16px;
+  padding-top: 8px;
+  padding-bottom: 8px;
   text-align: center;
-}
-
-#health .mytab_area .outer_tab_content .tab_content_area .divider2 {
-  width: 0px;
-  margin: 10px 0px;
-  background-color: #A9A9A9;
-  border-radius: 5px;
-}
-
-@media (min-width: 768px) {
-  #health .mytab_area .outer_tab_content .tab_content_area .divider2 {
-    width: 5px;
-    margin: 20px 0px;
-  }
 }

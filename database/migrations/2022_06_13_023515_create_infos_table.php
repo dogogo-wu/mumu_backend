@@ -18,10 +18,10 @@ return new class extends Migration
             $table->timestamps();
 
             $table->integer('category')->nullable()->comment('種類');
+            $table->string('title')->nullable()->comment('標題');
             $table->string('describe')->nullable()->comment('說明');
             $table->text('pre')->nullable()->comment('術前準備');
             $table->text('care')->nullable()->comment('術後照護');
-
         });
     }
 

@@ -32,29 +32,26 @@
                         @if ($myedit->category == 1) checked @endif>
                     <label for="microblade" class="form-label me-3">紋繡</label>
 
-                    <input type="radio" name="category" id="skin" class="" value=2
+                    <input type="radio" name="category" id="eyelash" class="" value=2
                         @if ($myedit->category == 2) checked @endif>
-                    <label for="skin" class="form-label me-3">皮膚管理</label>
-
-                    <input type="radio" name="category" id="eyelash" class="" value=3
-                        @if ($myedit->category == 3) checked @endif>
                     <label for="eyelash" class="form-label me-3">美睫</label>
+
+                    <input type="radio" name="category" id="skin" class="" value=3
+                        @if ($myedit->category == 3) checked @endif>
+                    <label for="skin" class="form-label me-3">皮膚管理</label>
                 </div>
 
                 <div class="mb-3">
                     <label for="describe" class="form-label fw-bold">說明 <small>(非必填)</small></label>
-                    <textarea name="describe" class="form-control" id="describe" cols="20"
-                            rows="3">{{ rtrim(ltrim(str_replace('</p><p>', "\r\n", $myedit->describe), '<p>'), '</p>') }}</textarea>
+                    <textarea name="describe" class="form-control" id="describe" cols="20" rows="3">{{ rtrim(ltrim(str_replace('</p><p>', "\r\n", $myedit->describe), '<p>'), '</p>') }}</textarea>
                 </div>
                 <div class="mb-3">
                     <label for="pre" class="form-label fw-bold">術前準備 <small>(換行產生項目符號)</small></label>
-                    <textarea name="pre" class="form-control" id="pre" cols="20"
-                            rows="12" required>{{ rtrim(ltrim(str_replace('</li><li>', "\r\n", $myedit->pre), '<li>'), '</li>') }}</textarea>
+                    <textarea name="pre" class="form-control" id="pre" cols="20" rows="12" required>{{ rtrim(ltrim(str_replace('</li><li>', "\r\n", $myedit->pre), '<li>'), '</li>') }}</textarea>
                 </div>
                 <div class="mb-3">
                     <label for="care" class="form-label fw-bold">術後照護 <small>(換行產生項目符號)</small></label>
-                    <textarea name="care" class="form-control" id="care" cols="20"
-                            rows="12" required>{{ rtrim(ltrim(str_replace('</li><li>', "\r\n", $myedit->care), '<li>'), '</li>') }}</textarea>
+                    <textarea name="care" class="form-control" id="care" cols="20" rows="12" required>{{ rtrim(ltrim(str_replace('</li><li>', "\r\n", $myedit->care), '<li>'), '</li>') }}</textarea>
                 </div>
 
 

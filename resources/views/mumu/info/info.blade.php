@@ -46,13 +46,7 @@
                     @foreach ($dataAry as $mydata)
                         <tr>
                             <td>
-                                @if ($mydata->category == 1)
-                                    紋繡
-                                @elseif ($mydata->category == 2)
-                                    皮膚管理
-                                @elseif ($mydata->category == 3)
-                                    美睫
-                                @endif
+                                {{$mydata->title}}
                             </td>
                             <td>
                                 {!! $mydata->describe !!}
