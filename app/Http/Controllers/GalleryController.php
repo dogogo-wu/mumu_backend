@@ -24,7 +24,13 @@ class GalleryController extends Controller
     }
     public function store(Request $req){
 
+        // 轉換為文字標題
+        $new_tit = GalleryController::cateToTitle($req->photo_category);
+
+
+
         $get_sub = GallerySubtitle::create([
+            'title' => $new_tit,
             'subtitle' => $req->photo_subtitle,
             'category' => $req->photo_category,
             'order' => GallerySubtitle::where('category', $req->photo_category)->count(),
@@ -135,6 +141,10 @@ class GalleryController extends Controller
             $targetObj->order = GallerySubtitle::where('category', $req->photo_category)->count();
         }
 
+        // 轉換為文字標題
+        $new_tit = GalleryController::cateToTitle($req->photo_category);
+
+        $targetObj->title = $new_tit;
         $targetObj->subtitle = $req->photo_subtitle;
         $targetObj->category = $req->photo_category;
         $targetObj->save();
@@ -249,6 +259,16 @@ class GalleryController extends Controller
 
         return redirect('/photo/edit/' .$subtit_id);
 
+    }
+
+    public function cateToTitle($cate){
+        if ($cate == 1) {
+            return '紋繡';
+        }elseif ($cate == 2) {
+            return '美睫';
+        }elseif ($cate == 3) {
+            return '皮膚管理';
+        }
     }
 
 }

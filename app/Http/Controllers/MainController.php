@@ -49,7 +49,11 @@ class MainController extends Controller
         $galAry_2 = GallerySubtitle::where('category', 2)->orderBy('order')->get();
         $galAry_3 = GallerySubtitle::where('category', 3)->orderBy('order')->get();
 
-        return view('mumu.gallery', compact('galAry_1', 'galAry_2', 'galAry_3'));
+        $galAry_all = [$galAry_1, $galAry_2, $galAry_3];
+
+        $galAry_org = GallerySubtitle::orderBy('category')->orderBy('order')->get();
+
+        return view('mumu.gallery', compact('galAry_all', 'galAry_org'));
     }
 
     public function health() {

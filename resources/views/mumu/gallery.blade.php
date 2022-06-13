@@ -24,181 +24,73 @@
             <div class="divider"></div>
             <div class="mytab_area">
                 <ul class="nav nav-pills" id="myTab" role="tablist">
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link active" id="microblading-tab" data-bs-toggle="pill"
-                            data-bs-target="#microblading-tab-pane" type="button" role="tab">紋繡</button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="skin-tab" data-bs-toggle="pill" data-bs-target="#skin-tab-pane"
-                            type="button" role="tab">皮膚管理</button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="eyelash-tab" data-bs-toggle="pill"
-                            data-bs-target="#eyelash-tab-pane" type="button" role="tab">美睫</button>
-                    </li>
+                    @foreach ($galAry_all as $item)
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link @if ($item->first()->category == 1) active @endif" data-bs-toggle="pill"
+                                data-bs-target="#tab-pane-{{ $item->first()->category }}" type="button"
+                                role="tab">{{ $item->first()->title }}</button>
+                        </li>
+                    @endforeach
                 </ul>
                 <div class="tab_divider"></div>
 
                 <div class="tab-content outer_tab_content" id="myTabContent">
-                    <!-- 紋繡照片 -->
-                    <div class="tab-pane fade show active" id="microblading-tab-pane" role="tabpanel" tabindex="0">
-                        <div class="tab_content_area">
-                            @php
-                                $i = 0;
-                            @endphp
-                            @foreach ($galAry_1 as $gal_1)
-                                <div class="tab_subtitle">
-                                    {{ $gal_1->subtitle }}
-                                </div>
-                                <div class="tab_pic" data-aos="zoom-in" data-aos-once="true">
-                                    @foreach ($gal_1->imgAry as $img_1)
-                                        <div class="img_div">
-                                            <img src="{{ asset($img_1->img) }}" alt="" data-bs-toggle="modal"
-                                                data-bs-target="#myModal_1" data-bs-cnt="{{ $i }}">
-                                        </div>
-                                        @php
-                                            $i += 1;
-                                        @endphp
-                                    @endforeach
-                                </div>
-                            @endforeach
-                        </div>
-                    </div>
-                    <!-- 紋繡 Modal -->
-                    <div class="modal fade mymodal_all" id="myModal_1" tabindex="-1">
-                        <div class="modal-dialog modal-lg modal-dialog-centered">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h6 class="modal-title" id="myModal_1_Label">紋繡</h6>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                                </div>
-                                <div class="modal-body">
-                                    <div class="modal_swiper_area">
-                                        <div class="swiper modal_swiper">
-                                            <div class="swiper-wrapper">
-                                                @foreach ($galAry_1 as $gal_1)
-                                                    @foreach ($gal_1->imgAry as $img_1)
-                                                        <div class="swiper-slide">
-                                                            <img src="{{ asset($img_1->img) }}" />
-                                                        </div>
-                                                    @endforeach
-                                                @endforeach
+
+                    @foreach ($galAry_all as $galAry)
+                        <!-- 照片 -->
+                        <div class="tab-pane fade @if ($loop->index == 0) show active @endif" id="tab-pane-{{$loop->index + 1}}" role="tabpanel" tabindex="0">
+                            <div class="tab_content_area">
+                                @php
+                                    $i = 0;
+                                @endphp
+                                @foreach ($galAry as $item)
+                                    <div class="tab_subtitle">
+                                        {{ $item->subtitle }}
+                                    </div>
+                                    <div class="tab_pic" data-aos="zoom-in" data-aos-once="true">
+                                        @foreach ($item->imgAry as $myimg)
+                                            <div class="img_div">
+                                                <img src="{{ asset($myimg->img) }}" alt="" data-bs-toggle="modal"
+                                                    data-bs-target="#myModal_{{$loop->parent->parent->index + 1}}" data-bs-cnt="{{ $i }}">
                                             </div>
-                                            <div class="myswiper-btn swiper-button-next"></div>
-                                            <div class="myswiper-btn swiper-button-prev"></div>
-                                            <div class="swiper-pagination"></div>
+                                            @php
+                                                $i += 1;
+                                            @endphp
+                                        @endforeach
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
+                        <!-- Modal -->
+                        <div class="modal fade mymodal_all" id="myModal_{{$loop->index + 1}}" tabindex="-1">
+                            <div class="modal-dialog modal-lg modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h6 class="modal-title" id="myModalLabel">{{$galAry->first()->title}}</h6>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="modal_swiper_area">
+                                            <div class="swiper modal_swiper">
+                                                <div class="swiper-wrapper">
+                                                    @foreach ($galAry as $item)
+                                                        @foreach ($item->imgAry as $myimg)
+                                                            <div class="swiper-slide">
+                                                                <img src="{{ asset($myimg->img) }}" />
+                                                            </div>
+                                                        @endforeach
+                                                    @endforeach
+                                                </div>
+                                                <div class="myswiper-btn swiper-button-next"></div>
+                                                <div class="myswiper-btn swiper-button-prev"></div>
+                                                <div class="swiper-pagination"></div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="tab-pane fade" id="skin-tab-pane" role="tabpanel" tabindex="0">
-                        <!-- 皮膚管理照片 -->
-                        <div class="tab_content_area">
-                            @php
-                                $i = 0;
-                            @endphp
-                            @foreach ($galAry_2 as $gal_2)
-                                <div class="tab_subtitle">
-                                    {{ $gal_2->subtitle }}
-                                </div>
-                                <div class="tab_pic" data-aos="zoom-in" data-aos-once="true">
-                                    @foreach ($gal_2->imgAry as $img_2)
-                                        <div class="img_div">
-                                            <img src="{{ asset($img_2->img) }}" alt="" data-bs-toggle="modal"
-                                                data-bs-target="#myModal_2" data-bs-cnt="{{ $i }}">
-                                        </div>
-                                        @php
-                                            $i += 1;
-                                        @endphp
-                                    @endforeach
-                                </div>
-                            @endforeach
-                        </div>
-                    </div>
-                    <!-- 皮膚管理 Modal -->
-                    <div class="modal fade mymodal_all" id="myModal_2" tabindex="-1">
-                        <div class="modal-dialog modal-lg modal-dialog-centered">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h6 class="modal-title" id="myModal_2_Label">皮膚管理</h6>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                                </div>
-                                <div class="modal-body">
-                                    <div class="modal_swiper_area">
-                                        <div class="swiper modal_swiper">
-                                            <div class="swiper-wrapper">
-                                                @foreach ($galAry_2 as $gal_2)
-                                                    @foreach ($gal_2->imgAry as $img_2)
-                                                        <div class="swiper-slide">
-                                                            <img src="{{ asset($img_2->img) }}" />
-                                                        </div>
-                                                    @endforeach
-                                                @endforeach
-                                            </div>
-                                            <div class="myswiper-btn swiper-button-next"></div>
-                                            <div class="myswiper-btn swiper-button-prev"></div>
-                                            <div class="swiper-pagination"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tab-pane fade" id="eyelash-tab-pane" role="tabpanel" tabindex="0">
-                        <div class="tab_content_area">
-                            <!-- 美睫照片 -->
-                            @php
-                                $i = 0;
-                            @endphp
-                            @foreach ($galAry_3 as $gal_3)
-                                <div class="tab_subtitle">
-                                    {{ $gal_3->subtitle }}
-                                </div>
-                                <div class="tab_pic" data-aos="zoom-in" data-aos-once="true">
-                                    @foreach ($gal_3->imgAry as $img_3)
-                                        <div class="img_div">
-                                            <img src="{{ asset($img_3->img) }}" alt="" data-bs-toggle="modal"
-                                                data-bs-target="#myModal_3" data-bs-cnt="{{ $i }}">
-                                        </div>
-                                        @php
-                                            $i += 1;
-                                        @endphp
-                                    @endforeach
-                                </div>
-                            @endforeach
-                        </div>
-                    </div>
-                    <!-- 美睫 Modal -->
-                    <div class="modal fade mymodal_all" id="myModal_3" tabindex="-1">
-                        <div class="modal-dialog modal-lg modal-dialog-centered">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h6 class="modal-title" id="myModal_3_Label">美睫</h6>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                                </div>
-                                <div class="modal-body">
-                                    <div class="modal_swiper_area">
-                                        <div class="swiper modal_swiper">
-                                            <div class="swiper-wrapper">
-                                                @foreach ($galAry_3 as $gal_3)
-                                                    @foreach ($gal_3->imgAry as $img_3)
-                                                        <div class="swiper-slide">
-                                                            <img src="{{ asset($img_3->img) }}" />
-                                                        </div>
-                                                    @endforeach
-                                                @endforeach
-                                            </div>
-                                            <div class="myswiper-btn swiper-button-next"></div>
-                                            <div class="myswiper-btn swiper-button-prev"></div>
-                                            <div class="swiper-pagination"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </section>

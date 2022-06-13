@@ -72,13 +72,7 @@
 
                         <tr>
                             <td @if ($flag == 1) class="border_top" @endif>
-                                @if ($cate == 1)
-                                    紋繡
-                                @elseif ($cate == 2)
-                                    皮膚管理
-                                @elseif ($cate == 3)
-                                    美睫
-                                @endif
+                                {{ $mydata->title }}
                             </td>
 
                             <td @if ($flag == 1) class="border_top" @endif>
@@ -107,9 +101,7 @@
                             <td @if ($flag == 1) class="border_top" @endif>
 
                                 <div class="d-flex flex-column myfunc_area">
-                                    {{-- <button onclick="passValue({{ $mydata }})"
-                                        class="btn btn-outline-success btn-sm mb-2" type="button">編輯-類別、次類別</button> --}}
-
+                                    
                                     <button class="btn btn-outline-success btn-sm mb-2" data-bs-toggle="modal"
                                         data-bs-target="#editModal" data-bs-tarid="{{ $mydata->id }}"
                                         data-bs-tarcate="{{ $mydata->category }}"
@@ -170,11 +162,11 @@
                                         required>
                                     <label for="microblade" class="form-label me-3">紋繡</label>
 
-                                    <input type="radio" name="photo_category" id="skin" class="" value=2>
-                                    <label for="skin" class="form-label me-3">皮膚管理</label>
-
-                                    <input type="radio" name="photo_category" id="eyelash" class="" value=3>
+                                    <input type="radio" name="photo_category" id="eyelash" class="" value=2>
                                     <label for="eyelash" class="form-label me-3">美睫</label>
+
+                                    <input type="radio" name="photo_category" id="skin" class="" value=3>
+                                    <label for="skin" class="form-label me-3">皮膚管理</label>
                                 </div>
 
                             </div>
@@ -222,16 +214,8 @@
 
         // ------------ my Func ------------
 
-        function cateName(cate) {
-            if (cate == 1) {
-                return '紋繡';
-            } else if (cate == 2) {
-                return '皮膚管理';
-            } else if (cate == 3) {
-                return '美睫';
-            }
-        }
 
+        // 編輯用的Modal
         const editModal = document.getElementById('editModal');
         editModal.addEventListener('show.bs.modal', event => {
             // Button that triggered the modal
@@ -247,8 +231,6 @@
 
             sel_input.checked = true;
             subtit_area.value = edit_sub;
-
-            console.log('hello');
 
             mysave_btn.onclick = function() {
 

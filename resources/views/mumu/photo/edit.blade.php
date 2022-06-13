@@ -40,23 +40,11 @@
                         @if ($myedit->category == 1)
                             紋繡
                         @elseif ($myedit->category == 2)
-                            皮膚管理
-                        @elseif ($myedit->category == 3)
                             美睫
+                        @elseif ($myedit->category == 3)
+                            皮膚管理
                         @endif
                     </p>
-
-                    {{-- <input type="radio" name="photo_category" id="microblade" class="" value=1 required
-                        @if ($myedit->category == 1) checked @endif>
-                    <label for="microblade" class="form-label me-3">紋繡</label>
-
-                    <input type="radio" name="photo_category" id="skin" class="" value=2
-                        @if ($myedit->category == 2) checked @endif>
-                    <label for="skin" class="form-label me-3">皮膚管理</label>
-
-                    <input type="radio" name="photo_category" id="eyelash" class="" value=3
-                        @if ($myedit->category == 3) checked @endif>
-                    <label for="eyelash" class="form-label me-3">美睫</label> --}}
                 </div>
                 <div class="mb-3">
                     <label for="photo_subtitle" class="form-label fw-bold">次類別 <small>(非必填)</small></label>

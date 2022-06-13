@@ -36,11 +36,11 @@
                     <input type="radio" name="photo_category" id="microblade" class="" value=1 required>
                     <label for="microblade" class="form-label me-3">紋繡</label>
 
-                    <input type="radio" name="photo_category" id="skin" class="" value=2>
-                    <label for="skin" class="form-label me-3">皮膚管理</label>
-
-                    <input type="radio" name="photo_category" id="eyelash" class="" value=3>
+                    <input type="radio" name="photo_category" id="eyelash" class="" value=2>
                     <label for="eyelash" class="form-label me-3">美睫</label>
+
+                    <input type="radio" name="photo_category" id="skin" class="" value=3>
+                    <label for="skin" class="form-label me-3">皮膚管理</label>
                 </div>
                 <div class="mb-3">
                     <label for="photo_subtitle" class="form-label fw-bold">次類別 <small>(非必填)</small></label>
