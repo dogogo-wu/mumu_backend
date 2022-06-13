@@ -6,7 +6,7 @@
 @endsection
 
 @section('cssLink')
-    <link rel="stylesheet" href="{{ asset('./css/login.css')}}">
+    <link rel="stylesheet" href="{{ asset('./css/login.css') }}">
 @endsection
 
 @section('mainSec')
@@ -25,6 +25,9 @@
                     <div class="mb-5">
                         <label for="password" class="form-label">密碼</label>
                         <input type="password" class="form-control" id="password" name="password">
+                        @error('password')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
                     </div>
                     <button type="submit" class="btn btn-primary rounded-pill mx-auto py-2">登入</button>
                 </form>

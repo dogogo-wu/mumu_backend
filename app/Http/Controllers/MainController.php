@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rules;
+
 use App\Models\Banner;
 use App\Models\Latest;
 use App\Models\Service;
@@ -13,6 +17,7 @@ use App\Models\GallerySubtitle;
 use App\Models\GalleryPhoto;
 use App\Models\Info;
 use App\Models\Notice;
+use App\Models\User;
 
 class MainController extends Controller
 {
@@ -68,5 +73,34 @@ class MainController extends Controller
         $appoAry = Notice::take(2)->get();
 
         return view('mumu.appointment', compact('appoAry'));
+    }
+
+    public function changePassword(){
+
+        $header = '變更密碼';
+        $slot = '';
+        return view('mumu.pwd', compact('header', 'slot'));
+    }
+
+    public function updatePassword(Request $req){
+
+        // 驗證輸入資料
+        $req->validate([
+            'old_password' => 'required',
+            'new_password' => ['required', 'confirmed', 'min:6'],
+            // 'new_password' => ['required', 'confirmed', Rules\Password::defaults()],
+        ]);
+
+        // 確認與舊密碼相符
+        if (!Hash::check($req->old_password, auth()->user()->password)) {
+            return back()->with('error', '舊密碼不正確');
+        }
+
+        // 更新密碼
+        User::whereId(auth()->user()->id)->update([
+            'password' => Hash::make($req->new_password),
+        ]);
+
+        return back()->with('status', '密碼變更成功！');
     }
 }

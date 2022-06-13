@@ -1,7 +1,7 @@
 @extends('mumu.template')
 
 @section('pageTittle')
-    台中霧眉｜紋唇｜美睫｜護膚｜作品照－暮沐美學
+    作品照片｜台中霧眉｜紋唇｜美睫｜護膚－暮沐美學
 @endsection
 
 @section('cssCdn')
@@ -81,8 +81,8 @@
                                                         @endforeach
                                                     @endforeach
                                                 </div>
-                                                <div class="myswiper-btn swiper-button-next"></div>
-                                                <div class="myswiper-btn swiper-button-prev"></div>
+                                                {{-- <div class="myswiper-btn swiper-button-next"></div>
+                                                <div class="myswiper-btn swiper-button-prev"></div> --}}
                                                 <div class="swiper-pagination"></div>
                                             </div>
                                         </div>
