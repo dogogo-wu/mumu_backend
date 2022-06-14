@@ -38,7 +38,7 @@
         <section id="pink-top-area"></section>
         <section id="mumu_faith" class="">
             <div class="container">
-                <div id="mumu_faith_slogan" class="d-flex align-items-center justify-content-center" data-aos="zoom-out"
+                <div id="mumu_faith_slogan" class="d-flex align-items-center justify-content-center" data-aos="zoom-in"
                     data-aos-duration="1500">
                     <!-- aos -->
                     <div id="mumu_slogan_frame" class="d-flex flex-column align-items-center">
@@ -58,7 +58,7 @@
                 </div>
 
                 <div id="mumu_faith_content_and_notice" class="d-flex flex-column justify-content-around"
-                    data-aos="zoom-out" data-aos-easing="ease-in-sine" data-aos-delay="500" data-aos-duration="1000">
+                    data-aos="zoom-in" data-aos-easing="ease-in-sine" data-aos-delay="500" data-aos-duration="1000">
                     <!-- aos -->
                     <div class="mumu_faith_content p-2 d-flex justify-content-start">
                         <div class="img_box d-flex justify-content-center">
