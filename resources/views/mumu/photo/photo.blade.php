@@ -41,7 +41,7 @@
                 <p class="h3 fw-bold mb-0">作品照片-管理</p>
                 <div>
                     <a href="/gallery" target="_blank" class="btn btn-outline-secondary me-4">前台頁面</a>
-                    <a href="/photo/create" class="btn btn-success">新增-作品照片</a>
+                    <a href="/photo/create" class="btn btn-success">新增-作品照片種類</a>
                 </div>
             </div>
             <table id="myDataTable" class="display">
@@ -101,7 +101,7 @@
                             <td @if ($flag == 1) class="border_top" @endif>
 
                                 <div class="d-flex flex-column myfunc_area">
-                                    
+
                                     <button class="btn btn-outline-success btn-sm mb-2" data-bs-toggle="modal"
                                         data-bs-target="#editModal" data-bs-tarid="{{ $mydata->id }}"
                                         data-bs-tarcate="{{ $mydata->category }}"
