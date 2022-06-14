@@ -77,7 +77,7 @@
                         <a class="nav-link" target="_blank" href="https://www.instagram.com/mu_mu.studio/">
                             <img src="{{asset('./img/icon_ig.png')}}" alt="">
                         </a>
-                        <a class="nav-link" href="./appointment.html">
+                        <a class="nav-link" href="/appointment">
                             <img src="{{asset('./img/icon_line.png')}}" alt="">
                         </a>
                         <a class="nav-link" target="_blank"
