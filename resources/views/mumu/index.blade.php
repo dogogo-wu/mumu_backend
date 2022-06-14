@@ -57,8 +57,8 @@
                     </div>
                 </div>
 
-                <div id="mumu_faith_content_and_notice" class="d-flex flex-column justify-content-around"
-                    data-aos="zoom-in" data-aos-easing="ease-in-sine" data-aos-delay="500" data-aos-duration="1000">
+                <div id="mumu_faith_content_and_notice" class="d-flex flex-column justify-content-around" data-aos="zoom-in"
+                    data-aos-easing="ease-in-sine" data-aos-delay="500" data-aos-duration="1000">
                     <!-- aos -->
                     <div class="mumu_faith_content p-2 d-flex justify-content-start">
                         <div class="img_box d-flex justify-content-center">
@@ -91,57 +91,59 @@
                 </div>
             </div>
         </section>
-        <section id="pink-bottom-area"></section>
-        <section id="mumu_advertisement" class="">
-            <div class="container">
-                <!-- Swiper -->
-                <div class="services_title d-flex flex-column align-items-center">
-                    <div>最新消息</div>
-                    <div class="title_dot_line d-flex align-items-center">
-                        <div class="dot dot1"></div>
-                        <div class="dot_line"></div>
-                        <div class="dot dot2"></div>
-                    </div>
-                </div>
-                <div class="swiper ad_mySwiper">
-                    <div class="swiper-wrapper">
-                        @foreach ($newsAry as $news)
-                            <div class="swiper-slide">
-                                <img src="{{ asset($news->img) }}" alt="" data-bs-toggle="modal" data-bs-target="#myModal"
-                                    data-bs-pic="{{ $loop->index }}">
-                            </div>
-                        @endforeach
-                    </div>
-                    <div class="swiper-pagination"></div>
-                </div>
-            </div>
-            <!-- Modal News -->
-            <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="myModalLabel">
-                <div class="modal-dialog modal-lg modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h6 class="modal-title" id="myModalLabel">最新消息</h6>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        <section id="para_ad">
+            <section id="pink-bottom-area"></section>
+            <section id="mumu_advertisement" class="">
+                <div class="container">
+                    <!-- Swiper -->
+                    <div class="services_title d-flex flex-column align-items-center">
+                        <div>最新消息</div>
+                        <div class="title_dot_line d-flex align-items-center">
+                            <div class="dot dot1"></div>
+                            <div class="dot_line"></div>
+                            <div class="dot dot2"></div>
                         </div>
-                        <div class="modal-body">
-                            <div class="modal_swiper_area">
-                                <div class="swiper modal_swiper">
-                                    <div class="swiper-wrapper">
-                                        @foreach ($newsAry as $news)
-                                            <div class="swiper-slide"><img src="{{ asset($news->img) }}" /></div>
-                                        @endforeach
-                                    </div>
-                                    {{-- <div class="myswiper-btn swiper-button-next"></div>
+                    </div>
+                    <div class="swiper ad_mySwiper">
+                        <div class="swiper-wrapper">
+                            @foreach ($newsAry as $news)
+                                <div class="swiper-slide">
+                                    <img src="{{ asset($news->img) }}" alt="" data-bs-toggle="modal"
+                                        data-bs-target="#myModal" data-bs-pic="{{ $loop->index }}">
+                                </div>
+                            @endforeach
+                        </div>
+                        <div class="swiper-pagination"></div>
+                    </div>
+                </div>
+                <!-- Modal News -->
+                <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="myModalLabel">
+                    <div class="modal-dialog modal-lg modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h6 class="modal-title" id="myModalLabel">最新消息</h6>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="modal_swiper_area">
+                                    <div class="swiper modal_swiper">
+                                        <div class="swiper-wrapper">
+                                            @foreach ($newsAry as $news)
+                                                <div class="swiper-slide"><img src="{{ asset($news->img) }}" /></div>
+                                            @endforeach
+                                        </div>
+                                        {{-- <div class="myswiper-btn swiper-button-next"></div>
                                     <div class="myswiper-btn swiper-button-prev"></div> --}}
-                                    <div class="swiper-pagination"></div>
+                                        <div class="swiper-pagination"></div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </section>
+            <section id="pink-top-area"></section>
         </section>
-        <section id="pink-top-area"></section>
         <section id="mumu_services">
             <div class="service container d-flex flex-column align-items-center">
                 <div class="services_title d-flex flex-column align-items-center">
@@ -193,34 +195,35 @@
                 </div>
             </div>
         </section>
-        <section id="pink-bottom-area"></section>
-
-        <section id="faq">
-            <div class="faq">
-                <div class="title">
-                    <h2>常見問題FAQ</h2>
-                </div>
-                <div class="accordion accordion-flush" id="accordionFlushExample">
-                    @foreach ($faqAry as $faq)
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="flush-headingOne">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#flush-{{ $loop->index }}">
-                                    {{ $faq->question }}
-                                </button>
-                            </h2>
-                            <div id="flush-{{ $loop->index }}" class="accordion-collapse collapse"
-                                data-bs-parent="#accordionFlushExample">
-                                <div class="accordion-body">
-                                    {{ $faq->answer }}
+        <section id="para_faq">
+            <section id="pink-bottom-area"></section>
+            <section id="faq">
+                <div class="faq">
+                    <div class="title">
+                        <h2>常見問題FAQ</h2>
+                    </div>
+                    <div class="accordion accordion-flush" id="accordionFlushExample">
+                        @foreach ($faqAry as $faq)
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="flush-headingOne">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#flush-{{ $loop->index }}">
+                                        {{ $faq->question }}
+                                    </button>
+                                </h2>
+                                <div id="flush-{{ $loop->index }}" class="accordion-collapse collapse"
+                                    data-bs-parent="#accordionFlushExample">
+                                    <div class="accordion-body">
+                                        {{ $faq->answer }}
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    @endforeach
+                        @endforeach
+                    </div>
                 </div>
-            </div>
 
-            </div>
+                </div>
+            </section>
         </section>
         <section id="map">
             <div class="mymap">
