@@ -281,7 +281,7 @@
             loop: true,
 
             breakpoints: {
-                992: {
+                768: {
                     slidesPerView: 3,
                 }
             },

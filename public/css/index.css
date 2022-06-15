@@ -297,9 +297,15 @@ h2 {
 }
 
 #mumu_advertisement .swiper {
-  width: 80%;
+  width: 100%;
   height: 100%;
   border: none;
+}
+
+@media (min-width: 992px) {
+  #mumu_advertisement .swiper {
+    width: 80%;
+  }
 }
 
 #mumu_advertisement .swiper .swiper-slide {
@@ -697,3 +703,4 @@ h2 {
     margin: 0;
   }
 }
+/*# sourceMappingURL=index.css.map */
