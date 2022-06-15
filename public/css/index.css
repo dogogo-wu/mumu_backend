@@ -241,7 +241,7 @@ h2 {
   }
 }
 
-@media (min-width: 992px) {
+@media (min-width: 1200px) {
   #para_ad {
     background-image: url("../img/index/mumu_news_parallax_mod.jpg");
     background-attachment: fixed;
@@ -610,7 +610,7 @@ h2 {
   margin: 8px 0px;
 }
 
-@media (min-width: 992px) {
+@media (min-width: 1200px) {
   #para_faq {
     background-image: url("../img/index/mumu_faq_parallax_mod.jpg");
     background-attachment: fixed;
