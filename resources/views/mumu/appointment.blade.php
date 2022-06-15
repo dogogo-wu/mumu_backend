@@ -26,21 +26,23 @@
                     <div class="appointment_notice_title d-flex justify-content-center">
                         預約注意事項
                     </div>
-                    <div class="appointment_notice_content d-flex flex-column justify-content-center p-4">
-                        <div id="foo">
-                            <p>{{ $appoAry[0]->subtitle }}</p>
+                    @if (count($appoAry) != 0)
+                        <div class="appointment_notice_content d-flex flex-column justify-content-center p-4">
+                            <div id="foo">
+                                <p>{{ $appoAry[0]->subtitle }}</p>
 
-                            {!! $appoAry[0]->content !!}
-                        </div>
-                        <div class="d-flex justify-content-center">
-                            <button id="button"
-                                data-clipboard-text="{{ rtrim(ltrim(str_replace('</p><p>', "\r\n", $appoAry[0]->content), '<p>'), '</p>') }}">點擊複製預約資料</button>
-                        </div>
-                        <hr>
-                        <p>{{ $appoAry[1]->subtitle }}</p>
+                                {!! $appoAry[0]->content !!}
+                            </div>
+                            <div class="d-flex justify-content-center">
+                                <button id="button"
+                                    data-clipboard-text="{{ rtrim(ltrim(str_replace('</p><p>', "\r\n", $appoAry[0]->content), '<p>'), '</p>') }}">點擊複製預約資料</button>
+                            </div>
+                            <hr>
+                            <p>{{ $appoAry[1]->subtitle }}</p>
 
-                        {!! $appoAry[1]->content !!}
-                    </div>
+                            {!! $appoAry[1]->content !!}
+                        </div>
+                    @endif
                 </div>
                 <div class="divider2"></div>
                 <div class="appointment_info d-flex flex-column align-items-center" data-aos="fade-left"
@@ -70,19 +72,21 @@
                         <div class="appointment_notice_title d-flex justify-content-center">
                             預約注意事項
                         </div>
-                        <div class="appointment_notice_content d-flex flex-column justify-content-center p-4">
-                            <p>{{ $appoAry[0]->subtitle }}</p>
+                        @if (count($appoAry) != 0)
+                            <div class="appointment_notice_content d-flex flex-column justify-content-center p-4">
+                                <p>{{ $appoAry[0]->subtitle }}</p>
 
-                            {!! $appoAry[0]->content !!}
-                            <div class="d-flex justify-content-center">
-                                <button id="button"
-                                    data-clipboard-text="{{ rtrim(ltrim(str_replace('</p><p>', "\r\n", $appoAry[0]->content), '<p>'), '</p>') }}">點擊複製預約資料</button>
+                                {!! $appoAry[0]->content !!}
+                                <div class="d-flex justify-content-center">
+                                    <button id="button"
+                                        data-clipboard-text="{{ rtrim(ltrim(str_replace('</p><p>', "\r\n", $appoAry[0]->content), '<p>'), '</p>') }}">點擊複製預約資料</button>
+                                </div>
+                                <hr>
+                                <p>{{ $appoAry[1]->subtitle }}</p>
+
+                                {!! $appoAry[1]->content !!}
                             </div>
-                            <hr>
-                            <p>{{ $appoAry[1]->subtitle }}</p>
-
-                            {!! $appoAry[1]->content !!}
-                        </div>
+                        @endif
                     </div>
 
                     <div class="map_info d-flex justify-content-center">
