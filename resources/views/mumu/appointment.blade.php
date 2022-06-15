@@ -26,7 +26,7 @@
                     <div class="appointment_notice_title d-flex justify-content-center">
                         預約注意事項
                     </div>
-                    @if (count($appoAry) != 0)
+                    @if (count($appoAry) == 2)
                         <div class="appointment_notice_content d-flex flex-column justify-content-center p-4">
                             <div id="foo">
                                 <p>{{ $appoAry[0]->subtitle }}</p>
@@ -72,7 +72,7 @@
                         <div class="appointment_notice_title d-flex justify-content-center">
                             預約注意事項
                         </div>
-                        @if (count($appoAry) != 0)
+                        @if (count($appoAry) == 2)
                             <div class="appointment_notice_content d-flex flex-column justify-content-center p-4">
                                 <p>{{ $appoAry[0]->subtitle }}</p>
 

@@ -24,7 +24,7 @@
             <div class="divider"></div>
             <div class="mytab_area">
                 <ul class="nav nav-pills" id="myTab" role="tablist">
-                    @if (count($galAry_org) != 0)
+                    @if (count($galAry_org) != 0 && count($galAry_all[0]) != 0 && count($galAry_all[1]) != 0 && count($galAry_all[2]) != 0)
                         @foreach ($galAry_all as $item)
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link @if ($item->first()->category == 1) active @endif"
@@ -38,7 +38,7 @@
 
                 <div class="tab-content outer_tab_content" id="myTabContent">
 
-                    @if (count($galAry_org) != 0)
+                    @if (count($galAry_org) != 0 && count($galAry_all[0]) != 0 && count($galAry_all[1]) != 0 && count($galAry_all[2]) != 0)
                         @foreach ($galAry_all as $galAry)
                             <!-- 照片 -->
                             <div class="tab-pane fade @if ($loop->index == 0) show active @endif"

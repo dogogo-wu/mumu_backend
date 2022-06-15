@@ -38,7 +38,7 @@
     <section id="back_area">
         <div class="container my_con">
             <div class="d-flex justify-content-between align-items-center mb-4">
-                <p class="h3 fw-bold mb-0">作品照片-管理</p>
+                <p class="h3 fw-bold mb-0">作品照片-管理<small>(3個種類都要有資料)</small></p>
                 <div>
                     <a href="/gallery" target="_blank" class="btn btn-outline-secondary me-4">前台頁面</a>
                     <a href="/photo/create" class="btn btn-success">新增-作品照片種類</a>
