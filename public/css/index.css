@@ -161,6 +161,7 @@ h2 {
   #mumu_faith .container #mumu_faith_content_and_notice {
     width: 50%;
     margin-top: 0px;
+    padding-left: 30px;
   }
 }
 
@@ -188,7 +189,7 @@ h2 {
 
 @media (min-width: 992px) {
   #mumu_faith .container #mumu_faith_content_and_notice .mumu_faith_content {
-    width: 80%;
+    width: 90%;
     height: 100px;
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
@@ -384,6 +385,12 @@ h2 {
 
 #mumu_advertisement #myModal {
   background-color: rgba(0, 0, 0, 0.5);
+}
+
+@media (min-width: 768px) {
+  #mumu_advertisement #myModal .modal-dialog {
+    max-width: 768px;
+  }
 }
 
 #mumu_services {

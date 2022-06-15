@@ -373,3 +373,9 @@
 #course #myModal {
   background-color: rgba(0, 0, 0, 0.5);
 }
+
+@media (min-width: 768px) {
+  #course #myModal .modal-dialog {
+    max-width: 768px;
+  }
+}

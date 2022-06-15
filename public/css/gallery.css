@@ -242,3 +242,9 @@
 #gallery .mymodal_all {
   background-color: rgba(0, 0, 0, 0.5);
 }
+
+@media (min-width: 768px) {
+  #gallery .mymodal_all .modal-dialog {
+    max-width: 768px;
+  }
+}
