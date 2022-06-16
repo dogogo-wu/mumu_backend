@@ -25,11 +25,13 @@ h2 {
   height: 10vh;
   background-position: center;
   background-size: cover;
+  position: relative;
+  top: -5px;
+  left: 0;
 }
 
 #mumu_faith {
   margin-top: -5px;
-  margin-bottom: -5px;
   background-color: #EADCD9;
   color: #6A6A6A;
 }
@@ -397,7 +399,6 @@ h2 {
 
 #mumu_services {
   margin-top: -5px;
-  margin-bottom: -5px;
   background-color: #EADCD9;
   color: #6A6A6A;
   width: 100%;
