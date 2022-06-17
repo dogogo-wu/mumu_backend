@@ -5,7 +5,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"  content="台中市北區暮沐美學工作室，提供霧眉、紋唇、美瞳線、美睫、睫毛嫁接、臉部保養、韓式皮膚管理等服務！更有美容乙丙級輔導考照、美容創業等課程！暮沐美學秉持品質｜專業｜衛生｜技術，為您打造無瑕的偽妝感。" />
+    
+    <meta name="description"  content="台中市北區暮沐美學工作室，提供霧眉、紋唇、
+    美瞳線、美睫、睫毛嫁接、臉部保養、韓式皮膚管理等服務！更有美容乙丙級輔導考照、美容創業等課程！
+    暮沐美學秉持品質｜專業｜衛生｜技術，為您打造無瑕的偽妝感。" />
+
     <link rel="shortcut icon" href="{{asset('./img/mumu_fav.ico')}}" />
     <link rel="bookmark" href="{{asset('./img/mumu_fav.ico')}}" />
 
