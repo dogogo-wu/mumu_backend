@@ -73,6 +73,33 @@ class BannerController extends Controller
 
         return redirect('/banner');
     }
+    // public function move(Request $req) {
+
+    //     // 找到2個目標物件
+    //     $tarObj1 = Banner::find($req->temp1);
+    //     $tarObj2 = Banner::find($req->temp2);
+
+    //     // 取目標物件的order
+    //     $tarOrd1 = $tarObj1->order;
+    //     $tarOrd2 = $tarObj2->order;
+
+    //     // 做交換 (swap)
+    //     $tmp = $tarOrd1;
+    //     $tarOrd1 = $tarOrd2;
+    //     $tarOrd2 = $tmp;
+
+    //     // 把值存回去
+    //     $tarObj1->order = $tarOrd1;
+    //     $tarObj2->order = $tarOrd2;
+
+    //     // Save
+    //     $tarObj1->save();
+    //     $tarObj2->save();
+
+    //     return;
+    // }
+
+
     public function upmove($target) {
 
         // 取得目標obj
@@ -96,7 +123,7 @@ class BannerController extends Controller
         $tarObj->save();
         $prevObj->save();
 
-        return redirect('/banner');
+        return;
     }
     public function downmove($target) {
 
@@ -123,7 +150,7 @@ class BannerController extends Controller
         $tarObj->save();
         $postObj->save();
 
-        return redirect('/banner');
+        return;
 
     }
 }

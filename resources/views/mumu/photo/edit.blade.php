@@ -69,7 +69,8 @@
                 </div>
                 <div class="mb-3">
                     <label for="second_img" class="form-label fw-bold">圖片上傳 <small>(可一次上傳多張圖)</small></label>
-                    <input type="file" class="form-control" id="second_img" name="second_img[]" accept="image/*" multiple>
+                    <input type="file" class="form-control" id="second_img" name="second_img[]" accept="image/*"
+                        multiple>
                 </div>
 
                 <div class="d-flex justify-content-center align-items-center mt-4">
@@ -107,14 +108,17 @@
             formData.append('_token', '{{ csrf_token() }}');
 
             fetch("/photo/del_sec_img/" + myid, {
-                method: "POST",
-                body: formData
-            }).then(function(response) {
+                    method: "POST",
+                    body: formData
+                }).then(function(response) {
 
-                //------ 子方法2，使用javescript刪除元件 ------//
-                let ele = document.querySelector('#sec_img_div' + myid);
-                ele.remove();
-            })
+                    //------ 子方法2，使用javescript刪除元件 ------//
+                    let ele = document.querySelector('#sec_img_div' + myid);
+                    ele.remove();
+                })
+                .catch(err => {
+                    console.log(err);
+                })
 
         }
 
@@ -138,6 +142,9 @@
                         alert('已經是最前面囉！')
                     }
                 })
+                .catch(err => {
+                    console.log(err);
+                })
 
         }
 
@@ -159,6 +166,9 @@
                     if (data.pos == 'backmax') {
                         alert('已經是最後面囉！')
                     }
+                })
+                .catch(err => {
+                    console.log(err);
                 })
         }
     </script>

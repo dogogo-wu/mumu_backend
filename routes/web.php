@@ -61,6 +61,8 @@ Route::prefix('/banner')->middleware(['auth'])->group(function(){
     Route::get('/edit/{target}', [BannerController::class, 'edit']);
     Route::post('/update/{target}', [BannerController::class, 'update']);
 
+    // Route::post('/move', [BannerController::class, 'move']);
+
     Route::post('/upmove/{target}', [BannerController::class, 'upmove']);
     Route::post('/downmove/{target}', [BannerController::class, 'downmove']);
 });

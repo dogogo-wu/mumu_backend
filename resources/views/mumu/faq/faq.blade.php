@@ -43,21 +43,22 @@
                             <td>
                                 <button onclick="upmove({{ $mydata->id }})"
                                     class="btn btn-outline-primary btn-sm me-2 mb-2" type="button">上移</button>
-                                    <br>
-                                <button onclick="downmove({{ $mydata->id }})"
-                                    class="btn btn-outline-primary btn-sm me-2" type="button">下移</button>
+                                <br>
+                                <button onclick="downmove({{ $mydata->id }})" class="btn btn-outline-primary btn-sm me-2"
+                                    type="button">下移</button>
                             </td>
                             <td>
                                 {{ $mydata->order + 1 }}
                             </td>
                             <td>
-                                {{ $mydata->question}}
+                                {{ $mydata->question }}
                             </td>
                             <td>
-                                {{ $mydata->answer}}
+                                {{ $mydata->answer }}
                             </td>
                             <td>
-                                <a href="/faq/edit/{{ $mydata->id }}" class="btn btn-outline-success btn-sm me-3 mb-2">編輯</a>
+                                <a href="/faq/edit/{{ $mydata->id }}"
+                                    class="btn btn-outline-success btn-sm me-3 mb-2">編輯</a>
 
                                 {{-- 有加Modal --}}
                                 <button class="btn btn-outline-danger btn-sm mb-1" data-bs-toggle="modal"
@@ -127,18 +128,21 @@
             formData.append('_token', '{{ csrf_token() }}');
 
             fetch("/faq/upmove/" + myid, {
-                method: "POST",
-                body: formData
-            })
-            .then(response=>{
-                location.reload();
-                return response.json();
-            })
-            .then(data=>{
-                if(data.pos == 'upmax'){
-                    alert('已經是最上面囉！')
-                }
-            })
+                    method: "POST",
+                    body: formData
+                })
+                .then(response => {
+                    location.reload();
+                    return response.json();
+                })
+                .then(data => {
+                    if (data.pos == 'upmax') {
+                        alert('已經是最上面囉！')
+                    }
+                })
+                .catch(err => {
+                    console.log(err);
+                })
 
         }
 
@@ -149,18 +153,21 @@
             formData.append('_token', '{{ csrf_token() }}');
 
             fetch("/faq/downmove/" + myid, {
-                method: "POST",
-                body: formData
-            })
-            .then(response=>{
-                location.reload();
-                return response.json();
-            })
-            .then(data=>{
-                if(data.pos == 'downmax'){
-                    alert('已經是最下面囉！')
-                }
-            })
+                    method: "POST",
+                    body: formData
+                })
+                .then(response => {
+                    location.reload();
+                    return response.json();
+                })
+                .then(data => {
+                    if (data.pos == 'downmax') {
+                        alert('已經是最下面囉！')
+                    }
+                })
+                .catch(err => {
+                    console.log(err);
+                })
 
         }
 
@@ -171,7 +178,7 @@
 
             const mytar = button.getAttribute('data-bs-tarid');
             const mydel_btn = document.getElementById('modal_del');
-            mydel_btn.onclick = function(){
+            mydel_btn.onclick = function() {
                 document.querySelector('#delForm' + mytar).submit();
             }
         })

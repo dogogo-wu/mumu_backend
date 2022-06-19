@@ -64,7 +64,8 @@
                             </td>
                             <td>{{ $mydata->order + 1 }}</td>
                             <td>
-                                <img src="{{ asset($mydata->img) }}" alt="" style="opacity: {{ $mydata->opacity }}">
+                                <img src="{{ asset($mydata->img) }}" alt=""
+                                    style="opacity: {{ $mydata->opacity }}">
                             </td>
                             <td>{{ $mydata->title }}</td>
                             <td>
@@ -143,18 +144,21 @@
             formData.append('_token', '{{ csrf_token() }}');
 
             fetch("/teach_item/upmove/" + myid, {
-                method: "POST",
-                body: formData
-            })
-            .then(response=>{
-                location.reload();
-                return response.json();
-            })
-            .then(data=>{
-                if(data.pos == 'upmax'){
-                    alert('已經是最上面囉！')
-                }
-            })
+                    method: "POST",
+                    body: formData
+                })
+                .then(response => {
+                    location.reload();
+                    return response.json();
+                })
+                .then(data => {
+                    if (data.pos == 'upmax') {
+                        alert('已經是最上面囉！')
+                    }
+                })
+                .catch(err => {
+                    console.log(err);
+                })
 
         }
 
@@ -165,18 +169,21 @@
             formData.append('_token', '{{ csrf_token() }}');
 
             fetch("/teach_item/downmove/" + myid, {
-                method: "POST",
-                body: formData
-            })
-            .then(response=>{
-                location.reload();
-                return response.json();
-            })
-            .then(data=>{
-                if(data.pos == 'downmax'){
-                    alert('已經是最下面囉！')
-                }
-            })
+                    method: "POST",
+                    body: formData
+                })
+                .then(response => {
+                    location.reload();
+                    return response.json();
+                })
+                .then(data => {
+                    if (data.pos == 'downmax') {
+                        alert('已經是最下面囉！')
+                    }
+                })
+                .catch(err => {
+                    console.log(err);
+                })
 
         }
 
@@ -187,7 +194,7 @@
 
             const mytar = button.getAttribute('data-bs-tarid');
             const mydel_btn = document.getElementById('modal_del');
-            mydel_btn.onclick = function(){
+            mydel_btn.onclick = function() {
                 document.querySelector('#delForm' + mytar).submit();
             }
         })

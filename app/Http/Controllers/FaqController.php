@@ -86,7 +86,7 @@ class FaqController extends Controller
         $tarObj->save();
         $prevObj->save();
 
-        return redirect('/faq');
+        return;
     }
     public function downmove($target) {
 
@@ -113,7 +113,7 @@ class FaqController extends Controller
         $tarObj->save();
         $postObj->save();
 
-        return redirect('/faq');
+        return;
 
     }
 }

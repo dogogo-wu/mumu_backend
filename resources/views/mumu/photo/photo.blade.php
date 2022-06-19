@@ -214,6 +214,14 @@
 
         // ------------ my Func ------------
 
+        // 防止在input按enter送出get
+        $('input').on('keyup keypress', function(e) {
+            var keyCode = e.keyCode || e.which;
+            if (keyCode === 13) {
+                e.preventDefault();
+                return false;
+            }
+        });
 
         // 編輯用的Modal
         const editModal = document.getElementById('editModal');
@@ -243,6 +251,9 @@
                     .then(response => {
                         location.reload();
                     })
+                    .catch(err => {
+                        console.log(err);
+                    })
             }
         })
 
@@ -265,6 +276,9 @@
                         alert('已經是該類別最上面囉！')
                     }
                 })
+                .catch(err => {
+                    console.log(err);
+                })
         }
 
         function downmove(myid) {
@@ -285,6 +299,9 @@
                     if (data.pos == 'downmax') {
                         alert('已經是該類別最下面囉！')
                     }
+                })
+                .catch(err => {
+                    console.log(err);
                 })
         }
 

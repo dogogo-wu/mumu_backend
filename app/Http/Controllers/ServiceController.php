@@ -108,7 +108,7 @@ class ServiceController extends Controller
         $tarObj->save();
         $prevObj->save();
 
-        return redirect('/service');
+        return;
     }
     public function downmove($target) {
 
@@ -135,7 +135,7 @@ class ServiceController extends Controller
         $tarObj->save();
         $postObj->save();
 
-        return redirect('/service');
+        return;
 
     }
 }

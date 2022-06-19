@@ -20,13 +20,13 @@
             max-height: 100px;
             max-width: 250px;
         }
+
         @media (min-width: 992px) {
             table img {
                 max-height: 200px;
                 max-width: 400px;
             }
         }
-
     </style>
 @endsection
 
@@ -140,6 +140,28 @@
         //     document.querySelector('#delForm' + $id).submit();
         // }
 
+
+        // function move(temp1, temp2) {
+
+        //     let formData = new FormData();
+        //     formData.append('_method', 'POST');
+        //     formData.append('_token', '{{ csrf_token() }}');
+        //     formData.append('temp1', temp1);
+        //     formData.append('temp2', temp2);
+
+        //     fetch("banner/move", {
+        //             method: "POST",
+        //             body: formData
+        //         })
+        //         .then(response => {
+        //             location.reload();
+        //             return response.json();
+        //         })
+        //         .catch(err => {
+        //             console.log(err);
+        //         })
+        // }
+
         function upmove(myid) {
 
             let formData = new FormData();
@@ -147,20 +169,23 @@
             formData.append('_token', '{{ csrf_token() }}');
 
             fetch("/banner/upmove/" + myid, {
-                method: "POST",
-                body: formData
-            })
-            .then(response=>{
-                location.reload();
-                return response.json();
-            })
-            .then(data=>{
-                if(data.pos == 'upmax'){
-                    alert('已經是最上面囉！')
-                }
-            })
-
+                    method: "POST",
+                    body: formData
+                })
+                .then(response => {
+                    location.reload();
+                    return response.json();
+                })
+                .then(data => {
+                    if (data.pos == 'upmax') {
+                        alert('已經是最上面囉！')
+                    }
+                })
+                .catch(err => {
+                    console.log(err);
+                })
         }
+
 
         function downmove(myid) {
 
@@ -168,19 +193,23 @@
             formData.append('_method', 'POST');
             formData.append('_token', '{{ csrf_token() }}');
 
+
             fetch("/banner/downmove/" + myid, {
-                method: "POST",
-                body: formData
-            })
-            .then(response=>{
-                location.reload();
-                return response.json();
-            })
-            .then(data=>{
-                if(data.pos == 'downmax'){
-                    alert('已經是最下面囉！')
-                }
-            })
+                    method: "POST",
+                    body: formData
+                })
+                .then(response => {
+                    location.reload();
+                    return response.json();
+                })
+                .then(data => {
+                    if (data.pos == 'downmax') {
+                        alert('已經是最下面囉！')
+                    }
+                })
+                .catch(err => {
+                    console.log(err);
+                })
 
         }
         const myModal = document.getElementById('myModal');
@@ -190,7 +219,7 @@
 
             const mytar = button.getAttribute('data-bs-tarid');
             const mydel_btn = document.getElementById('modal_del');
-            mydel_btn.onclick = function(){
+            mydel_btn.onclick = function() {
                 document.querySelector('#delForm' + mytar).submit();
             }
         })

@@ -175,7 +175,7 @@ class GalleryController extends Controller
         $tarObj->save();
         $prevObj->save();
 
-        return redirect('/photo');
+        return;
     }
     public function downmove($target) {
 
@@ -202,7 +202,7 @@ class GalleryController extends Controller
         $tarObj->save();
         $postObj->save();
 
-        return redirect('/photo');
+        return;
 
     }
     public function frontmove($target) {
@@ -229,7 +229,7 @@ class GalleryController extends Controller
         $tarObj->save();
         $prevObj->save();
 
-        return redirect('/photo/edit/' .$subtit_id);
+        return;
     }
     public function backmove($target) {
 
@@ -257,7 +257,7 @@ class GalleryController extends Controller
         $tarObj->save();
         $postObj->save();
 
-        return redirect('/photo/edit/' .$subtit_id);
+        return;
 
     }
 

@@ -111,7 +111,7 @@ class TeachController extends Controller
         $tarObj->save();
         $prevObj->save();
 
-        return redirect('/teach_item');
+        return;
     }
     public function downmove($target) {
 
@@ -138,7 +138,7 @@ class TeachController extends Controller
         $tarObj->save();
         $postObj->save();
 
-        return redirect('/teach_item');
+        return;
 
     }
 }

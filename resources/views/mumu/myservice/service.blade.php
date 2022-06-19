@@ -143,18 +143,21 @@
             formData.append('_token', '{{ csrf_token() }}');
 
             fetch("/service/upmove/" + myid, {
-                method: "POST",
-                body: formData
-            })
-            .then(response=>{
-                location.reload();
-                return response.json();
-            })
-            .then(data=>{
-                if(data.pos == 'upmax'){
-                    alert('已經是最上面囉！')
-                }
-            })
+                    method: "POST",
+                    body: formData
+                })
+                .then(response => {
+                    location.reload();
+                    return response.json();
+                })
+                .then(data => {
+                    if (data.pos == 'upmax') {
+                        alert('已經是最上面囉！')
+                    }
+                })
+                .catch(err => {
+                    console.log(err);
+                })
 
         }
 
@@ -165,18 +168,21 @@
             formData.append('_token', '{{ csrf_token() }}');
 
             fetch("/service/downmove/" + myid, {
-                method: "POST",
-                body: formData
-            })
-            .then(response=>{
-                location.reload();
-                return response.json();
-            })
-            .then(data=>{
-                if(data.pos == 'downmax'){
-                    alert('已經是最下面囉！')
-                }
-            })
+                    method: "POST",
+                    body: formData
+                })
+                .then(response => {
+                    location.reload();
+                    return response.json();
+                })
+                .then(data => {
+                    if (data.pos == 'downmax') {
+                        alert('已經是最下面囉！')
+                    }
+                })
+                .catch(err => {
+                    console.log(err);
+                })
 
         }
 

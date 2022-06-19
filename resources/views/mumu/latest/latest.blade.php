@@ -133,18 +133,21 @@
             formData.append('_token', '{{ csrf_token() }}');
 
             fetch("/latest/upmove/" + myid, {
-                method: "POST",
-                body: formData
-            })
-            .then(response=>{
-                location.reload();
-                return response.json();
-            })
-            .then(data=>{
-                if(data.pos == 'upmax'){
-                    alert('已經是最上面囉！')
-                }
-            })
+                    method: "POST",
+                    body: formData
+                })
+                .then(response => {
+                    location.reload();
+                    return response.json();
+                })
+                .then(data => {
+                    if (data.pos == 'upmax') {
+                        alert('已經是最上面囉！')
+                    }
+                })
+                .catch(err => {
+                    console.log(err);
+                })
 
         }
 
@@ -155,18 +158,21 @@
             formData.append('_token', '{{ csrf_token() }}');
 
             fetch("/latest/downmove/" + myid, {
-                method: "POST",
-                body: formData
-            })
-            .then(response=>{
-                location.reload();
-                return response.json();
-            })
-            .then(data=>{
-                if(data.pos == 'downmax'){
-                    alert('已經是最下面囉！')
-                }
-            })
+                    method: "POST",
+                    body: formData
+                })
+                .then(response => {
+                    location.reload();
+                    return response.json();
+                })
+                .then(data => {
+                    if (data.pos == 'downmax') {
+                        alert('已經是最下面囉！')
+                    }
+                })
+                .catch(err => {
+                    console.log(err);
+                })
 
         }
 
@@ -177,7 +183,7 @@
 
             const mytar = button.getAttribute('data-bs-tarid');
             const mydel_btn = document.getElementById('modal_del');
-            mydel_btn.onclick = function(){
+            mydel_btn.onclick = function() {
                 document.querySelector('#delForm' + mytar).submit();
             }
         })

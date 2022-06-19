@@ -103,7 +103,7 @@ class LatestController extends Controller
         $tarObj->save();
         $prevObj->save();
 
-        return redirect('/latest');
+        return;
     }
     public function downmove($target) {
 
@@ -130,11 +130,7 @@ class LatestController extends Controller
         $tarObj->save();
         $postObj->save();
 
-        return redirect('/latest');
-
-    }
-
-    public function aryShift(){
+        return;
 
     }
 }

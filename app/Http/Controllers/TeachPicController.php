@@ -94,7 +94,7 @@ class TeachPicController extends Controller
         $tarObj->save();
         $prevObj->save();
 
-        return redirect('/teach_pic');
+        return;
     }
     public function downmove($target) {
 
@@ -121,7 +121,7 @@ class TeachPicController extends Controller
         $tarObj->save();
         $postObj->save();
 
-        return redirect('/teach_pic');
+        return;
 
     }
 }
